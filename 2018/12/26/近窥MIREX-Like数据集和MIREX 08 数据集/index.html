@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Music Emotion Rearch,文章翻译,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王磊的百草园" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
+<meta name="keywords" content="Music Emotion Rearch,文章翻译">
+<meta property="og:type" content="article">
+<meta property="og:title" content="近窥MIREX-Like数据集和MIREX 08数据集">
+<meta property="og:url" content="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX 08 数据集/index.html">
+<meta property="og:site_name" content="王磊的百草园">
+<meta property="og:description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/1996Wanglei/1996wanglei.github.io/blob/master/images/Mirex-like%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E6%8F%92%E5%9B%BE.jpg">
+<meta property="og:updated_time" content="2019-01-12T14:53:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="近窥MIREX-Like数据集和MIREX 08数据集">
+<meta name="twitter:description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
+<meta name="twitter:image" content="https://github.com/1996Wanglei/1996wanglei.github.io/blob/master/images/Mirex-like%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E6%8F%92%E5%9B%BE.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX 08 数据集/">
+
+
+
+
+
+  <title>近窥MIREX-Like数据集和MIREX 08数据集 | 王磊的百草园</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王磊的百草园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Is Short</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX 08 数据集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanglei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王磊的百草园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">近窥MIREX-Like数据集和MIREX 08数据集</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-26T20:04:53+08:00">
+                2018-12-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Dataset/" itemprop="url" rel="index">
+                    <span itemprop="name">Dataset</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本篇文章翻译自<a href="https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-dataset/" target="_blank" rel="noopener">Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)</a>。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。</p>
+<hr>
+<p>MIREX-Like数据集第一次在10th International Symposium on Computer Music Multidisciplinary Research-CMMR‘2013会议上公布出来[1]，由于一直缺乏标准的，标注质量好的音乐情感数据集，研究者们在绝大部分音乐情感学术研究里都使用自己制作的数据集，这导致他们取得的结果不能够在同一个数据集上进行比较。尽管每年MIREX 情感识别竞赛有mirex mood classification数据集，但是这个数据集不是公开的。新的MIREX-Like数据集 包含了903首音乐样本，同样这也是一个用于音乐情感研究的多模态数据集，它还囊括了歌词和每首歌的MIDI，但是它只有196首歌曲的MIDI。</p>
+<ul>
+<li><strong>数据集的获取</strong></li>
+</ul>
+<p>MIREX-Like数据集的制作者从ALLMusic收集数据，ALLMusic上的音乐标注都是由专业人员标注，而不是Last.FM的数据都是由音乐社区中的音乐听众标注的。所以ALLMusic的标注可能更加可靠。制作者收集标注时使用的情感标签和MIREX 08数据集是一致的。如果某首音乐的标签属于多个类别，那么他们会偏向选择标签数量更多的情感类别。比如：一首歌有’passionate‘(Cluster1)，‘confident’(Cluster1),’humorous‘(Cluster4)，那么这首歌会被分类到Cluster1。MIREX-Like数据集总共903首音乐歌曲，在五个类别上的数量分布是很平衡的，其中18.8%cluster 1, 18.2% cluster 2, 23.8% cluster 3, 21.2% cluster 4 and 18.1% cluster 5。</p>
+<ul>
+<li><strong>数据特征</strong></li>
+</ul>
+<p>即便标签都是由专业人员标注，这些标签在五个类别的的划分仍然不是很合理。尽管我们不能直接比较两个数据集，因为我们没有办法听到MIREX 08数据集的音乐文件。通过一个简单的验证步骤，我们能够得到结论：MIREX-Like数据集的歧义性(原文用的是ambiguity)比MIREX 08高。</p>
+<p>的确，拿我们论文[2]当中用过的特征，使用SVM在MIREX-Like数据集分类，accuracy只有区区的40%，相比MIREX 08上的大多数结果在60%左右，这是一个很低的结果。MIREX-Like数据集的作者也在该文章[1]中使用了他们的分类方法，用SVM分类也只有44.9%的分类准确率。然而，他们使用一些旋律相关特征时，准确率可以提高到52.8%。他们基于旋律自动提取系统提取的98个旋律相关特征，尽管这些特征的用途并不相同。</p>
+<ul>
+<li><strong>类别分析</strong></li>
+</ul>
+<p>就在语义空间表示而言，用来讨论分析情感分类方法使用的不同情感分类类别是非常重要的，因为它或许能够解释这些分类算法的混乱。文献[4]分析了不同情感空间表示的intra-cluster similarity(类内相似性)和inter-cluster similarity(类间相似性)。intra-cluster similarity衡量的是<strong>community-based表征和expert-based表征(如Russell情感表示[5])之间的一致性</strong></p>
+<p>就MIREX使用的五类情感类别而言，具有最低intra-cluster similarity的是cluster2(sweet, good natured,cheerful, rollicking, amiable, fun)，也许这么普通大众和专家意见如此一致的原因是这一类都是一些使人快乐的音乐。然而如果使用的形容词如果不是如此普通寻常的词语的话，这样做也许会降低这个值。总之MIREX 的情感表示的intra-cluster similarity相当高。</p>
+<p>inter-cluster similarity，它在音乐情感分类方法中非常重要，衡量的是不同的情感类别之间的独立性(原文用的how separable the cluster are)，它的计算方法是取一个类别质心(类别内所有点的平均值)到其他所有类别质心之间的余弦距离，文献[4]给出了MIREX clusters类别的inter-cluster similarity混淆矩阵(confusion matrix)。这个矩阵告诉我们，cluster1和cluster5的值最低，表示这两个情感类别相当相似。</p>
+<p>这些发现和MIREX竞赛上的结果是一致的，这两类的混淆性也很显著(见文献[6]），文献6也给出了cluster2和cluster4的混淆性(confusion)。</p>
+<p>此外观察到的最独立的cluster5和cluster2，在MIREX 分类结果上也具有比较小的混淆性(confusion)[4]。</p>
+<p><img src="https://github.com/1996Wanglei/1996wanglei.github.io/blob/master/images/Mirex-like%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E6%8F%92%E5%9B%BE.jpg" alt></p>
+<p>Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感表示既有优点但是也有局限性，观察到的不同MIREX cluster之间的混淆性和相似性验证了先前分析的结果。</p>
+<p>从Lauriers分析中的计算结果来看，他认为MIREX的情感表示目前不是一个最优的表示方法。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p>[1] R. Panda, R. Malheiro, B. Rocha, A. Oliveira, and R. P. Paiva, “Multi-Modal Music Emotion Recognition: A New Dataset, Methodology and Comparative Analysis” 10th International Symposium on Computer Music Multidisciplinary Research – CMMR’2013.</p>
+<p>[2] Laurier, Cyril, et al. “Audio music mood classification using support vector machine.” <em>MIREX task on Audio Mood Classification</em> (2007): 2-4.</p>
+<p>[3] Salamon, Justin, Bruno Rocha, and Emilia Gómez. “Musical genre classification using melody features extracted from polyphonic music signals.” <em>Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on</em>. IEEE, 2012.</p>
+<p>[4] Laurier, Cyril. <em>Automatic classification of musical mood by content based analysis</em>. Universitat Pompeu Fabra, 2011.</p>
+<p>[5] Ressel, J. A. “A circumplex model of affect.” <em>J. Personality and Social Psychology</em> 39 (1980): 1161-78.</p>
+<p>[6] Downie, X. H. J. S., Cyril Laurier, and M. B. A. F. Ehmann. “The 2007 MIREX audio mood classification task: Lessons learned.” <em>Proc. 9th Int. Conf. Music Inf. Retrieval</em>. 2008.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Music-Emotion-Rearch/" rel="tag"># Music Emotion Rearch</a>
+          
+            <a href="/tags/文章翻译/" rel="tag"># 文章翻译</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/30/2018年度回顾/" rel="prev" title="2018年度回顾">
+                2018年度回顾 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
+          <p class="site-author-name" itemprop="name">wanglei</p>
+           
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，后来作业太多就没去了</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/1996Wanglei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="leiwang199608@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-lei-35-77/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              有趣的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.csdn.net/Alen_1996" title="我的CSDN" target="_blank">我的CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanglei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

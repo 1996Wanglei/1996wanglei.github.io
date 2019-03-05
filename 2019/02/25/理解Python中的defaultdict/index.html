@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="defaultdict,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王磊的百草园" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="在Python中，如果访问字典中不存在的键时会引发KeyError的异常。但是如果字典中的键如果能够有默认的值有时候是非常方便的。比如以下的例子： 1234strings =&amp;#123;&amp;apos;puppy&amp;apos;,&amp;apos;kitten&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;wesel&amp;apos;,&amp;apos;puppy&amp;apos">
+<meta name="keywords" content="defaultdict">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解Python中的defaultdictt">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/理解Python中的defaultdict/index.html">
+<meta property="og:site_name" content="王磊的百草园">
+<meta property="og:description" content="在Python中，如果访问字典中不存在的键时会引发KeyError的异常。但是如果字典中的键如果能够有默认的值有时候是非常方便的。比如以下的例子： 1234strings =&amp;#123;&amp;apos;puppy&amp;apos;,&amp;apos;kitten&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;wesel&amp;apos;,&amp;apos;puppy&amp;apos">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-25T06:44:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解Python中的defaultdictt">
+<meta name="twitter:description" content="在Python中，如果访问字典中不存在的键时会引发KeyError的异常。但是如果字典中的键如果能够有默认的值有时候是非常方便的。比如以下的例子： 1234strings =&amp;#123;&amp;apos;puppy&amp;apos;,&amp;apos;kitten&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;puppy&amp;apos;,&amp;apos;wesel&amp;apos;,&amp;apos;puppy&amp;apos">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/理解Python中的defaultdict/">
+
+
+
+
+
+  <title>理解Python中的defaultdictt | 王磊的百草园</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王磊的百草园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Is Short</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/25/理解Python中的defaultdict/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanglei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王磊的百草园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解Python中的defaultdictt</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T14:35:22+08:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python学习/" itemprop="url" rel="index">
+                    <span itemprop="name">Python学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Python中，如果访问字典中不存在的键时会引发KeyError的异常。但是如果字典中的键如果能够有默认的值有时候是非常方便的。比如以下的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">strings =&#123;&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&apos;,&apos;puppy&apos;,&apos;wesel&apos;,&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&#125;</span><br><span class="line">counts = &#123;&#125;</span><br><span class="line">for i in strings:</span><br><span class="line">	counts[i] += 1</span><br></pre></td></tr></table></figure>
+<p>以上这个例子是用来统计单词出现的次数，将单词作为count中的键，单词每出现一次就加1.事实上这段代码是会抛出KeyError的。</p>
+<p>有以下几个办法能够处理这个问题。</p>
+<h5 id="使用判断语句检查"><a href="#使用判断语句检查" class="headerlink" title="使用判断语句检查"></a>使用判断语句检查</h5><hr>
+<p>我们可以在每次取得单词时候，检查这个单词是否在字典中有默认值，没有就赋一个默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strings =&#123;&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&apos;,&apos;puppy&apos;,&apos;wesel&apos;,&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&#125;</span><br><span class="line">counts = &#123;&#125;</span><br><span class="line">for i in strings:</span><br><span class="line">	if i not in count:</span><br><span class="line">		counts[i] = 0</span><br><span class="line">	counts[i] += 1</span><br></pre></td></tr></table></figure>
+<h5 id="dict-setdefault-方法"><a href="#dict-setdefault-方法" class="headerlink" title="dict.setdefault()方法"></a>dict.setdefault()方法</h5><hr>
+<p>我们也可以使用dict.setdefault()方法来设置默认值：这个方法结构两个参数，一个是键的名称，另一个是默认值。如果键已经存在字典中就返回它的值，如果没有就将默认值保存并且返回该默认值。用dict.setdefault()重写上面的例子</p>
+<blockquote>
+<p><code>setdefault</code>(<em>key</em>[, <em>default</em>])</p>
+<p>If <em>key</em> is in the dictionary, return its value. If not, insert <em>key</em> with a value of <em>default</em> and return <em>default</em>. <em>default</em> defaults to <code>None</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">strings =&#123;&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&apos;,&apos;puppy&apos;,&apos;wesel&apos;,&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&#125;</span><br><span class="line">counts = &#123;&#125;</span><br><span class="line">for i in strings:</span><br><span class="line">	counts.setdefault(i,0)</span><br><span class="line">	counts[i] += 1</span><br></pre></td></tr></table></figure>
+<p>下面这种方法就是我们本篇博客的主角collections.defaultdict类</p>
+<h5 id="collections-defaultdict"><a href="#collections-defaultdict" class="headerlink" title="collections.defaultdict"></a>collections.defaultdict</h5><hr>
+<blockquote>
+<p><em>class</em> <code>collections.`</code>defaultdict`([<em>default_factory</em>[, <em>…</em>]])</p>
+</blockquote>
+<p>defaultdict类返回一个类似于的字典对象，第一个参数给default_factory属性赋值，其它的参数都传递给dict构造器。<strong>通俗来说就是defaultdict类的初始化函数接收一个类型作为参数，当访问的键不存在，实例化一个值作为默认值</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from collections import defaultdict</span><br><span class="line">&gt;&gt;&gt; dd = defaultdict(list)</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">defaultdict(&lt;class &apos;list&apos;&gt;, &#123;&#125;)</span><br><span class="line">&gt;&gt;&gt; dd[&apos;lei&apos;]</span><br><span class="line">[]</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">defaultdict(&lt;class &apos;list&apos;&gt;, &#123;&apos;lei&apos;: []&#125;)</span><br><span class="line">&gt;&gt;&gt; dd[&apos;wang&apos;].append(22)</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">defaultdict(&lt;class &apos;list&apos;&gt;, &#123;&apos;lei&apos;: [], &apos;wang&apos;: [22]&#125;)</span><br></pre></td></tr></table></figure>
+<p>但是这种使用仅限于直接通过访问字典的键dict[key]或者dict.__getitem__()这两种方式，如下面的例子，其它的使用都不行，具体原因稍后介绍。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &apos;xu&apos; in dd</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; dd.pop(&apos;xu&apos;)</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;pyshell#9&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="line">    dd.pop(&apos;xu&apos;)</span><br><span class="line">KeyError: &apos;xu&apos;</span><br><span class="line">&gt;&gt;&gt; dd.get(&apos;xu&apos;)</span><br><span class="line">&gt;&gt;&gt; dd[&apos;xu&apos;]</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+<p>该类除了接收类型名称来作为初始化函数的参数，还可以使用任何不带参数的可调用函数作为参数，函数的返回结果就作为默认值，这样可以使得默认值的取值更加灵活。下面的例子是介绍这种用法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from collections import defaultdict</span><br><span class="line">&gt;&gt;&gt; def one():</span><br><span class="line">	return 1</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; dd = defaultdict(one)</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">defaultdict(&lt;function one at 0x1101ff2f0&gt;, &#123;&#125;)</span><br><span class="line">&gt;&gt;&gt; dd[&apos;lei&apos;]</span><br><span class="line">1</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">defaultdict(&lt;function one at 0x1101ff2f0&gt;, &#123;&apos;lei&apos;: 1&#125;)</span><br></pre></td></tr></table></figure>
+<p>同样我们也可以使用匿名函数lambda来作为参数，比如说：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">strings =&#123;&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&apos;,&apos;puppy&apos;,&apos;wesel&apos;,&apos;puppy&apos;,&apos;kitten&apos;,&apos;puppy&#125;</span><br><span class="line">counts = defaultdict(lambda: 0)</span><br><span class="line">for i in strings:</span><br><span class="line">	counts[i] +=1</span><br></pre></td></tr></table></figure>
+<p>为什么defaultdict类可以实现这样的用法呢，因为它支持<a href="https://docs.python.org/3/library/collections.html#collections.defaultdict" target="_blank" rel="noopener">__missing__()方法</a>。</p>
+<blockquote>
+<p><em>class</em> <code>collections.`</code>defaultdict`([<em>default_factory</em>[, <em>…</em>]])</p>
+<p><code>__missing__</code>(<em>key</em>)</p>
+<p>If the <a href="https://docs.python.org/3/library/collections.html#collections.defaultdict.default_factory" target="_blank" rel="noopener"><code>default_factory</code></a> attribute is <code>None</code>, this raises a <a href="https://docs.python.org/3/library/exceptions.html#KeyError" target="_blank" rel="noopener"><code>KeyError</code></a> exception with the <em>key</em> as argument.</p>
+<p>If <a href="https://docs.python.org/3/library/collections.html#collections.defaultdict.default_factory" target="_blank" rel="noopener"><code>default_factory</code></a> is not <code>None</code>, it is called without arguments to provide a default value for the given <em>key</em>, this value is inserted in the dictionary for the <em>key</em>, and returned.</p>
+<p>If calling <a href="https://docs.python.org/3/library/collections.html#collections.defaultdict.default_factory" target="_blank" rel="noopener"><code>default_factory</code></a> raises an exception this exception is propagated unchanged.</p>
+<p>This method is called by the <a href="https://docs.python.org/3/reference/datamodel.html#object.__getitem__" target="_blank" rel="noopener"><code>__getitem__()</code></a> method of the <a href="https://docs.python.org/3/library/stdtypes.html#dict" target="_blank" rel="noopener"><code>dict</code></a> class when the requested key is not found; whatever it returns or raises is then returned or raised by <a href="https://docs.python.org/3/reference/datamodel.html#object.__getitem__" target="_blank" rel="noopener"><code>__getitem__()</code></a>.</p>
+<p>Note that <a href="https://docs.python.org/3/library/collections.html#collections.defaultdict.__missing__" target="_blank" rel="noopener"><code>__missing__()</code></a> is <em>not</em> called for any operations besides <a href="https://docs.python.org/3/reference/datamodel.html#object.__getitem__" target="_blank" rel="noopener"><code>__getitem__()</code></a>. This means that <code>get()</code> will, like normal dictionaries, return <code>None</code> as a default rather than using<a href="https://docs.python.org/3/library/collections.html#collections.defaultdict.default_factory" target="_blank" rel="noopener"><code>default_factory</code></a></p>
+</blockquote>
+<p> 从第二句我们可以看到如果default_factory不是None,调用时会给给定的key一个默认值，这个默认值会保存在key对应的之中，并且被返回。第四句说明这个方法只会被 __getitem__()方法调用,dict[key]这种形式实际上是__getitem__方法的简化形式。</p>
+<p>当__getitem__()方法访问一个不存在的键时会调用__missing__()方法获得默认的值，将该键添加到字典中去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;print(defaultdict.__missing__.__doc__)</span><br><span class="line">__missing__(key) # Called by __getitem__ for missing key; pseudo-code:</span><br><span class="line">  if self.default_factory is None: raise KeyError((key,))</span><br><span class="line">  self[key] = value = self.default_factory()</span><br><span class="line">  return value</span><br></pre></td></tr></table></figure>
+<h5 id="实现一个defaultdict功能"><a href="#实现一个defaultdict功能" class="headerlink" title="实现一个defaultdict功能"></a>实现一个defaultdict功能</h5><hr>
+<p>在<a href="https://docs.python.org/3/library/stdtypes.html#mapping-types-dict" target="_blank" rel="noopener">”dict“</a>python文档中还介绍，如果dict的子类实现了__missing__方法，当访问不存在的键时，dict[key]会调用__missing__（）方法来获得默认值。下面我们可以进一步实验，定义一个dict的子类Missing并且实现__missing__()方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class Missing(dict):</span><br><span class="line">	def __missing__(self,key):</span><br><span class="line">		return &apos;missing&apos;	</span><br><span class="line">&gt;&gt;&gt; d = Missing()</span><br><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&#125;</span><br><span class="line">&gt;&gt;&gt; d[&apos;lei&apos;]</span><br><span class="line">&apos;missing&apos;</span><br><span class="line">&gt;&gt;&gt; d</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>返回结果表明__missing__()方法确实发挥了作用，但是key没有添加到字典当中去，我们再修改一下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; class defaultdict(dict):</span><br><span class="line">	def __missing__(self,key):</span><br><span class="line">		self[key] = &apos;wanglei&apos;</span><br><span class="line">		return &apos;wanglei&apos;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">&gt;&gt;&gt; dd=defaultdict()</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">&#123;&#125;</span><br><span class="line">&gt;&gt;&gt; dd[&apos;foo&apos;]</span><br><span class="line">&apos;wanglei&apos;</span><br><span class="line">&gt;&gt;&gt; dd</span><br><span class="line">&#123;&apos;foo&apos;: &apos;wanglei&apos;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="在旧的Python版本中实现defaultdict功能"><a href="#在旧的Python版本中实现defaultdict功能" class="headerlink" title="在旧的Python版本中实现defaultdict功能"></a>在旧的Python版本中实现defaultdict功能</h5><hr>
+<p>本来这个我不想写了，但是我觉得有必要综合一下上面所说的。defaultdict类是在Python2.5中加入进来的，但是我们可以实现一个兼容defaultdict的类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class defaultdict(dict):</span><br><span class="line">    # 首先当 __getitem__()方法访问键失败的时候，调用__missing__方法。</span><br><span class="line">	def __getitem__(self,key):</span><br><span class="line">		try:</span><br><span class="line">			return dict.__getitem__(self,key)</span><br><span class="line">		except KeyError:</span><br><span class="line">			return self.__missing__(key)</span><br><span class="line">	# 实现__missing__方法来给设置默认值</span><br><span class="line">	def __missing__(key):</span><br><span class="line">		self[key] =value = self.default_factory()</span><br><span class="line">		return value</span><br></pre></td></tr></table></figure>
+<p>然后defaultdict类的初始化函数__init__()需要接收类型或者可调用函数的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class defaultdict(dict):</span><br><span class="line">    def __init__(self,default_factory=None,*a,**kwag):</span><br><span class="line">    	dict.__init__(self,*a,**kwag)</span><br><span class="line">    	self.default_factory = default_factory</span><br><span class="line">    # 首先当 __getitem__()方法访问键失败的时候，调用__missing__方法。</span><br><span class="line">	def __getitem__(self,key):</span><br><span class="line">		try:</span><br><span class="line">			return dict.__getitem__(self,key)</span><br><span class="line">		except KeyError:</span><br><span class="line">			return self.__missing__(key)</span><br><span class="line">	# 实现__missing__方法来给设置默认值</span><br><span class="line">	def __missing__(key):</span><br><span class="line">		self[key] =value = self.default_factory()</span><br><span class="line">		return value</span><br></pre></td></tr></table></figure>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p>本文主要参考了这篇</p>
+<p><a href="http://kodango.com/understand-defaultdict-in-python" target="_blank" rel="noopener">http://kodango.com/understand-defaultdict-in-python</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/defaultdict/" rel="tag"># defaultdict</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/18/如何提取出一首歌曲的梅尔频谱/" rel="next" title="如何提取出一首歌曲的梅尔频谱">
+                <i class="fa fa-chevron-left"></i> 如何提取出一首歌曲的梅尔频谱
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/25/LeetCode刷题（一）/" rel="prev" title="LeetCode刷题（一）">
+                LeetCode刷题（一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
+          <p class="site-author-name" itemprop="name">wanglei</p>
+           
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，后来作业太多就没去了</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/1996Wanglei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="leiwang199608@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-lei-35-77/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              有趣的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.csdn.net/Alen_1996" title="我的CSDN" target="_blank">我的CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用判断语句检查"><span class="nav-number">1.</span> <span class="nav-text">使用判断语句检查</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#dict-setdefault-方法"><span class="nav-number">2.</span> <span class="nav-text">dict.setdefault()方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#collections-defaultdict"><span class="nav-number">3.</span> <span class="nav-text">collections.defaultdict</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#实现一个defaultdict功能"><span class="nav-number">4.</span> <span class="nav-text">实现一个defaultdict功能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#在旧的Python版本中实现defaultdict功能"><span class="nav-number">5.</span> <span class="nav-text">在旧的Python版本中实现defaultdict功能</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanglei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
