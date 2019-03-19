@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-19T03:10:00.727Z</updated>
+  <updated>2019-03-19T14:47:23.775Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>她</title>
+    <link href="http://yoursite.com/2019/03/19/%E5%A5%B9/"/>
+    <id>http://yoursite.com/2019/03/19/她/</id>
+    <published>2019-03-19T14:46:05.000Z</published>
+    <updated>2019-03-19T14:47:23.775Z</updated>
+    
+    <content type="html"><![CDATA[<p>我认识了一个女孩子，她和我一样爱笑。她对我很好，虽然我们之前从来没有见过，我们是在不同的地方长大，上不同的学校，成长经历也不同，但是我们却能够在台湾认识。我很笃定对于我来说她是对的人，但是现在我们还没有真正成为恋人，我决定不会再逼她一点点，两个人有两个人自己的判断，我相信很快就会有结果吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我认识了一个女孩子，她和我一样爱笑。她对我很好，虽然我们之前从来没有见过，我们是在不同的地方长大，上不同的学校，成长经历也不同，但是我们却能够在台湾认识。我很笃定对于我来说她是对的人，但是现在我们还没有真正成为恋人，我决定不会再逼她一点点，两个人有两个人自己的判断，我相信很
+      
+    
+    </summary>
+    
+      <category term="只关心自己" scheme="http://yoursite.com/categories/%E5%8F%AA%E5%85%B3%E5%BF%83%E8%87%AA%E5%B7%B1/"/>
+    
+    
+      <category term="生活" scheme="http://yoursite.com/tags/%E7%94%9F%E6%B4%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode刷题之路(五)</title>
