@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="LeetCode33搜索旋转排序数组 算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序">
+<meta name="description" content="LeetCode33搜索旋转排序数组算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序列">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode刷题之路(五)">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/LeetCode刷题之路-五/index.html">
 <meta property="og:site_name" content="王磊的百草园">
-<meta property="og:description" content="LeetCode33搜索旋转排序数组 算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序">
+<meta property="og:description" content="LeetCode33搜索旋转排序数组算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序列">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-19T02:40:23.234Z">
+<meta property="og:updated_time" content="2019-03-19T03:10:00.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题之路(五)">
-<meta name="twitter:description" content="LeetCode33搜索旋转排序数组 算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序">
+<meta name="twitter:description" content="LeetCode33搜索旋转排序数组算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？ 我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。 具体的，先进行判断子序列是否是 有序子序列">
 
 
 
@@ -374,24 +374,19 @@
       
 
       
-        <p>LeetCode33搜索旋转排序数组</p>
-<p>算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用<strong>二分查找</strong>了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。<strong>那么我们应该怎么找到有序的子序列呢？</strong></p>
+        <h4 id="LeetCode33搜索旋转排序数组"><a href="#LeetCode33搜索旋转排序数组" class="headerlink" title="LeetCode33搜索旋转排序数组"></a>LeetCode33搜索旋转排序数组</h4><p>算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用<strong>二分查找</strong>了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。<strong>那么我们应该怎么找到有序的子序列呢？</strong></p>
 <p><strong>我们只需要判断序列的第一个值和序列中间值的大小就可以判断。因为这是一个有序的序列的必要条件。</strong></p>
 <p>具体的，先进行判断子序列是否是 有序子序列，然后检查target的值是否在有序子序列的范围之内。不过没有我们就继续找下一个有序的子序列，如果target的值在该有序子序列的范围，就继续在这个有序子序列中使用二分查找。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def search(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">        low = 0</span><br><span class="line">        high = len(nums) -1</span><br><span class="line">        while(low &lt;=high):</span><br><span class="line">            middle = low + ((high-low)&gt;&gt;1)</span><br><span class="line">            if nums[middle] == target:</span><br><span class="line">                return middle</span><br><span class="line">            else:</span><br><span class="line">                if nums[low] &lt;= nums[middle]:</span><br><span class="line">                    if target &lt; nums[middle] and target &gt;= nums[low]:</span><br><span class="line">                        high = middle - 1</span><br><span class="line">                    else:</span><br><span class="line">                        low = middle + 1</span><br><span class="line">                else:</span><br><span class="line">                    if target &lt;= nums[high] and target &gt; nums[middle]:</span><br><span class="line">                        low = middle + 1</span><br><span class="line">                    else:</span><br><span class="line">                        high = middle-1</span><br><span class="line">        return -1</span><br></pre></td></tr></table></figure>
-<p>LeetCode34 在排序数组中查找元素的第一个和最后一个位置</p>
-<p>算法思路，这道题还是考察二分查找算法，<a href="https://segmentfault.com/a/1190000008699980" target="_blank" rel="noopener">具体可以看这个链接上的二分查找总结</a>。实际上我们只要找到这个元素的第一个位置就行。然后再进行遍历找到最后一个位置。</p>
+<h4 id="LeetCode34-在排序数组中查找元素的第一个和最后一个位置"><a href="#LeetCode34-在排序数组中查找元素的第一个和最后一个位置" class="headerlink" title="LeetCode34 在排序数组中查找元素的第一个和最后一个位置"></a>LeetCode34 在排序数组中查找元素的第一个和最后一个位置</h4><p>算法思路，这道题还是考察二分查找算法，<a href="https://segmentfault.com/a/1190000008699980" target="_blank" rel="noopener">具体可以看这个链接上的二分查找总结</a>。实际上我们只要找到这个元素的第一个位置就行。然后再进行遍历找到最后一个位置。</p>
 <p>tips：具体的要注意一些特殊例子的判断</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def searchRange(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        low = 0</span><br><span class="line">        high = len(nums)-1</span><br><span class="line">        if len(nums) &lt; 0:</span><br><span class="line">            return [-1,-1]</span><br><span class="line">        if len(nums) == 1 and nums[0] ==target:</span><br><span class="line">            return [0,0]</span><br><span class="line">        elif len(nums) == 1 and nums[0] ！=target:</span><br><span class="line">            return [-1,-1]</span><br><span class="line">        while(low &lt;= high):</span><br><span class="line">            middle = low + ((high-low)&gt;&gt;1)</span><br><span class="line">            if nums[middle] &gt;= target:</span><br><span class="line">                high = middle -1</span><br><span class="line">            else:</span><br><span class="line">                low = middle + 1</span><br><span class="line">        index = high + 1 if high != len(nums)-1 and nums[high+1] == target else -1</span><br><span class="line">        if index == -1:</span><br><span class="line">            return [-1,-1]</span><br><span class="line">        else:</span><br><span class="line">            j = index</span><br><span class="line">            while(j &lt; len(nums) and nums[index] == nums[j]):</span><br><span class="line">                j += 1</span><br><span class="line">            return [index, j-1]</span><br></pre></td></tr></table></figure>
-<p>LeetCode39组合总和</p>
-<p>算法思路，这道题主要考察最基本的深度优先搜索。题目中说要使数字之和等于target，那么我们使用深度优先搜索遍历所有的情况。</p>
+<h4 id="LeetCode39组合总和"><a href="#LeetCode39组合总和" class="headerlink" title="LeetCode39组合总和"></a>LeetCode39组合总和</h4><p>算法思路，这道题主要考察最基本的深度优先搜索。题目中说要使数字之和等于target，那么我们使用深度优先搜索遍历所有的情况。</p>
 <p>唯一需要注意的是题目中说candidates中的数字可以无限制的重复被选取，所以我们假设路径中加入了”2”这个结点，从这个结点出来以后我们还是继续可以进入”2”这个结点。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum(self, candidates: List[int], target: int) -&gt; List[List[int]]:</span><br><span class="line">        ength = len(candidates)</span><br><span class="line">        result = []</span><br><span class="line">        candidates.sort()</span><br><span class="line">        temp = []</span><br><span class="line">        sum = 0</span><br><span class="line">        self.DFS(0, candidates, target, sum, result, temp)</span><br><span class="line">        return result</span><br><span class="line">    def DFS(self,index,cadidate,target,sum,reauslt,temp):</span><br><span class="line">        length = len(cadidate)</span><br><span class="line">        if sum == target:</span><br><span class="line">            reauslt.append(temp.copy())</span><br><span class="line">            return</span><br><span class="line">        if index == length or sum &gt; target:</span><br><span class="line">            return</span><br><span class="line">        temp.append(cadidate[index])</span><br><span class="line">        sum += cadidate[index]</span><br><span class="line">        self.DFS(index, cadidate, target, sum, reauslt, temp)</span><br><span class="line">        temp.pop()</span><br><span class="line">        sum -= cadidate[index]</span><br><span class="line">        self.DFS(index+1, cadidate, target, sum, reauslt, temp)</span><br></pre></td></tr></table></figure>
-<p>LeetCode40组合总和二</p>
-<p>算法思路：这一题和上一题的算法思路几乎一样，目前我想到的是我们每次找到一个新的组合，就先判断已有的组合中是否有重复的，但是我觉得我的算法还可以再优化。</p>
+<h4 id="LeetCode40组合总和二"><a href="#LeetCode40组合总和二" class="headerlink" title="LeetCode40组合总和二"></a>LeetCode40组合总和二</h4><p>算法思路：这一题和上一题的算法思路几乎一样，目前我想到的是我们每次找到一个新的组合，就先判断已有的组合中是否有重复的，但是我觉得我的算法还可以再优化。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def combinationSum2(self, candidates: List[int], target: int) -&gt; List[List[int]]:</span><br><span class="line">        result = []</span><br><span class="line">        temp = []</span><br><span class="line">        sum = 0</span><br><span class="line">        candidates.sort()</span><br><span class="line">        self.DFS(0, target, sum, candidates, temp, result)</span><br><span class="line">        return result</span><br><span class="line">    def DFS(self,index, target, sum, candidate, temp, result):</span><br><span class="line">        if sum == target:</span><br><span class="line">            if temp not in result:</span><br><span class="line">                result.append(temp.copy())</span><br><span class="line">                return</span><br><span class="line">            else:</span><br><span class="line">                return</span><br><span class="line">        if sum &gt; target or index == len(candidate):</span><br><span class="line">            return</span><br><span class="line">        temp.append(candidate[index])</span><br><span class="line">        sum += candidate[index]</span><br><span class="line">        self.DFS(index+1, target, sum, candidate, temp, result)</span><br><span class="line">        temp.pop()</span><br><span class="line">        sum -= candidate[index]</span><br><span class="line">        self.DFS(index+1, target, sum, candidate, temp, result)</span><br></pre></td></tr></table></figure>
-<p>LeetCode41缺失的一个正数</p>
-<p>算法思路：这里有一个很妙的思路：我们先遍历一遍数组，将<strong>值在1和数组长度之间的元素放入下标为该元素值的位置</strong>，然后再遍历一遍数组，检查每个元素的值是否和下标对应，如果没有对应，那么该下标就是缺失的最小正数，如果遍历一遍都是对应好的，那么数组长度+1的元素就是缺失的最小正数。</p>
+<h4 id="LeetCode41缺失的一个正数"><a href="#LeetCode41缺失的一个正数" class="headerlink" title="LeetCode41缺失的一个正数"></a>LeetCode41缺失的一个正数</h4><p>算法思路：这里有一个很妙的思路：我们先遍历一遍数组，将<strong>值在1和数组长度之间的元素放入下标为该元素值的位置</strong>，然后再遍历一遍数组，检查每个元素的值是否和下标对应，如果没有对应，那么该下标就是缺失的最小正数，如果遍历一遍都是对应好的，那么数组长度+1的元素就是缺失的最小正数。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def firstMissingPositive(self, nums: List[int]) -&gt; int:</span><br><span class="line">            for i in range(len(nums)):</span><br><span class="line">                while(nums[i] &gt; 0 and nums[i] &lt;= len(nums) and nums[nums[i]-1] != nums[i]):</span><br><span class="line">                    temp = nums[nums[i]-1]</span><br><span class="line">                    nums[nums[i]-1] = nums[i]</span><br><span class="line">                    nums[i] = temp</span><br><span class="line">            flag = 0</span><br><span class="line">            for j in range(len(nums)):</span><br><span class="line">                if nums[j] != j+1:</span><br><span class="line">                    flag = 1</span><br><span class="line">                    return j+1</span><br><span class="line">            if flag == 0:</span><br><span class="line">                return len(nums)+1</span><br></pre></td></tr></table></figure>
 
       
@@ -483,8 +478,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -600,6 +604,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode33搜索旋转排序数组"><span class="nav-number">1.</span> <span class="nav-text">LeetCode33搜索旋转排序数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode34-在排序数组中查找元素的第一个和最后一个位置"><span class="nav-number">2.</span> <span class="nav-text">LeetCode34 在排序数组中查找元素的第一个和最后一个位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode39组合总和"><span class="nav-number">3.</span> <span class="nav-text">LeetCode39组合总和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode40组合总和二"><span class="nav-number">4.</span> <span class="nav-text">LeetCode40组合总和二</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LeetCode41缺失的一个正数"><span class="nav-number">5.</span> <span class="nav-text">LeetCode41缺失的一个正数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

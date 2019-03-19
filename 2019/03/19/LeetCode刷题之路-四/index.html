@@ -96,19 +96,19 @@
 
 
 
-<meta name="description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta name="description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode刷题之路(四)">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/LeetCode刷题之路-四/index.html">
 <meta property="og:site_name" content="王磊的百草园">
-<meta property="og:description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta property="og:description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/leetcode15.jpeg">
-<meta property="og:updated_time" content="2019-03-19T02:39:03.703Z">
+<meta property="og:updated_time" content="2019-03-19T03:09:14.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题之路(四)">
-<meta name="twitter:description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta name="twitter:description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
 <meta name="twitter:image" content="http://yoursite.com/images/leetcode15.jpeg">
 
 
@@ -376,8 +376,7 @@
       
 
       
-        <p>leetcode15三数之和</p>
-<p>算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。</p>
+        <h4 id="leetcode15三数之和"><a href="#leetcode15三数之和" class="headerlink" title="leetcode15三数之和"></a>leetcode15三数之和</h4><p>算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。</p>
 <p>这是道好题</p>
 <p>正确的解法应该是先将数组排序，遍历数组，固定一个数，<strong>再用双指针从这个数的右边开始遍历</strong>。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别<strong>。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考虑重复的情况而且能够覆盖到所有的情况</strong>，我画了一个简图解释一下。</p>
 <p><img src="/images/leetcode15.jpeg" alt></p>
@@ -388,17 +387,13 @@
 <li>固定的指针指向的数如果大于了0，停止，因为三个数之和肯定大于了0</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSum(self, nums: List[int]) -&gt; List[List[int]]:</span><br><span class="line">        list = []</span><br><span class="line">        if len(nums) &lt; 3:</span><br><span class="line">            return []</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] &gt;0:</span><br><span class="line">                break</span><br><span class="line">            low = i+1</span><br><span class="line">            high = len(nums)-1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]: #避免重复的组</span><br><span class="line">                continue</span><br><span class="line">            while(low &lt; high):</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                if value == 0:</span><br><span class="line">                    list.append([nums[i], nums[low], nums[high]])</span><br><span class="line">                    low += 1</span><br><span class="line">                    high -= 1</span><br><span class="line">                    while(low &lt; high and nums[low] == nums[low-1]): # 避免重复的组</span><br><span class="line">                        low += 1</span><br><span class="line">                    while(high &gt; low and nums[high] == nums[high+1]): # 避免重复的组</span><br><span class="line">                        high -= 1</span><br><span class="line">                if value &gt; 0:</span><br><span class="line">                    high -= 1</span><br><span class="line">                if value &lt; 0:</span><br><span class="line">                    low += 1</span><br><span class="line">        return list</span><br></pre></td></tr></table></figure>
-<p>leectcode16最接近三数之和</p>
-<p>算法思路：这道题和三数之和思路与很像，唯一的不同点就是要在遍历的过程中要记录和target最接近的三数之和，如何衡量接近，用绝对值就可以。</p>
+<h4 id="leectcode16最接近三数之和"><a href="#leectcode16最接近三数之和" class="headerlink" title="leectcode16最接近三数之和"></a>leectcode16最接近三数之和</h4><p>算法思路：这道题和三数之和思路与很像，唯一的不同点就是要在遍历的过程中要记录和target最接近的三数之和，如何衡量接近，用绝对值就可以。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSumClosest(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">        length = len(nums)</span><br><span class="line">        if length &lt; 3:</span><br><span class="line">            return nums</span><br><span class="line">        count = 9223372036854775807</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(length-2):</span><br><span class="line">            low = i+1</span><br><span class="line">            high = length-1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]:</span><br><span class="line">                i += 1</span><br><span class="line">                continue</span><br><span class="line">            while low &lt; high:</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                if (abs(value - target) &lt; abs(count - target)):</span><br><span class="line">                    count = value</span><br><span class="line">                if value == target:</span><br><span class="line">                    return target</span><br><span class="line">                else:</span><br><span class="line">                    if value &gt; target:</span><br><span class="line">                        high -= 1</span><br><span class="line">                    if value &lt; target:</span><br><span class="line">                        low += 1</span><br><span class="line">        return count</span><br></pre></td></tr></table></figure>
-<p>leetcode18四数之和</p>
-<p>算法思路：和三数之和基本是一样的，</p>
+<h4 id="leetcode18四数之和"><a href="#leetcode18四数之和" class="headerlink" title="leetcode18四数之和"></a>leetcode18四数之和</h4><p>算法思路：和三数之和基本是一样的，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def fourSum(self, nums: List[int], target: int) -&gt; List[List[int]]:</span><br><span class="line">        length = len(nums)</span><br><span class="line">        list = []</span><br><span class="line">        if length &lt; 4:</span><br><span class="line">            return list</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(length-3):</span><br><span class="line">            left = i+1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]: #这里要注意i &gt; 0的条件</span><br><span class="line">                i += 1</span><br><span class="line">                continue</span><br><span class="line">            for j in range(left, length-2):</span><br><span class="line">                if j &gt; left and nums[j] == nums[j-1]: # 同样这里要注意j &gt; left的条件</span><br><span class="line">                    j += 1</span><br><span class="line">                    continue</span><br><span class="line">                middle = j+1</span><br><span class="line">                right = length - 1</span><br><span class="line">                while(middle &lt; right):</span><br><span class="line">                    value = nums[i] + nums[j] +nums[middle] + nums[right]</span><br><span class="line">                    if target == value:</span><br><span class="line">                        list.append([nums[i], nums[j], nums[middle], nums[right]])</span><br><span class="line">                        middle += 1</span><br><span class="line">                        right -= 1</span><br><span class="line">                        while(middle &lt; right and nums[middle] == nums[middle-1]):</span><br><span class="line">                            middle += 1</span><br><span class="line">                        while(middle &lt; right and nums[right] == nums[right +1]):</span><br><span class="line">                            right -= 1</span><br><span class="line">                    elif target &lt; value:</span><br><span class="line">                        right -= 1</span><br><span class="line">                    else:</span><br><span class="line">                        middle += 1</span><br><span class="line">        return list</span><br></pre></td></tr></table></figure>
-<p>leetcode11乘最多水的容器</p>
-<p>算法思路，如果能想到用双指针法从数组的两边开始检索，当两指针指向的矩形两边，移动较短的两边可能增加矩形的面积，而移动较长的边注定会减少矩形的面积。这道题就解决了</p>
+<h4 id="leetcode11乘最多水的容器"><a href="#leetcode11乘最多水的容器" class="headerlink" title="leetcode11乘最多水的容器"></a>leetcode11乘最多水的容器</h4><p>算法思路，如果能想到用双指针法从数组的两边开始检索，当两指针指向的矩形两边，移动较短的两边可能增加矩形的面积，而移动较长的边注定会减少矩形的面积。这道题就解决了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxArea(self, height: List[int]) -&gt; int:</span><br><span class="line">        low = 0</span><br><span class="line">        high = len(height) -1</span><br><span class="line">        max_Area = 0</span><br><span class="line">        while(low &lt; high):</span><br><span class="line">            # reauslt = height[low] if height[low] &lt; height[high] else height[high]</span><br><span class="line">            max_Area = max(max_Area, min(height[low],height[high])*(high-low))</span><br><span class="line">            if height[low] &lt; height[high]:</span><br><span class="line">                low += 1</span><br><span class="line">            else:</span><br><span class="line">                high -= 1</span><br><span class="line">        return max_Area</span><br></pre></td></tr></table></figure>
-<p>leetcode31下一个排列</p>
-<p>这道题我真的要爆粗了，用评论中的一句话来说”就是这道题的每个字我都认识，连起来我就不懂了“。</p>
+<h4 id="leetcode31下一个排列"><a href="#leetcode31下一个排列" class="headerlink" title="leetcode31下一个排列"></a>leetcode31下一个排列</h4><p>这道题我真的要爆粗了，用评论中的一句话来说”就是这道题的每个字我都认识，连起来我就不懂了“。</p>
 <p>我说下我理解的题意，所谓全排列就是要从从<strong>数组的右边往左</strong>边开始遍历找第一组$nums[i] &gt; nums[i-1]$。找到之后就开始在这个位置往右边遍历，然后直到找到最小的大于$nums[i-1]$的数$nums[j]$(在我的code里面这个数是$nums\lbrack index_low\rbrack$),交换$nums[i-1]$和$nums[j]$。此时我们还要保证包括$nums[i]$到$nums[lenghth-1]的元素按升序排列。</p>
 <p>最后如果没有找到这一对数字说明整个序列已经按降序排列好了，直接反转就行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def nextPermutation(self, nums: List[int]) -&gt; None:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Do not return anything, modify nums in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        length = len(nums)</span><br><span class="line">        flag = 0</span><br><span class="line">        for i in range(length-1, 0, -1):</span><br><span class="line">            if nums[i] &gt; nums[i-1]:</span><br><span class="line">                flag = 1</span><br><span class="line">                index_low = i</span><br><span class="line">                # 注意下面这个判断条件 中不要写成nums[index_low] &gt;= nums[i-1]!!</span><br><span class="line">                while(index_low &lt; length and nums[index_low] &gt; nums[i-1]):</span><br><span class="line">                    index_low += 1</span><br><span class="line">                tmp = nums[index_low-1]</span><br><span class="line">                nums[index_low-1] = nums[i-1]</span><br><span class="line">                nums[i-1] = tmp</span><br><span class="line">                i_right = nums[i::]</span><br><span class="line">                i_right.sort()</span><br><span class="line">                for j in range(len(i_right)):</span><br><span class="line">                    nums[i] = i_right[j]</span><br><span class="line">                    i += 1</span><br><span class="line">                break</span><br><span class="line">        if flag == 0:</span><br><span class="line">            nums.reverse()</span><br></pre></td></tr></table></figure>
@@ -496,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -613,6 +617,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode15三数之和"><span class="nav-number">1.</span> <span class="nav-text">leetcode15三数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leectcode16最接近三数之和"><span class="nav-number">2.</span> <span class="nav-text">leectcode16最接近三数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode18四数之和"><span class="nav-number">3.</span> <span class="nav-text">leetcode18四数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode11乘最多水的容器"><span class="nav-number">4.</span> <span class="nav-text">leetcode11乘最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode31下一个排列"><span class="nav-number">5.</span> <span class="nav-text">leetcode31下一个排列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
