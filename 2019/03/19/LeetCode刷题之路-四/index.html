@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="LeetCode,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="王磊的百草园" type="application/atom+xml">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode刷题之路(四)">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/LeetCode刷题之路-四/index.html">
+<meta property="og:site_name" content="王磊的百草园">
+<meta property="og:description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/leetcode15.jpeg">
+<meta property="og:updated_time" content="2019-03-19T02:39:03.703Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode刷题之路(四)">
+<meta name="twitter:description" content="leetcode15三数之和 算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免">
+<meta name="twitter:image" content="http://yoursite.com/images/leetcode15.jpeg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/19/LeetCode刷题之路-四/">
+
+
+
+
+
+  <title>LeetCode刷题之路(四) | 王磊的百草园</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">王磊的百草园</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Is Short</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/19/LeetCode刷题之路-四/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanglei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王磊的百草园">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LeetCode刷题之路(四)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-19T10:30:53+08:00">
+                2019-03-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/算法/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>leetcode15三数之和</p>
+<p>算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。</p>
+<p>这是道好题</p>
+<p>正确的解法应该是先将数组排序，遍历数组，固定一个数，<strong>再用双指针从这个数的右边开始遍历</strong>。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别<strong>。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考虑重复的情况而且能够覆盖到所有的情况</strong>，我画了一个简图解释一下。</p>
+<p><img src="/images/leetcode15.jpeg" alt></p>
+<p><strong>从最底下的5开始看，我们先遍历5右边的，然后从加入4后，重新遍历4以后的情况。重复这样一直到1，我们发现所有的情况都覆盖到了，并且不会考虑重复的组</strong>。</p>
+<p>除此之外 算法还值得注意的地方在于：</p>
+<ul>
+<li>如果三个指针如果指向的当前元素与前一个元素相当，跳出本轮循环，检索下一个。</li>
+<li>固定的指针指向的数如果大于了0，停止，因为三个数之和肯定大于了0</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSum(self, nums: List[int]) -&gt; List[List[int]]:</span><br><span class="line">        list = []</span><br><span class="line">        if len(nums) &lt; 3:</span><br><span class="line">            return []</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(len(nums)):</span><br><span class="line">            if nums[i] &gt;0:</span><br><span class="line">                break</span><br><span class="line">            low = i+1</span><br><span class="line">            high = len(nums)-1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]: #避免重复的组</span><br><span class="line">                continue</span><br><span class="line">            while(low &lt; high):</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                if value == 0:</span><br><span class="line">                    list.append([nums[i], nums[low], nums[high]])</span><br><span class="line">                    low += 1</span><br><span class="line">                    high -= 1</span><br><span class="line">                    while(low &lt; high and nums[low] == nums[low-1]): # 避免重复的组</span><br><span class="line">                        low += 1</span><br><span class="line">                    while(high &gt; low and nums[high] == nums[high+1]): # 避免重复的组</span><br><span class="line">                        high -= 1</span><br><span class="line">                if value &gt; 0:</span><br><span class="line">                    high -= 1</span><br><span class="line">                if value &lt; 0:</span><br><span class="line">                    low += 1</span><br><span class="line">        return list</span><br></pre></td></tr></table></figure>
+<p>leectcode16最接近三数之和</p>
+<p>算法思路：这道题和三数之和思路与很像，唯一的不同点就是要在遍历的过程中要记录和target最接近的三数之和，如何衡量接近，用绝对值就可以。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def threeSumClosest(self, nums: List[int], target: int) -&gt; int:</span><br><span class="line">        length = len(nums)</span><br><span class="line">        if length &lt; 3:</span><br><span class="line">            return nums</span><br><span class="line">        count = 9223372036854775807</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(length-2):</span><br><span class="line">            low = i+1</span><br><span class="line">            high = length-1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]:</span><br><span class="line">                i += 1</span><br><span class="line">                continue</span><br><span class="line">            while low &lt; high:</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                if (abs(value - target) &lt; abs(count - target)):</span><br><span class="line">                    count = value</span><br><span class="line">                if value == target:</span><br><span class="line">                    return target</span><br><span class="line">                else:</span><br><span class="line">                    if value &gt; target:</span><br><span class="line">                        high -= 1</span><br><span class="line">                    if value &lt; target:</span><br><span class="line">                        low += 1</span><br><span class="line">        return count</span><br></pre></td></tr></table></figure>
+<p>leetcode18四数之和</p>
+<p>算法思路：和三数之和基本是一样的，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def fourSum(self, nums: List[int], target: int) -&gt; List[List[int]]:</span><br><span class="line">        length = len(nums)</span><br><span class="line">        list = []</span><br><span class="line">        if length &lt; 4:</span><br><span class="line">            return list</span><br><span class="line">        nums.sort()</span><br><span class="line">        for i in range(length-3):</span><br><span class="line">            left = i+1</span><br><span class="line">            if i &gt; 0 and nums[i] == nums[i-1]: #这里要注意i &gt; 0的条件</span><br><span class="line">                i += 1</span><br><span class="line">                continue</span><br><span class="line">            for j in range(left, length-2):</span><br><span class="line">                if j &gt; left and nums[j] == nums[j-1]: # 同样这里要注意j &gt; left的条件</span><br><span class="line">                    j += 1</span><br><span class="line">                    continue</span><br><span class="line">                middle = j+1</span><br><span class="line">                right = length - 1</span><br><span class="line">                while(middle &lt; right):</span><br><span class="line">                    value = nums[i] + nums[j] +nums[middle] + nums[right]</span><br><span class="line">                    if target == value:</span><br><span class="line">                        list.append([nums[i], nums[j], nums[middle], nums[right]])</span><br><span class="line">                        middle += 1</span><br><span class="line">                        right -= 1</span><br><span class="line">                        while(middle &lt; right and nums[middle] == nums[middle-1]):</span><br><span class="line">                            middle += 1</span><br><span class="line">                        while(middle &lt; right and nums[right] == nums[right +1]):</span><br><span class="line">                            right -= 1</span><br><span class="line">                    elif target &lt; value:</span><br><span class="line">                        right -= 1</span><br><span class="line">                    else:</span><br><span class="line">                        middle += 1</span><br><span class="line">        return list</span><br></pre></td></tr></table></figure>
+<p>leetcode11乘最多水的容器</p>
+<p>算法思路，如果能想到用双指针法从数组的两边开始检索，当两指针指向的矩形两边，移动较短的两边可能增加矩形的面积，而移动较长的边注定会减少矩形的面积。这道题就解决了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def maxArea(self, height: List[int]) -&gt; int:</span><br><span class="line">        low = 0</span><br><span class="line">        high = len(height) -1</span><br><span class="line">        max_Area = 0</span><br><span class="line">        while(low &lt; high):</span><br><span class="line">            # reauslt = height[low] if height[low] &lt; height[high] else height[high]</span><br><span class="line">            max_Area = max(max_Area, min(height[low],height[high])*(high-low))</span><br><span class="line">            if height[low] &lt; height[high]:</span><br><span class="line">                low += 1</span><br><span class="line">            else:</span><br><span class="line">                high -= 1</span><br><span class="line">        return max_Area</span><br></pre></td></tr></table></figure>
+<p>leetcode31下一个排列</p>
+<p>这道题我真的要爆粗了，用评论中的一句话来说”就是这道题的每个字我都认识，连起来我就不懂了“。</p>
+<p>我说下我理解的题意，所谓全排列就是要从从<strong>数组的右边往左</strong>边开始遍历找第一组$nums[i] &gt; nums[i-1]$。找到之后就开始在这个位置往右边遍历，然后直到找到最小的大于$nums[i-1]$的数$nums[j]$(在我的code里面这个数是$nums\lbrack index_low\rbrack$),交换$nums[i-1]$和$nums[j]$。此时我们还要保证包括$nums[i]$到$nums[lenghth-1]的元素按升序排列。</p>
+<p>最后如果没有找到这一对数字说明整个序列已经按降序排列好了，直接反转就行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def nextPermutation(self, nums: List[int]) -&gt; None:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        Do not return anything, modify nums in-place instead.</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        length = len(nums)</span><br><span class="line">        flag = 0</span><br><span class="line">        for i in range(length-1, 0, -1):</span><br><span class="line">            if nums[i] &gt; nums[i-1]:</span><br><span class="line">                flag = 1</span><br><span class="line">                index_low = i</span><br><span class="line">                # 注意下面这个判断条件 中不要写成nums[index_low] &gt;= nums[i-1]!!</span><br><span class="line">                while(index_low &lt; length and nums[index_low] &gt; nums[i-1]):</span><br><span class="line">                    index_low += 1</span><br><span class="line">                tmp = nums[index_low-1]</span><br><span class="line">                nums[index_low-1] = nums[i-1]</span><br><span class="line">                nums[i-1] = tmp</span><br><span class="line">                i_right = nums[i::]</span><br><span class="line">                i_right.sort()</span><br><span class="line">                for j in range(len(i_right)):</span><br><span class="line">                    nums[i] = i_right[j]</span><br><span class="line">                    i += 1</span><br><span class="line">                break</span><br><span class="line">        if flag == 0:</span><br><span class="line">            nums.reverse()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/19/LeetCode刷题之路（三）/" rel="next" title="LeetCode刷题之路（三）">
+                <i class="fa fa-chevron-left"></i> LeetCode刷题之路（三）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/19/LeetCode刷题之路-五/" rel="prev" title="LeetCode刷题之路(五)">
+                LeetCode刷题之路(五) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
+          <p class="site-author-name" itemprop="name">wanglei</p>
+           
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，后来作业太多就没去了</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/1996Wanglei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="leiwang199608@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-lei-35-77/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              有趣的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.csdn.net/Alen_1996" title="我的CSDN" target="_blank">我的CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanglei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
