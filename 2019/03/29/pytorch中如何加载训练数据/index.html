@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="年度总结,">
+  <meta name="keywords" content="Pytorch,">
 
 
 
@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="忙里偷闲，决定在一年的倒数第二天回顾下自己的2018年。 本着现代人不喜欢看太长的文字，太长的视频。我决定用自问自答的方式完成这篇年度总结。 Q代表我向自己提问，A代表我回答自己的提问。  Q：2018年是你人生进程中相当重要的一年，有哪些新的变化和感受？ A：这一年里我结束了写满失望的本科生涯，离开了生活了22年的湖南，来到了一直想来的上海，到fdu继续自己的学生生涯。在后半年熬夜的天数暴增。同">
-<meta name="keywords" content="年度总结">
+<meta name="description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
+<meta name="keywords" content="Pytorch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018年度回顾">
-<meta property="og:url" content="http://yoursite.com/2018/12/30/2018年度回顾/index.html">
+<meta property="og:title" content="pytorch中如何加载训练数据">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/pytorch中如何加载训练数据/index.html">
 <meta property="og:site_name" content="王磊的百草园">
-<meta property="og:description" content="忙里偷闲，决定在一年的倒数第二天回顾下自己的2018年。 本着现代人不喜欢看太长的文字，太长的视频。我决定用自问自答的方式完成这篇年度总结。 Q代表我向自己提问，A代表我回答自己的提问。  Q：2018年是你人生进程中相当重要的一年，有哪些新的变化和感受？ A：这一年里我结束了写满失望的本科生涯，离开了生活了22年的湖南，来到了一直想来的上海，到fdu继续自己的学生生涯。在后半年熬夜的天数暴增。同">
+<meta property="og:description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-30T13:34:30.000Z">
+<meta property="og:updated_time" content="2019-03-29T14:07:05.092Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018年度回顾">
-<meta name="twitter:description" content="忙里偷闲，决定在一年的倒数第二天回顾下自己的2018年。 本着现代人不喜欢看太长的文字，太长的视频。我决定用自问自答的方式完成这篇年度总结。 Q代表我向自己提问，A代表我回答自己的提问。  Q：2018年是你人生进程中相当重要的一年，有哪些新的变化和感受？ A：这一年里我结束了写满失望的本科生涯，离开了生活了22年的湖南，来到了一直想来的上海，到fdu继续自己的学生生涯。在后半年熬夜的天数暴增。同">
+<meta name="twitter:title" content="pytorch中如何加载训练数据">
+<meta name="twitter:description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
 
 
 
@@ -136,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/30/2018年度回顾/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/29/pytorch中如何加载训练数据/">
 
 
 
 
 
-  <title>2018年度回顾 | 王磊的百草园</title>
+  <title>pytorch中如何加载训练数据 | 王磊的百草园</title>
   
 
 
@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/30/2018年度回顾/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/pytorch中如何加载训练数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanglei">
@@ -302,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">2018年度回顾</h1>
+          <h1 class="post-title" itemprop="name headline">pytorch中如何加载训练数据</h1>
         
 
         <div class="post-meta">
@@ -314,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-30T19:17:15+08:00">
-                2018-12-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T22:01:57+08:00">
+                2019-03-29
               </time>
             
 
@@ -337,8 +337,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/只关心自己/" itemprop="url" rel="index">
-                    <span itemprop="name">只关心自己</span>
+                  <a href="/categories/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -374,35 +374,35 @@
       
 
       
-        <p>忙里偷闲，决定在一年的倒数第二天回顾下自己的2018年。</p>
-<p>本着现代人不喜欢看太长的文字，太长的视频。我决定用自问自答的方式完成这篇年度总结。</p>
-<p>Q代表我向自己提问，A代表我回答自己的提问。</p>
-<ol>
-<li><p>Q：2018年是你人生进程中相当重要的一年，有哪些新的变化和感受？</p>
-<p>A：这一年里我结束了写满失望的本科生涯，离开了生活了22年的湖南，来到了一直想来的上海，到fdu继续自己的学生生涯。在后半年熬夜的天数暴增。同样在这一年我终于萌生出对计算机的喜爱，严格来说这一年开始写下第一行程序，想要学习一些新奇的计算机技术。离开了家乡才知道原来自己的普通话是多么的糟糕！这一年终于开始写博客，在未来会继续维护两个博客。</p>
-</li>
-<li><p>Q：2018年最有价值的一个选择？</p>
-<p>A：很早就揣着要环游世界的想法，然而那只是一个想法，从来没有认真的实现它过。所以今年的最佳选择是2018年九月收到复旦大学登山协会一条关于穿越炉西峡的推送，我只用了几分钟考虑就决定参加。这是一个美好又意义深远开始，后来我还和华师大萤火虫去了温州雁荡山，寒假里我还要去宝岛台湾完成环岛活动。或许那一晚会是我完成环游世界梦想的开端。</p>
-</li>
-<li><p>Q：2018年最遗憾的一件事？</p>
-<p>A：和一个认识多年的朋友闹掰了，近一年没有说过话了。我犯过的错误很多，这是其中一个。</p>
-</li>
-<li><p>Q：2018年看过的最佳电影？</p>
-<p>A：从我全年线下和线上看过的四十多部各种题材的电影候选里。《爱在黎明破晓时》《爱在日落黄昏时》是我心中的最佳电影。电影里对爱情和性的谈论真是impressive，我觉得没有谈过恋爱的人恋爱必看，还没有结婚的结婚前必看，啊，已经结婚了？还是必看。</p>
-</li>
-<li><p>Q：2018年玩过的最佳游戏？</p>
-<p>A：今年花了不少钱在购买游戏，游戏设备上。手上目前屯了(八方旅人，黑暗之魂)没玩，真正完整玩完了的游戏只有《塞尔达传说·旷野之息》，《返校》，《死亡细胞》，恕我实在是没有时间玩游戏。毫无疑问，《旷野之息》是我心中最佳游戏，在我做本科毕设的时候我花了大概85小时在旷野之息上。谁知道这是我时间最富裕的一段时间了，后来我就再也没有充足时间，能够全身心地去鉴赏一款游戏了。在我心中具有优秀设计的游戏就像艺术品一样。</p>
-</li>
-<li><p>Q：2018年看过的最佳书籍？</p>
-<p>A：说来惭愧，这应该是我做得最不好的事情了。在阅读方面，读的书籍实在是太少太少了。如果愣是要少中选优的话是《创新公司皮克斯的启示》。理由是：它讲了一家公司为什么能成为一家创新公司，虽然我没有公司，不过我从里面学到如何和聪明人相处？今年在阅读方面我简直就是个loser，然而我在知乎上却读了6600万字，阅读的时间都去哪了？呵呵，花在知乎上了。真是少刷知乎多读书的反面典型。</p>
-</li>
-<li><p>Q：明白的最深刻的一个道理？</p>
-<p>A：很多事情，我们只能看到表面，表面上看起来很酷，实际上真正做起来很难。就像人工智能看起来很酷，真正从事起来发现这是一堆数学，这个工作一点都不酷；就像我们玩到一个优秀游戏后，心里自然而然就有一种冲动，我为什么不能成为一个游戏设计者，然而当看到游戏开发背后的故事时，会发现游戏开发那一点都不酷，相当的无聊。</p>
-</li>
-<li><p>Q：新年有什么愿望？</p>
-<p>A：希望父母身体健康，希望新的一年里自己的英语听说读写水平有好的进步。</p>
-</li>
-</ol>
+        <h4 id="1-为什么不需要自己写加载方法"><a href="#1-为什么不需要自己写加载方法" class="headerlink" title="1.为什么不需要自己写加载方法"></a>1.为什么不需要自己写加载方法</h4><p>pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，</p>
+<ul>
+<li>每次读取代码不能够重用，不同的数据读取代码不同</li>
+<li>自己写的加载函数也会有各种问题，比如说限制数据读取速度，或者当数据集太大，直接加载到字典或者列表中会很占用内存，数据读取阶段也会占用大量时间</li>
+<li>只能单线程读取数据</li>
+</ul>
+<p>这次我做的实验需要加载歌曲的梅尔频谱，每个歌曲的片段为30秒，大约是一个1290*128大小的矩阵。所以这次我决定使用pytorch的Dataset类来加载数据。</p>
+<h4 id="2-Dataset类"><a href="#2-Dataset类" class="headerlink" title="2.Dataset类"></a>2.Dataset类</h4><blockquote>
+<p>class torch.utils.data.Dataset</p>
+</blockquote>
+<p>这个抽象类代表了数据集，任何我们自己设计的数据集类都应该是这个类的子类，继承这个类，重写 __len__() 方法，这个方法是用来获得数据集的大小，和__getitem__()方法，这个方法用来返回数据集中索引值为0到len(dataset)的元素。</p>
+<ul>
+<li>def __getitem__(self, index): 实现这个函数，就可以通过索引值来返回训练样本数据</li>
+<li>def __len__(self): 实现这个函数，返回数据集的大小</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Dataset(object):</span><br><span class="line">    &quot;&quot;&quot;An abstract class representing a Dataset.</span><br><span class="line"></span><br><span class="line">    All other datasets should subclass it. All subclasses should override</span><br><span class="line">    ``__len__``, that provides the size of the dataset, and ``__getitem__``,</span><br><span class="line">    supporting integer indexing in range from 0 to len(self) exclusive.</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">    def __getitem__(self, index):</span><br><span class="line">        raise NotImplementedError</span><br><span class="line"></span><br><span class="line">    def __len__(self):</span><br><span class="line">        raise NotImplementedError</span><br><span class="line"></span><br><span class="line">    def __add__(self, other):</span><br><span class="line">        return ConcatDataset([self, other])</span><br></pre></td></tr></table></figure>
+<p>如果不重写这两个私有函数，就会触发错误。</p>
+<h4 id="3-定义自己的数据集类"><a href="#3-定义自己的数据集类" class="headerlink" title="3.定义自己的数据集类"></a>3.定义自己的数据集类</h4><p>于是我就针对自己的需求实现了以下的类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class Fma_dataset(Dataset):</span><br><span class="line">    # root 是训练集的根目录， mode可选的参数是train，test，validation，分别读取相应的文件夹</span><br><span class="line">    def __init__(self, root, mode): </span><br><span class="line">        self.mode = mode</span><br><span class="line">        self.root = root + &quot;/fma_&quot; + self.mode</span><br><span class="line">        self.mel_cepstrum_path = self.get_sample(self.root)</span><br><span class="line"></span><br><span class="line">    def __getitem__(self, index):</span><br><span class="line">        sample = np.load(self.mel_cepstrum_path[index])</span><br><span class="line">        data = torch.from_numpy(sample[0])</span><br><span class="line">        target = torch.from_numpy(sample[1].astype(np.float32))</span><br><span class="line">        return data, target</span><br><span class="line"></span><br><span class="line">    def __len__(self):</span><br><span class="line">        if self.mode == &quot;train&quot;:</span><br><span class="line">            return 23733  # 训练集大小</span><br><span class="line">        elif self.mode == &quot;validation&quot;:</span><br><span class="line">            return 6780  # 验证集大小</span><br><span class="line">        elif self.mode == &quot;test&quot;:</span><br><span class="line">            return 3390  # 测试集大小</span><br><span class="line"></span><br><span class="line">    def get_sample(self, root):</span><br><span class="line">        cepstrum = []</span><br><span class="line">        for entry in os.scandir(root):</span><br><span class="line">            if entry.is_file():</span><br><span class="line">                cepstrum.append(entry.path)</span><br><span class="line">        return cepstrum</span><br></pre></td></tr></table></figure>
+<h4 id="4-DataLoader类"><a href="#4-DataLoader类" class="headerlink" title="4.DataLoader类"></a>4.DataLoader类</h4><blockquote>
+<p><em>class</em><code>torch.utils.data.DataLoader</code><strong>(</strong>dataset<strong>,</strong> <em>batch_size=1**</em>,<strong> <em>shuffle=False</em></strong>,<strong> <em>sampler=None</em></strong>,<strong> <em>batch_sampler=None</em></strong>,<strong> <em>num_workers=0</em></strong>,<strong> <em>collate_fn=<function default_collate></function></em></strong>,<strong> <em>pin_memory=False</em></strong>,<strong> <em>drop_last=False</em></strong>,<strong> <em>timeout=0</em></strong>,<strong> <em>worker_init_fn=None</em></strong>)**</p>
+</blockquote>
+<p>仅仅有通过索引返回训练数据数不够的，我们还需要DataLoad类提供拓展功能。</p>
+<ul>
+<li>可以分批次读取：batch-size</li>
+<li>可以对数据进行shuffle操作</li>
+<li>可以用多个线程来读取数据</li>
+</ul>
+<p>这个类我们不需要实现代码，直接调用，设置好参数就行了。</p>
 
       
     </div>
@@ -420,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/年度总结/" rel="tag"># 年度总结</a>
+            <a href="/tags/Pytorch/" rel="tag"># Pytorch</a>
           
         </div>
       
@@ -433,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/26/近窥MIREX-Like数据集和MIREX 08 数据集/" rel="next" title="近窥MIREX-Like数据集和MIREX 08数据集">
-                <i class="fa fa-chevron-left"></i> 近窥MIREX-Like数据集和MIREX 08数据集
+              <a href="/2019/03/24/Leetcode刷题之路-六/" rel="next" title="Leetcode刷题之路(六)">
+                <i class="fa fa-chevron-left"></i> Leetcode刷题之路(六)
               </a>
             
           </div>
@@ -442,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/12/杨奕轩老师/" rel="prev" title="杨奕轩老师">
-                杨奕轩老师 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -497,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -614,6 +619,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-为什么不需要自己写加载方法"><span class="nav-number">1.</span> <span class="nav-text">1.为什么不需要自己写加载方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Dataset类"><span class="nav-number">2.</span> <span class="nav-text">2.Dataset类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-定义自己的数据集类"><span class="nav-number">3.</span> <span class="nav-text">3.定义自己的数据集类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-DataLoader类"><span class="nav-number">4.</span> <span class="nav-text">4.DataLoader类</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
