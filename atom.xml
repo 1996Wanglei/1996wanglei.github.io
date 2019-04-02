@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-29T14:07:05.092Z</updated>
+  <updated>2019-04-02T03:39:45.818Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ssh远程登录linux出错解决办法</title>
+    <link href="http://yoursite.com/2019/04/02/ssh%E8%BF%9C%E7%A8%8B%E7%99%BB%E5%BD%95linux%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/"/>
+    <id>http://yoursite.com/2019/04/02/ssh远程登录linux出错解决办法/</id>
+    <published>2019-04-02T03:36:47.000Z</published>
+    <updated>2019-04-02T03:39:45.818Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="用ssh远程登录linux出错解决办法"><a href="#用ssh远程登录linux出错解决办法" class="headerlink" title="用ssh远程登录linux出错解决办法"></a>用ssh远程登录linux出错解决办法</h4><h4 id="1-报错情况"><a href="#1-报错情况" class="headerlink" title="1.报错情况"></a>1.报错情况</h4><blockquote><p>ssh：connect to “my host” port22:Connection refused</p></blockquote><p>从服务器端想要传输文件回本地端时，首先出现这个问题，</p><p>最开始尝试的解决办法是我没有装openssh-server</p><p>于是我用了以下两条命令</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get purge openssh-server </span><br><span class="line">&gt; sudo apt-get install openssh-server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>然后… 就变成了这个报错</p><blockquote><p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model <a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>:/home/wanglei/PycharmProjects/fma_dataset<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied (publickey,password).<br>lost connection</p></blockquote><p>查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config</p><blockquote><p>sudo vi /etc/ssh/sshd_config</p></blockquote><p>将其中的PermitRootLogin设置成了yes</p><blockquote><p>PermitRootLogin yes</p></blockquote><p>还是出现了一样的问题，然后我又继续找，找到一个办法就是在/etc/ssh/sshd_config中加一个设置</p><blockquote><p>AllowUsers  yourusername</p></blockquote><p>这一行命令允许你的服务器连接到username为你上面设置的yourusername，其他的用户会被拒绝。</p><p>别忘了重启ssh服务</p><blockquote><p>service sshd restart</p></blockquote><p>最后在终端打上这行命令即可发现你可以使用ssh连接远程的服务器端了,大功告成了!</p><blockquote><p>ssh yourusername@yourhostname </p></blockquote><h4 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h4><p>总的来说，我们需要在本地sshd_config中把你想要用的username 加入到AllowUsers中。</p><p>具体流程</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo vi /etc/ssh/sshd_config</span><br><span class="line">&gt; PermitRootLogin yes</span><br><span class="line">&gt; AllowUsers otheruser</span><br><span class="line">&gt; service sshd restart</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;用ssh远程登录linux出错解决办法&quot;&gt;&lt;a href=&quot;#用ssh远程登录linux出错解决办法&quot; class=&quot;headerlink&quot; title=&quot;用ssh远程登录linux出错解决办法&quot;&gt;&lt;/a&gt;用ssh远程登录linux出错解决办法&lt;/h4&gt;&lt;h4 i
+      
+    
+    </summary>
+    
+      <category term="Linux系统" scheme="http://yoursite.com/categories/Linux%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="Linux系统" scheme="http://yoursite.com/tags/Linux%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2019电影盘点</title>
+    <link href="http://yoursite.com/2019/04/02/2019%E7%94%B5%E5%BD%B1%E7%9B%98%E7%82%B9/"/>
+    <id>http://yoursite.com/2019/04/02/2019电影盘点/</id>
+    <published>2019-04-02T03:36:06.000Z</published>
+    <updated>2019-04-02T03:41:33.436Z</updated>
+    
+    <content type="html"><![CDATA[<p>人生短暂，看电影也要慎重啊。</p><p>1.流浪地球</p><p>非常好的国产科幻电影，好就好在脑洞的设定，还有就是剧情，演员都基本在线。</p><p>2.飞驰人生</p><p>爆米花电影</p><p>3.阿丽塔战斗天使</p><p>这个是世界的设定很有意思，废铁城和撒冷，在注定废铁城的人们要登上撒冷，毁掉撒冷，就像饥饿游戏的设定一样。</p><p>4.绿皮书</p><p>这部电影处处彰显温情，主题又非常鲜明。是今年不可多得的佳作</p><p>剧中的台词非常考究，能让人醍醐灌顶。</p><p>经典台词：”the world full of lonely people afraid to make the first move!”</p><p>还有托尼说过的：”不管你做什么，都要做到极致，上班就认真工作，笑就尽情大笑，吃东西时就像是最后一餐那样去享受。”</p><p>5.华盛顿邮报</p><p>这部电影基于美国1971年”五角大楼文件泄密案”，剧中的两个主角，一个是华盛顿邮报的主编（汤姆汉克斯），一个是华盛顿邮报的老板(梅丽尔斯特里普)。顶住来自政府，银行，同行施加的压力，毅然决然要向公众披露美国政府卷入越南战争的机密文件。这部电影彰显了美国的价值观，那就是出版自由，新闻自由，“free the press”的口号也在剧中出现。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;人生短暂，看电影也要慎重啊。&lt;/p&gt;
+&lt;p&gt;1.流浪地球&lt;/p&gt;
+&lt;p&gt;非常好的国产科幻电影，好就好在脑洞的设定，还有就是剧情，演员都基本在线。&lt;/p&gt;
+&lt;p&gt;2.飞驰人生&lt;/p&gt;
+&lt;p&gt;爆米花电影&lt;/p&gt;
+&lt;p&gt;3.阿丽塔战斗天使&lt;/p&gt;
+&lt;p&gt;这个是世界的设定很有意思，
+      
+    
+    </summary>
+    
+      <category term="生活一隅" scheme="http://yoursite.com/categories/%E7%94%9F%E6%B4%BB%E4%B8%80%E9%9A%85/"/>
+    
+    
+      <category term="电影" scheme="http://yoursite.com/tags/%E7%94%B5%E5%BD%B1/"/>
+    
+  </entry>
   
   <entry>
     <title>pytorch中如何加载训练数据</title>
