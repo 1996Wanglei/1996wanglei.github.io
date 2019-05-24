@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/representation_cnn_project.png">
 <meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/spotify_convnet.png">
-<meta property="og:updated_time" content="2019-05-24T11:28:22.218Z">
+<meta property="og:updated_time" content="2019-05-24T11:31:29.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recommending music on Spotify with deep learning">
 <meta name="twitter:description" content="August 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做？">
@@ -437,7 +437,7 @@
 
 <p>论文中深度神经网络包括两层卷积层和两层全连接层，网络的输入时三秒的音频的频谱，为了获得更长音频的表征，我们将音频加上一个三秒的窗，取这些窗的平均的预测表征。</p>
 <p>在Spotify，我能够接触到更大数据集，一堆不同协同过滤算法计算出来得laten factor representations，他们也给了我一个很好的GPU来训练模型，这能够使得我拓展之前的工作，现在我能够训练有七层或者八层的卷积神经网络，使用大得多的中间表征和更多的参数(应该是指更复杂的卷积层)。</p>
-<h5 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h5><p>下面我会详细介绍尝试过的一个网络结构，它有四个卷积层和三个全连接层。正如你会看到的，用于音频信号的卷积神经网络和传统的应用于计算机视觉任务的网络有一些重要的不同。</p>
+<h4 id="architecture"><a href="#architecture" class="headerlink" title="architecture"></a>architecture</h4><p>下面我会详细介绍尝试过的一个网络结构，它有四个卷积层和三个全连接层。正如你会看到的，用于音频信号的卷积神经网络和传统的应用于计算机视觉任务的网络有一些重要的不同。</p>
 <p><img src="/Users/wanglei/Pictures/spotify_convnet.png" alt></p>
 <p>这个网络的输入时599帧长和128个mel bins的梅尔频谱，梅尔频谱是一种时频域上的表征，在音频信号上用重叠的窗口做短时傅里叶变换，每一个傅里叶变换产生一帧，然后把这些帧concatenate成一个矩阵就构成了一张频谱，最后对这张频谱转换成梅尔频谱减少维度，幅度上也发生了对数转换。</p>
 <p>卷积层上红色矩形就是卷积核在它们的输入上滑动，使用rectified linear units(ReLU，max(0，x))。注意所有层都是一维卷积，这种卷积只在时间维度上进行卷积，而不是在频域上卷积。尽管在频谱上的时域和频域两个维度上卷积在方法上是可行的，当前我不会这么做。因为频谱上的两个维度有不同的含义，这和图片的例子不同。因此使用经常用在图片上的二维卷积核这是不合理的。</p>
@@ -498,8 +498,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/09/Recommending music on Spotify with deep learning/" rel="next" title>
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/04/02/ssh远程登录linux出错解决办法/" rel="next" title="ssh远程登录linux出错解决办法">
+                <i class="fa fa-chevron-left"></i> ssh远程登录linux出错解决办法
               </a>
             
           </div>
@@ -581,7 +581,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -694,7 +694,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number"></span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number"></span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number"></span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number"></span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number"></span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Architecture"><span class="nav-number">1.</span> <span class="nav-text">Architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number"></span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number"></span> <span class="nav-text">Variations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number"></span> <span class="nav-text">Analysis：what is it learning?</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number"></span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number"></span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number"></span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number"></span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number"></span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#architecture"><span class="nav-number"></span> <span class="nav-text">architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number"></span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number"></span> <span class="nav-text">Variations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number"></span> <span class="nav-text">Analysis：what is it learning?</span></a></li></div>
             
 
           </div>
