@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
 
 
-  <meta name="keywords" content="Linux系统,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -96,18 +96,20 @@
 
 
 
-<meta name="description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
-<meta name="keywords" content="Linux系统">
+<meta name="description" content="Recommending music on Spotify with deep learningAugust 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ssh远程登录linux出错解决办法">
-<meta property="og:url" content="http://yoursite.com/2019/04/02/ssh远程登录linux出错解决办法/index.html">
+<meta property="og:title" content="王磊的百草园">
+<meta property="og:url" content="http://yoursite.com/2019/05/09/Recommending music on Spotify with deep learning/index.html">
 <meta property="og:site_name" content="王磊的百草园">
-<meta property="og:description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
+<meta property="og:description" content="Recommending music on Spotify with deep learningAugust 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-02T03:39:45.818Z">
+<meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/representation_cnn_project.png">
+<meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/spotify_convnet.png">
+<meta property="og:updated_time" content="2019-05-24T11:19:00.477Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ssh远程登录linux出错解决办法">
-<meta name="twitter:description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
+<meta name="twitter:title" content="王磊的百草园">
+<meta name="twitter:description" content="Recommending music on Spotify with deep learningAugust 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。">
+<meta name="twitter:image" content="http://yoursite.com/Users/wanglei/Pictures/representation_cnn_project.png">
 
 
 
@@ -136,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/02/ssh远程登录linux出错解决办法/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/09/Recommending music on Spotify with deep learning/">
 
 
 
 
 
-  <title>ssh远程登录linux出错解决办法 | 王磊的百草园</title>
+  <title> | 王磊的百草园</title>
   
 
 
@@ -285,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/02/ssh远程登录linux出错解决办法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/09/Recommending music on Spotify with deep learning/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanglei">
@@ -302,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ssh远程登录linux出错解决办法</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -314,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-02T11:36:47+08:00">
-                2019-04-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T13:51:19+08:00">
+                2019-05-09
               </time>
             
 
@@ -325,28 +327,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux系统/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -354,7 +334,7 @@
 
           
           
-             <span id="/2019/04/02/ssh远程登录linux出错解决办法/" class="leancloud_visitors" data-flag-title="ssh远程登录linux出错解决办法">
+             <span id="/2019/05/09/Recommending music on Spotify with deep learning/" class="leancloud_visitors" data-flag-title>
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -385,45 +365,84 @@
       
 
       
-        <h4 id="用ssh远程登录linux出错解决办法"><a href="#用ssh远程登录linux出错解决办法" class="headerlink" title="用ssh远程登录linux出错解决办法"></a>用ssh远程登录linux出错解决办法</h4><h4 id="1-报错情况"><a href="#1-报错情况" class="headerlink" title="1.报错情况"></a>1.报错情况</h4><blockquote>
-<p>ssh：connect to “my host” port22:Connection refused</p>
-</blockquote>
-<p>从服务器端想要传输文件回本地端时，首先出现这个问题，</p>
-<p>最开始尝试的解决办法是我没有装openssh-server</p>
-<p>于是我用了以下两条命令</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get purge openssh-server </span><br><span class="line">&gt; sudo apt-get install openssh-server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>然后… 就变成了这个报错</p>
-<blockquote>
-<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model <a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>:/home/wanglei/PycharmProjects/fma_dataset<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied (publickey,password).<br>lost connection</p>
-</blockquote>
-<p>查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config</p>
-<blockquote>
-<p>sudo vi /etc/ssh/sshd_config</p>
-</blockquote>
-<p>将其中的PermitRootLogin设置成了yes</p>
-<blockquote>
-<p>PermitRootLogin yes</p>
-</blockquote>
-<p>还是出现了一样的问题，然后我又继续找，找到一个办法就是在/etc/ssh/sshd_config中加一个设置</p>
-<blockquote>
-<p>AllowUsers  yourusername</p>
-</blockquote>
-<p>这一行命令允许你的服务器连接到username为你上面设置的yourusername，其他的用户会被拒绝。</p>
-<p>别忘了重启ssh服务</p>
-<blockquote>
-<p>service sshd restart</p>
-</blockquote>
-<p>最后在终端打上这行命令即可发现你可以使用ssh连接远程的服务器端了,大功告成了!</p>
-<blockquote>
-<p>ssh yourusername@yourhostname </p>
-</blockquote>
-<h4 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h4><p>总的来说，我们需要在本地sshd_config中把你想要用的username 加入到AllowUsers中。</p>
-<p>具体流程</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo vi /etc/ssh/sshd_config</span><br><span class="line">&gt; PermitRootLogin yes</span><br><span class="line">&gt; AllowUsers otheruser</span><br><span class="line">&gt; service sshd restart</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
+        <h2 id="Recommending-music-on-Spotify-with-deep-learning"><a href="#Recommending-music-on-Spotify-with-deep-learning" class="headerlink" title="Recommending music on Spotify with deep learning"></a>Recommending music on Spotify with deep learning</h2><p>August 05, 2014</p>
+<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。</p>
+<ul>
+<li><p><a href="#1">协同过滤</a></p>
+<p>非常简单的介绍一下协同过滤的优缺点</p>
+</li>
+<li><p><a href="#2">基于内容的推荐</a></p>
+<p>当没有可用的数据时该如何做？</p>
+</li>
+<li><p><a href="#3">使用深度学习来预测用户的偏好</a></p>
+<p>基于音乐音频信号的音乐推荐</p>
+</li>
+<li><p><a href="#3">拓展部分</a></p>
+<p> 我在Spotify训练的网络细节</p>
+</li>
+<li><p><a href="#5">分析：卷积神经网络学到了什么？</a></p>
+<p>当使用很多音乐音频样本来训练卷积神经网络时，它学到了什么有关于音乐的东西？</p>
+</li>
+<li><p>这项研究能够用来做什么？</p>
+<p>潜在的应用</p>
+</li>
+<li><p>未来工作</p>
+</li>
+<li><p>总结</p>
+</li>
+</ul>
+<h3 id="1">Collaborative filtering</h3>
+
+<p>Spotify传统的音乐推荐非常依赖于协同过滤算法来提升推荐准确度。协同过滤的主要思想是从用户的历史行为数据决定用户的偏好。比如说，如果两个用户听了大量相同的歌曲，那么这两位用户的音乐品味可能是相似的，如果两首歌被相同的用户群体听过，那么这两首歌听起来也是相似的。这种信息能够用来做推荐</p>
+<p>纯粹的协同过滤方法不适用任何和被推荐物品<strong>内容</strong>有关的信息，只使用和被推荐物品有关的消费行为信息，换句话说，这些信息是与被推荐物品内容无关的。这使得这种方法能够被广泛使用：同样的模型能够被用来推荐书，电影，音乐等。</p>
+<p>不幸的是，这种方法也被证明有很大的缺陷。由于这种方法非常依赖于用户的行为数据，越流行的物品比不那么流行的物品会被更加容易被推荐，因为对于流行的物品来说，有更多的可用的用户行为数据。这个问题通常不是我们想遇到的。同样出于这个原因，推荐的物品可能让用户觉得无聊和重复的。</p>
+<p>这种方法存在另外一个问题在因为推荐上尤为明显。那就是有着相似用户行为的物品往往内容却非常不相同(the heterogeneity of content with similar usage patterns)。比如说，用户可能一次收听一整张专辑，但是一张专辑也许包括intro tracks，outro tracks，interludes，cover songs，remixes。</p>
+<p>但是最大的问题是新的和不流行的歌曲不能够被推荐，如果没有可用的用户行为数据分析，那么协同过滤算法就会失效。这也就是所谓的冷启动问题(cold-start problem ). 我们想要能够推荐刚刚发布的音乐作品，我们想要给用户推荐他们不知道的非常棒的乐队，想要完成这个目标，我们需要用不同的方法！</p>
+<h3 id="2">Content-based recommendation</h3>
+
+<p>最近，Spotify饶有兴趣地想要整合其他信息源进入他们的推荐系统当中达缓解一些上述问题。这也也被Spotify几个月前收购了音乐智能平台The Echo Nest所证明，有非常多不同种类和音乐相关的信息可以被推荐系统利用：tags，歌手和专辑信息，歌词，从web端挖掘的文本信息，甚至是音频信号本身。</p>
+<p>对于以上的所有信息，大概音频信号本身是最难有效使用的，一方面music audio之间有巨大的语义鸿沟，另一方面，音乐的不同方面都会影响用户的偏好。一些信息能够很容易从音频信号中提取出来，比方说音乐的流派和所使用的乐器。其它的就有点困难，比如说音乐的情感，发行的年份，还有一些是不可能从音频本身提取出来的，比如说歌手的地理位置和歌词主题。</p>
+<p>抛开以上这些难点，很明显的是歌曲本身很大程度上会决定用户是否喜欢听这首歌，所以通过分析音频信号来预测一首歌是否会被喜欢是一个很好的idea。</p>
+<h3 id="3">predicting listening preference with deep learning</h3>
+
+<p>在去年12月，我的同事Aaron van den Oord 和我在NIPS 2013上发了一篇这个主题的文章，名字就是”Deep content-based music recommendation”. 我们想要从音频信号本身来预测用户偏好，通过训练一个回归模型来预测一个之前使用协同过滤算法计算的潜在表征。这种方法能够让我们即使没有用户行为数据，也能够在协同过滤空间里面预测一个表征。你能够从我们的论文题目中推断出来了，这个回归模型就是一个深度神经网络。</p>
+<p>这种方法的根本思想就是许多协同过滤模型把用户和歌曲都投影到一个共同的低维潜在空间。这首歌在这个空间里的位置由各种各样能够影响用户偏好的的信息编码。如果两首歌在这个空间里靠得很近，那么他们大概率是相似的，如果一首歌很靠近一个用户，那么这首歌对这个用户可能是一个很好的推荐(假如他们从来没有听过)。如果我们能够从音频来预测这首歌曲在这个空间里的位置，那么就能在没有用户行为数据的情况下将歌曲推荐给正确的用户。</p>
+<p>在论文中我们使用t-SNE算法将模型预测的表征投影到低维空间。下面你可以看到结果图，相似的歌曲聚集在一起。Rap music 大部分能够在图的左上角找到，电音歌手则聚集在图的底部。</p>
+<p><img src="/Users/wanglei/Pictures/representation_cnn_project.png" alt></p>
+<h3 id="4">Scaling up</h3>
+
+<p>论文中深度神经网络包括两层卷积层和两层全连接层，网络的输入时三秒的音频的频谱，为了获得更长音频的表征，我们将音频加上一个三秒的窗，取这些窗的平均的预测表征。</p>
+<p>在Spotify，我能够接触到更大数据集，一堆不同协同过滤算法计算出来得laten factor representations，他们也给了我一个很好的GPU来训练模型，这能够使得我拓展之前的工作，现在我能够训练有七层或者八层的卷积神经网络，使用大得多的中间表征和更多的参数(应该是指更复杂的卷积层)。</p>
+<h5 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h5><p>下面我会详细介绍尝试过的一个网络结构，它有四个卷积层和三个全连接层。正如你会看到的，用于音频信号的卷积神经网络和传统的应用于计算机视觉任务的网络有一些重要的不同。</p>
+<p><img src="/Users/wanglei/Pictures/spotify_convnet.png" alt></p>
+<p>这个网络的输入时599帧长和128个mel bins的梅尔频谱，梅尔频谱是一种时频域上的表征，在音频信号上用重叠的窗口做短时傅里叶变换，每一个傅里叶变换产生一帧，然后把这些帧concatenate成一个矩阵就构成了一张频谱，最后对这张频谱转换成梅尔频谱减少维度，幅度上也发生了对数转换。</p>
+<p>卷积层上红色矩形就是卷积核在它们的输入上滑动，使用rectified linear units(ReLU，max(0，x))。注意所有层都是一维卷积，这种卷积只在时间维度上进行卷积，而不是在频域上卷积。尽管在频谱上的时域和频域两个维度上卷积在方法上是可行的，当前我不会这么做。因为频谱上的两个维度有不同的含义，这和图片的例子不同。因此使用经常用在图片上的二维卷积核这是不合理的。</p>
+<p>在卷积层之间使用max-pooing对中间层的表征downsample，为他们增加一些时间不变性，在图中用<strong>MP</strong>标记。我在每一个卷积层上使用4帧大小的的卷积核，出于performance的原因，我在第一二个卷积层之间使用4大小的max-pooling，其它层之间都使用2大小的池化。</p>
+<p>在最后一层卷积层后，我在时间维度上使用全局池化层，这一层能覆盖到整个时间轴，有效地计算在时域上学到的特征，我一共使用了三个池化函数：平均池化，最大值池化，L2正则。</p>
+<p>我这么做的原因是在音频信号中检测到特征的绝对位置和眼前的任务尤其不相关。这和图片分类不同，在一张图片中，知道一个被检测到特定特征的大概位置是有用的，比如说，一个判断云的特征更可能在一张图片的顶端被激活，如果它在图片的底部被激活，也许它是检测到了一只羊。对于音乐推荐来说，我们只对音乐中一些特征整体上出现了还是没有出现感兴趣，所以在时域上做全局池化是非常合理的。</p>
+<p>另外一个解决这个问题的方法是像我们NIPS那篇文章一样，在短的音频片段上训练一个神经网络，然后在更长的音频片段上加窗，将每一个窗口的值平均作为特征。然而，将池化整合到网络模型中似乎是一个更好的idea，因为在训练的时候，每一步池化都能够发生。</p>
+<p>这个全局的池化特征然后作为一组带relu激活函数全连接层的输入，在这个网络中，网络的最后一层是作为输出层，用来预测40个由vector_exp算法计算的潜在因子，这个算法是曾经在Spotify所用到的众多协同过滤算法之一。</p>
+<h4 id="training"><a href="#training" class="headerlink" title="training"></a>training</h4><p>训练网络优化的是从协同过滤算法得出潜在因子表征和我们网络从音频信号预测的表征之间的mean square error(MSE)，这些从协同过滤算法得到的表征做了归一化处理，这么做可以减少歌曲流行度的影响(对于很多协同过滤算法模型计算得到的表征往往和歌曲流行度有关)。Dropout在全连接层后用来正则化。</p>
+<p>当前我用的数据集是从100万首流行音乐中间提取的30秒片段，计算出梅尔频谱，我大概用了这数据集的一半(50万)来训练，5000首用来验证，剩下的用来做测试集。在训练的时候，我们使用随机偏移值对频谱进行了修剪达到数据增强的目的。</p>
+<p>这个神经网络使用Theano来搭建，在英伟达GTX 780Ti上使用mini batch梯度下降来优化loss，训练数据加载和数据增强分开实施，也就是说GPU在训练一个batch数据时，下一个batch的数据也在并行加载，总共进行了大约750000次梯度更新。我不记得整个网络大约花了多久训练，所有的步骤大概花了18-36小时</p>
+<h4 id="Variations"><a href="#Variations" class="headerlink" title="Variations"></a>Variations</h4><p>正如我前面提到的，这只是我尝试过的其中一个网络结构，我还尝试了一些别的方法。</p>
+<ul>
+<li>更多层</li>
+<li>使用maxout units作为激活函数，而不是用relu</li>
+<li>使用随机池化而不是最大值池化</li>
+<li>将L2正则整合到网络的输出层</li>
+<li>数据增强在时域上使用了拉伸或者压缩频谱</li>
+<li>将不同协同过滤算法得到的不同表征concatenate了</li>
+</ul>
+<p>还有一些方法没有达到我的预期</p>
+<ul>
+<li>从卷积层增加’bypass‘连接到全连接层，（我觉得这有点像resNet的思想，考虑到这还是14年，作者就已经很超前了），当然作者这里这么做的motivation是他认为底层特征也能够对音乐推荐有作用，但是不幸的是，这种设置非常阻碍训练(可能还是当时的计算能力有限)</li>
+<li>想mixture density networks一样预测一个表征的条件方差，然后获得一个对预测表征的置信估计，确定哪首歌的潜在因子表征是困难的。然而这会使得训练非常的困难，并且结果的置信度估计不如预期表现得好。</li>
+</ul>
+<h3 id="5">Analysis：what is it learning?</h3>
+
+<p><strong>接下来就是本篇博客的spotlight部分了，打起精神！！</strong></p>
 
       
     </div>
@@ -439,12 +458,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Linux系统/" rel="tag"># Linux系统</a>
-          
-        </div>
-      
 
       
       
@@ -454,8 +467,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/2019电影盘点/" rel="next" title="2019电影盘点">
-                <i class="fa fa-chevron-left"></i> 2019电影盘点
+              <a href="/2019/04/02/ssh远程登录linux出错解决办法/" rel="next" title="ssh远程登录linux出错解决办法">
+                <i class="fa fa-chevron-left"></i> ssh远程登录linux出错解决办法
               </a>
             
           </div>
@@ -463,10 +476,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/09/Recommending music on Spotify with deep learning/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -654,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#用ssh远程登录linux出错解决办法"><span class="nav-number">1.</span> <span class="nav-text">用ssh远程登录linux出错解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-报错情况"><span class="nav-number">2.</span> <span class="nav-text">1.报错情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-总结"><span class="nav-number">3.</span> <span class="nav-text">2.总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recommending-music-on-Spotify-with-deep-learning"><span class="nav-number">1.</span> <span class="nav-text">Recommending music on Spotify with deep learning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">前言</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.2.</span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">1.3.</span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">1.4.</span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">1.5.</span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Architecture"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">Architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number">1.5.1.</span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number">1.5.2.</span> <span class="nav-text">Variations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.6.</span> <span class="nav-text">Analysis：what is it learning?</span></a></li></div>
             
 
           </div>
