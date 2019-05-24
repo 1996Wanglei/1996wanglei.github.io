@@ -96,20 +96,20 @@
 
 
 
-<meta name="description" content="August 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做？">
+<meta name="description" content="August 05, 2014 前言 今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做">
 <meta name="keywords" content="music recomendation,good article translation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Recommending music on Spotify with deep learning">
 <meta property="og:url" content="http://yoursite.com/2019/05/24/recommending-music-on-Spotify-with-deep-learning/index.html">
 <meta property="og:site_name" content="王磊的百草园">
-<meta property="og:description" content="August 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做？">
+<meta property="og:description" content="August 05, 2014 前言 今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/representation_cnn_project.png">
 <meta property="og:image" content="http://yoursite.com/Users/wanglei/Pictures/spotify_convnet.png">
-<meta property="og:updated_time" content="2019-05-24T11:31:29.449Z">
+<meta property="og:updated_time" content="2019-05-24T11:33:33.287Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recommending music on Spotify with deep learning">
-<meta name="twitter:description" content="August 05, 2014 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做？">
+<meta name="twitter:description" content="August 05, 2014 前言 今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。 Overview这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。  协同过滤 非常简单的介绍一下协同过滤的优缺点  基于内容的推荐 当没有可用的数据时该如何做">
 <meta name="twitter:image" content="http://yoursite.com/Users/wanglei/Pictures/representation_cnn_project.png">
 
 
@@ -389,7 +389,8 @@
 
       
         <p>August 05, 2014</p>
-<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。</p>
+<p>前言</p>
+<p>今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。</p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。</p>
 <ul>
 <li><p><a href="#1">协同过滤</a></p>
@@ -694,7 +695,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number"></span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number"></span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number"></span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number"></span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number"></span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#architecture"><span class="nav-number"></span> <span class="nav-text">architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number"></span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number"></span> <span class="nav-text">Variations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number"></span> <span class="nav-text">Analysis：what is it learning?</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">3.</span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">4.</span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">5.</span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#architecture"><span class="nav-number">5.1.</span> <span class="nav-text">architecture</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number">5.2.</span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number">5.3.</span> <span class="nav-text">Variations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">6.</span> <span class="nav-text">Analysis：what is it learning?</span></a></li></ol></div>
             
 
           </div>
