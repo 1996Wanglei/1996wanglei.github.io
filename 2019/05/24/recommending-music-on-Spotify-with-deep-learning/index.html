@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://yoursite.com/images/filters_total.png">
 <meta property="og:image" content="http://yoursite.com/images/feature_closeup_max.png">
 <meta property="og:image" content="http://yoursite.com/images/feature_closeup_mean.png">
-<meta property="og:updated_time" content="2019-05-27T10:55:11.168Z">
+<meta property="og:updated_time" content="2019-05-27T11:00:42.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recommending music on Spotify with deep learning">
 <meta name="twitter:description" content="August 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些">
@@ -422,7 +422,7 @@
 <p>抛开以上这些难点，很明显的是歌曲本身很大程度上会决定用户是否喜欢听这首歌，所以通过分析音频信号来预测一首歌是否会被喜欢是一个很好的idea。</p>
 <h3 id="3">predicting listening preference with deep learning</h3>
 
-<p>在去年12月，我的同事Aaron van den Oord 和我在NIPS 2013上发了一篇这个主题的文章，名字就是”Deep content-based music recommendation”. 我们想要从音频信号本身来预测用户偏好，通过训练一个回归模型来预测一个之前使用协同过滤算法计算的潜在表征。这种方法能够让我们即使没有用户行为数据，也能够在协同过滤空间里面预测一个表征。你能够从我们的论文题目中推断出来了，这个回归模型就是一个深度神经网络。</p>
+<p>在去年12月，我的同事Aaron van den Oord 和我在NIPS 2013上发了一篇这个主题的文章，名字就是”<a href="https://papers.nips.cc/paper/5004-deep-content-based-music-recommendation" target="_blank" rel="noopener">Deep content-based music recommendation</a>“. 我们想要从音频信号本身来预测用户偏好，通过训练一个回归模型来预测一个之前使用协同过滤算法计算的潜在表征。这种方法能够让我们即使没有用户行为数据，也能够在协同过滤空间里面预测一个表征。你能够从我们的论文题目中推断出来了，这个回归模型就是一个深度神经网络。</p>
 <p>这种方法的根本思想就是许多协同过滤模型把用户和歌曲都投影到一个共同的低维潜在因子空间。这首歌在这个空间里的位置由各种各样能够影响用户偏好的的信息编码。如果两首歌在这个空间里靠得很近，那么他们大概率是相似的，如果一首歌很靠近一个用户，那么这首歌对这个用户可能是一个很好的推荐(假如他们从来没有听过)。如果我们能够从音频来预测这首歌曲在这个空间里的位置，那么就能在没有用户行为数据的情况下将歌曲推荐给正确的用户。</p>
 <p>在论文中我们使用t-SNE算法将模型预测的表征投影到低维空间。下面你可以看到结果图，相似的歌曲聚集在一起。Rap music 大部分能够在图的左上角找到，电音歌手则聚集在图的底部。</p>
 <p><img src="/images/representation_cnn_project.png" alt></p>
