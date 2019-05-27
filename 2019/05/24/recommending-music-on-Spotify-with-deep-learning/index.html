@@ -96,23 +96,23 @@
 
 
 
-<meta name="description" content="Recommending music on Spotify with deep learningAugust 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习">
+<meta name="description" content="August 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些">
 <meta name="keywords" content="music recomendation,deep learning,music information retrieval,collaborative filtering,Convolutional Neural Networks,good article translation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Recommending music on Spotify with deep learning">
 <meta property="og:url" content="http://yoursite.com/2019/05/24/recommending-music-on-Spotify-with-deep-learning/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="Recommending music on Spotify with deep learningAugust 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习">
+<meta property="og:description" content="August 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/representation_cnn_project.png">
 <meta property="og:image" content="http://yoursite.com/images/spotify_convnet.png">
 <meta property="og:image" content="http://yoursite.com/images/filters_total.png">
 <meta property="og:image" content="http://yoursite.com/images/feature_closeup_max.png">
 <meta property="og:image" content="http://yoursite.com/images/feature_closeup_mean.png">
-<meta property="og:updated_time" content="2019-05-27T10:40:52.183Z">
+<meta property="og:updated_time" content="2019-05-27T10:44:30.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recommending music on Spotify with deep learning">
-<meta name="twitter:description" content="Recommending music on Spotify with deep learningAugust 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习">
+<meta name="twitter:description" content="August 05, 2014 这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。 前言今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些">
 <meta name="twitter:image" content="http://yoursite.com/images/representation_cnn_project.png">
 
 
@@ -380,9 +380,9 @@
       
 
       
-        <h2 id="Recommending-music-on-Spotify-with-deep-learning"><a href="#Recommending-music-on-Spotify-with-deep-learning" class="headerlink" title="Recommending music on Spotify with deep learning"></a>Recommending music on Spotify with deep learning</h2><p>August 05, 2014</p>
-<p>这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。</p>
-<h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。</p>
+        <p>August 05, 2014</p>
+<p><a href="http://benanne.github.io/2014/08/05/spotify-cnns.html" target="_blank" rel="noopener">这篇博客做的工作非常impressive</a>，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。</p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>今年夏天，我在纽约Spotify实习，我的实习工作是使用卷积神经网络基于音乐内容做音乐推荐，在这篇博客中，我会解释我的方法和展示一些初步的结果。</p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>这篇博客很长，这里提供一个博客各个部分的一些概览。如果你想跳过一些部分，直接在下面选择章节标题就可以到达。</p>
 <ul>
 <li><p><a href="#1">协同过滤</a></p>
@@ -439,10 +439,10 @@
 <p>我这么做的原因是在音频信号中检测到特征的绝对位置和当前的任务尤其不相关。这和图片分类不同，在一张图片中，知道一个被检测到特定特征的大概位置是有用的，比如说，一个判断云的特征更可能在一张图片的顶端被激活，如果它在图片的底部被激活，也许它是检测到了一只羊。对于音乐推荐来说，我们只对音乐中一些特征整体上出现了还是没有出现感兴趣，所以在时域上做全局池化是非常合理的。</p>
 <p>另外一个解决这个问题的方法是像我们NIPS那篇文章一样，在短的音频片段上训练一个神经网络，然后在更长的音频片段上加窗，将每一个窗口的值平均作为特征。然而，将池化整合到网络模型中似乎是一个更好的idea，因为在训练的时候，每一步池化都能够发生。</p>
 <p>这个全局的池化特征然后作为一组带relu激活函数全连接层的输入，在这个网络中，网络的最后一层是作为输出层，用来预测40个由vector_exp算法计算的潜在因子，这个算法是曾经在Spotify所用到的众多协同过滤算法之一。</p>
-<h4 id="training"><a href="#training" class="headerlink" title="training"></a>training</h4><p>训练网络优化的是从协同过滤算法得出潜在因子表征和我们网络从音频信号预测的表征之间的mean square error(MSE)，这些从协同过滤算法得到的表征做了归一化处理，这么做可以减少歌曲流行度的影响(对于很多协同过滤算法模型计算得到的表征往往和歌曲流行度有关)。Dropout在全连接层后用来正则化。</p>
+<h5 id="training"><a href="#training" class="headerlink" title="training"></a>training</h5><p>训练网络优化的是从协同过滤算法得出潜在因子表征和我们网络从音频信号预测的表征之间的mean square error(MSE)，这些从协同过滤算法得到的表征做了归一化处理，这么做可以减少歌曲流行度的影响(对于很多协同过滤算法模型计算得到的表征往往和歌曲流行度有关)。Dropout在全连接层后用来正则化。</p>
 <p>当前我用的数据集是从100万首流行音乐中间提取的30秒片段，计算出梅尔频谱，我大概用了这数据集的一半(50万)来训练，5000首用来验证，剩下的用来做测试集。在训练的时候，我们使用随机偏移值对频谱进行了修剪达到数据增强的目的。</p>
 <p>这个神经网络使用Theano来搭建，在英伟达GTX 780Ti上使用mini batch梯度下降来优化loss，训练数据加载和数据增强分开实施，也就是说GPU在训练一个batch数据时，下一个batch的数据也在并行加载，总共进行了大约750000次梯度更新。我不记得整个网络大约花了多久训练，所有的步骤大概花了18-36小时</p>
-<h4 id="Variations"><a href="#Variations" class="headerlink" title="Variations"></a>Variations</h4><p>正如我前面提到的，这只是我尝试过的其中一个网络结构，我还尝试了一些别的方法。</p>
+<h5 id="Variations"><a href="#Variations" class="headerlink" title="Variations"></a>Variations</h5><p>正如我前面提到的，这只是我尝试过的其中一个网络结构，我还尝试了一些别的方法。</p>
 <ul>
 <li>更多层</li>
 <li>使用maxout units作为激活函数，而不是用relu</li>
@@ -462,7 +462,7 @@
 <p>现在是非常cool的部分了，<strong>卷积神经网络学到了什么？这些特征看起来像什么？</strong>我使用卷积神经网络来解决这个问题的主要原因是我相信基于音乐内容的推荐是一个包含了多个抽象层面的问题。我希望神经网络的连续层可以递进地学习到更复杂和不变的特征，就像他们在图像分类问题上那样。</p>
 <p>结果就如我所设想的那样，首先，让我们看下第一个卷积层，这里有很多卷积核直接作用在输入的频谱上，这些卷积核很容易可视化，可视化结果如下图，点击这张图可以看到更清晰的版本(5584*562)。负值是红色的，正值是蓝色的，白色的是0.注意每个卷积核只有四帧宽，单个卷积核使用黑红色的线分开。</p>
 <p><img src="/images/filters_total.png" alt></p>
-<center>第一层卷积层学到的特征的可视化，时间轴是水平的，频率轴是垂直的，频率从上至下增加<br><br>从这张表征图，我们能够看到很多卷积核能够学习到和声内容，这些内容在不容频率区域以并列的红色和蓝色带显示。有时候这些带是倾斜向上或向下，表明音调的上升或者下降，这表明这些卷积核能够检测人的歌声。<br><br>#### Playlists for low-level features: maximal activation<br><br><strong>为了能够更好的理解这些卷积核学到的东西，我从测试集上中选择了一些能够最大激活这些卷积核的歌曲制作了一个清单</strong>，下面是一些例歌，第一层有256个卷积核，我用0-255随机的标上序号，这些序号是无序的。<br><br>这些歌曲清单包括那些被分析的歌曲，这些30秒的歌曲能够最大地激活一个给定的卷积核。我从第一个卷积层中选择了一些有趣的卷积核，并且计算他们学到的表征，然后在筛选出在整个测试集上最大的激活。注意你应该听歌曲的中间部分来听这些卷积核从中学到了什么，因为这一部分的音频内容被选中分析。<br><br>下面每个spotify播放清单都有十首歌曲，他们中的一些因为版权问题可能不是在所有国家都能听。<br><br>&gt; <strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong><br><br><img src="/images/feature_closeup_max.png" alt="卷积核14，242，250，253的表征特写"><br><br><center>卷积核14，242，250，253的表征特写</center>
+<center>第一层卷积层学到的特征的可视化，时间轴是水平的，频率轴是垂直的，频率从上至下增加<br><br>从这张表征图，我们能够看到很多卷积核能够学习到和声内容，这些内容在不容频率区域以并列的红色和蓝色带显示。有时候这些带是倾斜向上或向下，表明音调的上升或者下降，这表明这些卷积核能够检测人的歌声。<br><br>##### Playlists for low-level features: maximal activation<br><br><strong>为了能够更好的理解这些卷积核学到的东西，我从测试集上中选择了一些能够最大激活这些卷积核的歌曲制作了一个清单</strong>，下面是一些例歌，第一层有256个卷积核，我用0-255随机的标上序号，这些序号是无序的。<br><br>这些歌曲清单包括那些被分析的歌曲，这些30秒的歌曲能够最大地激活一个给定的卷积核。我从第一个卷积层中选择了一些有趣的卷积核，并且计算他们学到的表征，然后在筛选出在整个测试集上最大的激活。注意你应该听歌曲的中间部分来听这些卷积核从中学到了什么，因为这一部分的音频内容被选中分析。<br><br>下面每个spotify播放清单都有十首歌曲，他们中的一些因为版权问题可能不是在所有国家都能听。<br><br>&gt; <strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong><br><br><img src="/images/feature_closeup_max.png" alt="卷积核14，242，250，253的表征特写"><br><br><center>卷积核14，242，250，253的表征特写</center>
 
 <ul>
 <li>卷积核14似乎检测到了唱歌中的颤音技巧</li>
@@ -471,8 +471,7 @@
 <li>卷积核253似乎能够检测不容种类的bass和drum的声音</li>
 </ul>
 <p>这几类播放清单里面的歌曲流派相差很不同，<strong>这表明这些卷积核能够学习到一些底层音频信号属性</strong>。</p>
-<h4 id="Playlists-for-low-level-features-average-activation"><a href="#Playlists-for-low-level-features-average-activation" class="headerlink" title="Playlists for low-level features: average activation"></a>Playlists for low-level features: average activation</h4><p>下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式(harmonic pattern)非常有用。</p>
-<p><strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong></p>
+<h5 id="Playlists-for-low-level-features-average-activation"><a href="#Playlists-for-low-level-features-average-activation" class="headerlink" title="Playlists for low-level features: average activation"></a>Playlists for low-level features: average activation</h5><h5 id="下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式-harmonic-pattern-非常有用。"><a href="#下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式-harmonic-pattern-非常有用。" class="headerlink" title="下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式(harmonic pattern)非常有用。"></a>下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式(harmonic pattern)非常有用。</h5><p><strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong></p>
 <p><img src="/images/feature_closeup_mean.png" alt></p>
 <center>卷积核1，2，4，28的表征特写</center>
 
@@ -488,13 +487,12 @@
 <li>这个网络能够学习某个流派中比其它流派中更加常见的和弦和和弦进程。</li>
 </ol>
 <p>我没有去验证这两种假设，但是似乎后者对网络来说更加困难，所以我认为前者更有可能。</p>
-<h4 id="Playlists-for-high-level-features"><a href="#Playlists-for-high-level-features" class="headerlink" title="Playlists for high-level features"></a>Playlists for high-level features</h4><p>网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。</p>
-<p><strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong></p>
+<h5 id="Playlists-for-high-level-features"><a href="#Playlists-for-high-level-features" class="headerlink" title="Playlists for high-level features"></a>Playlists for high-level features</h5><h5 id="网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。"><a href="#网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。" class="headerlink" title="网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。"></a>网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。</h5><p><strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong></p>
 <p>很明显的是，每个卷积核能够识别特定的流派，有趣的是一些卷积核，比如说卷积核15似乎是一个多模态的卷积核，它能够被多种风格的音乐激活，这些风格的音乐之间完全没有联系。想必这个卷积核的输出当组合其它卷积核的输出时是非常确定的。</p>
 <p>卷积核37非常有趣，似乎它能识别中文语言，这并非完全不可能，因为中文的音素库和其它语言完全不同，还有一些其它检测语言的卷积核：有一个卷积核能够检测西班牙语唱的rap music。另外一种可能是话语流行音乐有一些和其它音乐截然不同的特点，而这个模型能够检测到。</p>
 <p>我花了一些时间分析前50个卷积核，一些其它的卷积核能够检测lounge，reggae，darkwave，country，metalcore，salsa，Dutch，German carnival music，儿歌，舞曲，vocal trance，朋克，土耳其流行音乐，还有我的最爱”Armin van Buuren”，显然他有非常多的歌曲以至于他能够有自己的卷积核。</p>
 <p>AlexNet已经在许多其它计算机视觉任务上取得巨大成功，基于它的多样性和不变性，似乎这些卷积核除了应用在音乐推荐上预测潜在因子，还能够应用在其它音乐信息检索任务上。</p>
-<h4 id="Similar-based-Playlists"><a href="#Similar-based-Playlists" class="headerlink" title="Similar-based Playlists"></a>Similar-based Playlists</h4><p>预测的潜在因子能够用来找到相似的歌曲下面是一组清单中的歌是通过预测一首给定歌曲的潜在因子，然后在测试集中找到其它歌曲的潜在因子和这首歌曲的余弦距离相近的歌曲，下面每个清单中的第一首歌就是这首查询歌曲。</p>
+<h5 id="Similar-based-Playlists"><a href="#Similar-based-Playlists" class="headerlink" title="Similar-based Playlists"></a>Similar-based Playlists</h5><p>预测的潜在因子能够用来找到相似的歌曲下面是一组清单中的歌是通过预测一首给定歌曲的潜在因子，然后在测试集中找到其它歌曲的潜在因子和这首歌曲的余弦距离相近的歌曲，下面每个清单中的第一首歌就是这首查询歌曲。</p>
 <p><strong>这些歌曲的清单我没有设置了，大家想听的话可以去这篇博客原来的地方听</strong></p>
 <p>大多数相似的歌曲对这首查询歌曲的粉丝都是正常的推荐，当然这些清单里的推荐歌曲远远称不上完美。但是考虑到他们仅仅是基于音频信号本身计算出来的，这个结果已经相当可以了。有一个错误的推荐是清单中由John Coltrane唱的”My Favorite Things”, 这首歌的特征出现了几个异常值，Elvis Presley唱的”Crawfish”也是同样如此。这大概因为歌曲在8：40-9：10部分出现了一段非常crazy的萨克斯独奏。分析整首歌或许会得到更好的推荐结果。</p>
 <h3 id="6">What will this be used for?</h3>
@@ -753,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Recommending-music-on-Spotify-with-deep-learning"><span class="nav-number">1.</span> <span class="nav-text">Recommending music on Spotify with deep learning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">前言</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.2.</span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">1.3.</span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">1.4.</span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">1.5.</span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Architecture"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">Architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#training"><span class="nav-number">1.5.1.</span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Variations"><span class="nav-number">1.5.2.</span> <span class="nav-text">Variations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">1.6.</span> <span class="nav-text">Analysis：what is it learning?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Playlists-for-low-level-features-average-activation"><span class="nav-number">1.6.1.</span> <span class="nav-text">Playlists for low-level features: average activation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Playlists-for-high-level-features"><span class="nav-number">1.6.2.</span> <span class="nav-text">Playlists for high-level features</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Similar-based-Playlists"><span class="nav-number">1.6.3.</span> <span class="nav-text">Similar-based Playlists</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">1.7.</span> <span class="nav-text">What will this be used for?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7"><span class="nav-number">1.8.</span> <span class="nav-text">Fueture work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8"><span class="nav-number">1.9.</span> <span class="nav-text">Conclusion</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">2.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">3.</span> <span class="nav-text">Collaborative filtering</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">4.</span> <span class="nav-text">Content-based recommendation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">5.</span> <span class="nav-text">predicting listening preference with deep learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">6.</span> <span class="nav-text">Scaling up</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Architecture"><span class="nav-number">6.0.1.</span> <span class="nav-text">Architecture</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#training"><span class="nav-number">6.0.2.</span> <span class="nav-text">training</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Variations"><span class="nav-number">6.0.3.</span> <span class="nav-text">Variations</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">7.</span> <span class="nav-text">Analysis：what is it learning?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Playlists-for-low-level-features-average-activation"><span class="nav-number">7.0.1.</span> <span class="nav-text">Playlists for low-level features: average activation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式-harmonic-pattern-非常有用。"><span class="nav-number">7.0.2.</span> <span class="nav-text">下面的四个播放清单的获得有一点点不同：我计算了每个卷积核对每首歌曲在时间上的平均表征，然后选择这些平均值里最大的。这意味着对于这些播放清单，卷积核被三十秒长的歌曲持续激活，这种设置对检测和声模式(harmonic pattern)非常有用。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Playlists-for-high-level-features"><span class="nav-number">7.0.3.</span> <span class="nav-text">Playlists for high-level features</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。"><span class="nav-number">7.0.4.</span> <span class="nav-text">网络中的每一层都将底层作为输入，然后从中提取出更高层的特征，在顶端的全连接层，也就是输出层之前，这些卷积核对某些子流派歌曲非常具有选择性，可视化这些卷积核在频谱层面学到了什么不是很麻烦，以下的六个播放清单是能够最大激活这些高层卷积核的歌曲。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Similar-based-Playlists"><span class="nav-number">7.0.5.</span> <span class="nav-text">Similar-based Playlists</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">8.</span> <span class="nav-text">What will this be used for?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7"><span class="nav-number">9.</span> <span class="nav-text">Fueture work</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8"><span class="nav-number">10.</span> <span class="nav-text">Conclusion</span></a></li></div>
             
 
           </div>
