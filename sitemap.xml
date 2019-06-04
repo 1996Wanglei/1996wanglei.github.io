@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-06-04T12:08:46.960Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/04/02/2019%E7%94%B5%E5%BD%B1%E7%9B%98%E7%82%B9/</loc>
     
-    <lastmod>2019-05-31T04:36:15.530Z</lastmod>
+    <lastmod>2019-06-01T08:00:47.888Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>http://yoursite.com/2019/03/29/pytorch%E4%B8%AD%E5%A6%82%E4%BD%95%E5%8A%A0%E8%BD%BD%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE/</loc>
     
     <lastmod>2019-05-24T11:11:07.309Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2019-04-04T05:51:34.816Z</lastmod>
     
   </url>
   
