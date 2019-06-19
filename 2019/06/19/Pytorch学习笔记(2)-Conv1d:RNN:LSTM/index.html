@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://yoursite.com/images/RNN480.png">
 <meta property="og:image" content="http://yoursite.com/images/LSTM.jpeg">
 <meta property="og:image" content="http://yoursite.com/images/LSTM2000.png">
-<meta property="og:updated_time" content="2019-06-19T08:10:19.172Z">
+<meta property="og:updated_time" content="2019-06-19T08:14:18.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch学习笔记(2):Conv1d,RNN,LSTM">
 <meta name="twitter:description" content="一维卷积torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode=’zeros’) 这个函数用来对输入张量做一维卷积  in_channel和out_channel是卷积核个数 kernel_size是卷积核的大">
@@ -405,13 +405,13 @@
 <li>Input(batch_size, Channel_input, length_input)</li>
 <li>Output(batch_size, Channel_output, length_output)</li>
 </ul>
-<p>$$L_{out}=\lfloor\frac{L_{in}+2\times padding-dilation\times(kernel_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$$</p>
+<p>$L_{out}=\lfloor\frac{L_{in}+2\times padding-dilation\times(kernel_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$</p>
 <h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>结构</p>
 <p><img src="/images/RNN.jpeg" alt></p>
 <h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><code>torch.nn.RNN</code>(<strong>args<em>, </em></strong>kwargs*)</p>
 <p>这个函数对输入的的sequence施加一个带tanh或者Relu的RNN.对输入的sequence每一个元素,每一层都施加如下计算:</p>
 <ul>
-<li>$$h_t=tanh(W_{hi}xt+b_{hi}+W_{hh}h_{t-1}+b_{hh})$$</li>
+<li>$h_t=tanh(W_{hi}xt+b_{hi}+W_{hh}h_{t-1}+b_{hh})$</li>
 </ul>
 <p>$h_t$是t时刻的隐层状态,$x_t$是t时刻的输入,$h_{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.</p>
 <p>参数:</p>
