@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -84,8 +84,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hyrule" type="application/atom+xml">
-
 
 
 
@@ -96,18 +94,23 @@
 
 
 
-<meta name="description" content="### 一维卷积  `torch.nn.Conv1d`(*in_channels*, *out_channels*, *kernel_size*, *stride=1*, *padding=0*, *dilation=1*, *groups=1*, *bias=True*, *padding_mode=&apos;zeros&apos;*)  这个函数用来对输入张量做一维卷积  - in_channel和out_c">
+<meta name="description" content="一维卷积torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode=’zeros’) 这个函数用来对输入张量做一维卷积  in_channel和out_channel是卷积核个数 kernel_size是卷积核的大">
 <meta name="keywords" content="Conv1d,RNN,LSTM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pytorch学习笔记(2):Conv1d,RNN,LSTM">
 <meta property="og:url" content="http://yoursite.com/2019/06/19/Pytorch学习笔记(2)-Conv1d:RNN:LSTM/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="### 一维卷积  `torch.nn.Conv1d`(*in_channels*, *out_channels*, *kernel_size*, *stride=1*, *padding=0*, *dilation=1*, *groups=1*, *bias=True*, *padding_mode=&apos;zeros&apos;*)  这个函数用来对输入张量做一维卷积  - in_channel和out_c">
+<meta property="og:description" content="一维卷积torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode=’zeros’) 这个函数用来对输入张量做一维卷积  in_channel和out_channel是卷积核个数 kernel_size是卷积核的大">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/RNN.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/RNN480.png">
+<meta property="og:image" content="http://yoursite.com/images/LSTM.jpeg">
+<meta property="og:image" content="http://yoursite.com/images/LSTM2000.png">
 <meta property="og:updated_time" content="2019-06-26T08:43:34.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch学习笔记(2):Conv1d,RNN,LSTM">
-<meta name="twitter:description" content="### 一维卷积  `torch.nn.Conv1d`(*in_channels*, *out_channels*, *kernel_size*, *stride=1*, *padding=0*, *dilation=1*, *groups=1*, *bias=True*, *padding_mode=&apos;zeros&apos;*)  这个函数用来对输入张量做一维卷积  - in_channel和out_c">
+<meta name="twitter:description" content="一维卷积torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode=’zeros’) 这个函数用来对输入张量做一维卷积  in_channel和out_channel是卷积核个数 kernel_size是卷积核的大">
+<meta name="twitter:image" content="http://yoursite.com/images/RNN.jpeg">
 
 
 
@@ -142,7 +145,7 @@
 
 
 
-  <title>Pytorch学习笔记(2):Conv1d,RNN,LSTM | Hyrule</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Pytorch学习笔记(2):Conv1d,RNN,LSTM | Hyrule</title>
   
 
 
@@ -167,7 +170,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,129 +388,80 @@
       
 
       
-        
-### 一维卷积
-
-`torch.nn.Conv1d`(*in_channels*, *out_channels*, *kernel_size*, *stride=1*, *padding=0*, *dilation=1*, *groups=1*, *bias=True*, *padding_mode='zeros'*)
-
-这个函数用来对输入张量做一维卷积
-
-- in_channel和out_channel是卷积核个数
-- kernel_size是卷积核的大小
-- stride是卷积核移动步长, padding是否对输入张量补0
-
-现在我有一个音频的梅尔频谱数据输入,一个batch为十张频谱, 一张频谱大小为129帧, 频率幅度为128,这个张量表示为(10, 128, 129),
-
+        <h3 id="一维卷积"><a href="#一维卷积" class="headerlink" title="一维卷积"></a>一维卷积</h3><p><code>torch.nn.Conv1d</code>(<em>in_channels</em>, <em>out_channels</em>, <em>kernel_size</em>, <em>stride=1</em>, <em>padding=0</em>, <em>dilation=1</em>, <em>groups=1</em>, <em>bias=True</em>, <em>padding_mode=’zeros’</em>)</p>
+<p>这个函数用来对输入张量做一维卷积</p>
+<ul>
+<li>in_channel和out_channel是卷积核个数</li>
+<li>kernel_size是卷积核的大小</li>
+<li>stride是卷积核移动步长, padding是否对输入张量补0</li>
+</ul>
+<p>现在我有一个音频的梅尔频谱数据输入,一个batch为十张频谱, 一张频谱大小为129帧, 频率幅度为128,这个张量表示为(10, 128, 129),</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">input = torch.randn(<span class="number">10</span>, <span class="number">128</span>, <span class="number">129</span>)</span><br><span class="line">m = nn.Conv1d(<span class="number">128</span>, <span class="number">128</span>, kernel_size=<span class="number">4</span>, padding=<span class="number">2</span>)</span><br><span class="line">out = m(input)</span><br><span class="line">print(out.size()) <span class="comment">#(10, 128, 130)</span></span><br></pre></td></tr></table></figure>
-
-可以看出来上面这个函数只在频谱的时域上进行一维卷积,卷积核大小为4帧,在频域上没有卷积.为什么输出是130,反而多了一帧呢?
-
-这是因为这个一维卷积函数
-
-- Input(batch_size, Channel_input, length_input)
-- Output(batch_size, Channel_output, length_output)
-
-$L_{out}=\lfloor\frac{L_{in}+2\times padding-dilation\times(kernel\_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$
-
-
-
-### RNN
-
-结构
-
-![](/images/RNN.jpeg)
-
-#### 函数
-
-`torch.nn.RNN`(**args*, ***kwargs*)
-
-这个函数对输入的的sequence施加一个带tanh或者Relu的RNN.对输入的sequence每一个元素,每一层都施加如下计算:
-
-- $h_t=tanh(W_{hi}xt+b_{hi}+W_{hh}h_{t-1}+b_{hh})$
-
-$h_t$是t时刻的隐层状态,$x_t$是t时刻的输入,$h_{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.
-
-参数:
-
-- input_size:输入x的维度
-- hidden_size:隐层状态h的维度
-- numpy_layers:循环层的数目
-- nonlinearity: 非线性变换,可以使tanh或者relu, 默认是tanh
-- bias:如果是False,不使用$b_{hi}$和$b_{hh}$,默认为True
-- batch_first: 如果是True,输入和输出张量的形状是{batch,seq,feature}
-- bidirectional: 如果是True,那么是一个双向RNN
-
-输入:input和h_0
-
-- input的形状是{seq_len,batch,input_size},我看大家一般喜欢用{batch,seq_len,input_size}一些
-- h_0的形状是(num_layers*num_birections,batch,hidden_size),对batch中每一个元素的初始隐层状态
-
-输出:output,h_n
-
-- output的形状是(seq_len,batch,num_directions*hidden_size),最后一个RNN层的输出特征(h_t)
-- h_n的形状是(num_layers*num_birections,batch,hidden_size),t=seq_len时刻的隐层状态
-
-**Note:h_n和output的关系**:output包括了seq_len中每一个时间点的隐层状态,而h_n是第seq_len时刻的隐层状态,所以output中最后一个元素就是h_n,即output[-1] ==h_n.
-
-#### 范例代码
-
-下面是一个pytorch中使用RNN通过Sin来预测Cos
-
+<p>可以看出来上面这个函数只在频谱的时域上进行一维卷积,卷积核大小为4帧,在频域上没有卷积.为什么输出是130,反而多了一帧呢?</p>
+<p>这是因为这个一维卷积函数</p>
+<ul>
+<li>Input(batch_size, Channel_input, length_input)</li>
+<li>Output(batch_size, Channel_output, length_output)</li>
+</ul>
+<p>$L<em>{out}=\lfloor\frac{L</em>{in}+2\times padding-dilation\times(kernel_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$</p>
+<h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>结构</p>
+<p><img src="/images/RNN.jpeg" alt></p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><code>torch.nn.RNN</code>(<strong>args<em>, </em></strong>kwargs*)</p>
+<p>这个函数对输入的的sequence施加一个带tanh或者Relu的RNN.对输入的sequence每一个元素,每一层都施加如下计算:</p>
+<ul>
+<li>$h<em>t=tanh(W</em>{hi}xt+b<em>{hi}+W</em>{hh}h<em>{t-1}+b</em>{hh})$</li>
+</ul>
+<p>$h<em>t$是t时刻的隐层状态,$x_t$是t时刻的输入,$h</em>{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.</p>
+<p>参数:</p>
+<ul>
+<li>input_size:输入x的维度</li>
+<li>hidden_size:隐层状态h的维度</li>
+<li>numpy_layers:循环层的数目</li>
+<li>nonlinearity: 非线性变换,可以使tanh或者relu, 默认是tanh</li>
+<li>bias:如果是False,不使用$b<em>{hi}$和$b</em>{hh}$,默认为True</li>
+<li>batch_first: 如果是True,输入和输出张量的形状是{batch,seq,feature}</li>
+<li>bidirectional: 如果是True,那么是一个双向RNN</li>
+</ul>
+<p>输入:input和h_0</p>
+<ul>
+<li>input的形状是{seq_len,batch,input_size},我看大家一般喜欢用{batch,seq_len,input_size}一些</li>
+<li>h_0的形状是(num_layers*num_birections,batch,hidden_size),对batch中每一个元素的初始隐层状态</li>
+</ul>
+<p>输出:output,h_n</p>
+<ul>
+<li>output的形状是(seq_len,batch,num_directions*hidden_size),最后一个RNN层的输出特征(h_t)</li>
+<li>h_n的形状是(num_layers*num_birections,batch,hidden_size),t=seq_len时刻的隐层状态</li>
+</ul>
+<p><strong>Note:h_n和output的关系</strong>:output包括了seq_len中每一个时间点的隐层状态,而h_n是第seq_len时刻的隐层状态,所以output中最后一个元素就是h_n,即output[-1] ==h_n.</p>
+<h4 id="范例代码"><a href="#范例代码" class="headerlink" title="范例代码"></a>范例代码</h4><p>下面是一个pytorch中使用RNN通过Sin来预测Cos</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> optim</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">TIME_STEP = <span class="number">40</span> <span class="comment"># rnn 时序步长数</span></span><br><span class="line">INPUT_SIZE = <span class="number">1</span> <span class="comment"># rnn 的输入维度</span></span><br><span class="line">DEVICE = torch.device(<span class="string">"cuda"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line">H_SIZE = <span class="number">128</span> <span class="comment"># of rnn 隐藏单元个数</span></span><br><span class="line">EPOCHS=<span class="number">480</span> <span class="comment"># 总共训练次数</span></span><br><span class="line">h_state = <span class="literal">None</span> <span class="comment"># 隐藏层状态</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(RNN, self).__init__()</span><br><span class="line">        self.rnn = nn.RNN(</span><br><span class="line">        input_size=INPUT_SIZE,</span><br><span class="line">        hidden_size=H_SIZE,</span><br><span class="line">        num_layers=<span class="number">1</span>,</span><br><span class="line">        batch_first=<span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(H_SIZE, <span class="number">1</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x, h_state)</span>:</span></span><br><span class="line">         <span class="comment"># x (batch, time_step, input_size)</span></span><br><span class="line">         <span class="comment"># h_state (n_layers, batch, hidden_size)</span></span><br><span class="line">         <span class="comment"># r_out (batch, time_step, hidden_size)</span></span><br><span class="line">        r_out, h_state = self.rnn(x, h_state)</span><br><span class="line">        outs = [] <span class="comment"># 保存所有的预测值</span></span><br><span class="line">        <span class="keyword">for</span> time_step <span class="keyword">in</span> range(r_out.size(<span class="number">1</span>)): <span class="comment"># 计算每一步长的预测值</span></span><br><span class="line">            outs.append(self.out(r_out[:, time_step, :]))</span><br><span class="line">        <span class="keyword">return</span> torch.stack(outs, dim=<span class="number">1</span>), h_state</span><br><span class="line">         <span class="comment"># 也可使用以下这样的返回值</span></span><br><span class="line">         <span class="comment"># r_out = r_out.view(-1, 32)</span></span><br><span class="line">         <span class="comment"># outs = self.out(r_out)</span></span><br><span class="line">         <span class="comment"># return outs, h_state</span></span><br><span class="line"></span><br><span class="line">rnn = RNN().to(DEVICE)</span><br><span class="line">optimizer = torch.optim.Adam(rnn.parameters()) <span class="comment"># Adam优化，几乎不用调参</span></span><br><span class="line">criterion = nn.MSELoss() <span class="comment"># 因为最终的结果是一个数值，所以损失函数用均方误差</span></span><br><span class="line"></span><br><span class="line">rnn.train()</span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">0</span>,EPOCHS,<span class="number">2</span>):</span><br><span class="line">    start, end = step * np.pi, (step+<span class="number">2</span>)*np.pi <span class="comment"># 一个时间周期</span></span><br><span class="line">    steps = np.linspace(start, end, TIME_STEP, dtype=np.float32)</span><br><span class="line">    x_np = np.sin(steps)</span><br><span class="line">    y_np = np.cos(steps)</span><br><span class="line">    x = torch.from_numpy(x_np[np.newaxis, :, np.newaxis]) <span class="comment"># shape (batch, time_step, input_size)</span></span><br><span class="line">    y = torch.from_numpy(y_np[np.newaxis, :, np.newaxis])</span><br><span class="line">    prediction, h_state = rnn(x, h_state) <span class="comment"># rnn output</span></span><br><span class="line">    <span class="comment"># 这一步非常重要</span></span><br><span class="line">    h_state = h_state.data <span class="comment"># 重置隐藏层的状态, 切断和前一次迭代的链接</span></span><br><span class="line">    loss = criterion(prediction, y)</span><br><span class="line">    <span class="comment"># 这三行写在一起就可以</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    loss.backward()</span><br><span class="line">    optimizer.step()</span><br><span class="line">    <span class="keyword">if</span> (step)%<span class="number">20</span>==<span class="number">0</span>: <span class="comment">#每训练20个批次可视化一下效果，并打印一下loss</span></span><br><span class="line">        print(<span class="string">"EPOCHS: &#123;&#125;,Loss:&#123;:4f&#125;"</span>.format(step,loss))</span><br><span class="line">        plt.plot(steps, y_np.flatten(), <span class="string">'r-'</span>)</span><br><span class="line">        plt.plot(steps, prediction.data.numpy().flatten(), <span class="string">'b-'</span>)</span><br><span class="line">        plt.draw()</span><br><span class="line">        plt.pause(<span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
-
-训练到460epoch, loss0.000313,可以看到已经完全拟合了
-
-![](/images/RNN480.png)
-
-### LSTM
-
-#### 结构
-
-![](/images/LSTM.jpeg)
-
-#### 函数
-
-`torch.nn.LSTM`(**args*, ***kwargs*)
-
-这个函数对输入的sequence施加一个多层的长短周期记忆RNN.对输入的sequence的每一个元素,每一层都施加如下计算.
-
-- $f_t=\sigma(W_{fi}\;x_t+b_{fi}+W_{fh}h_{t-1}+b_{fh})$
-- $i_t=\sigma(W_{ii}\;x_t+b_{ii}+W_{ih}h_{t-1}+b_{if})$
-- $g_t=\tan h(W_{gi}\;x_t+b_{gi}+W_{gh}h_{t-1}+b_{gh})$
-- $o_t=\sigma(W_{oi}\;x_t+b_{oi}+W_{oh}h_{t-1}+b_{oh})$
-- $c_t=f_t\ast c_{t-1}+i_t\ast g_t$
-- $h_t=\tan h(c_t)\ast o_t$
-
-$h_t$是t时刻的隐层状态,$c_t$是t时刻的细胞状态,$x_t$是t时刻的输入,$h_{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.$i_t$,$f_t$,$g_t$,$o_t$是输入门,忘记门,细胞门,输出门.$\sigma$是sigmoid函数,*是元素乘积
-
-LSTM函数的参数和RNN都是一致的,区别在于输入输出不同,从上面的简图可以看出,LSTM多了一个细胞的状态,所以每一个循环层都增加了一个细胞状态的输出.
-
-输入:input,(h_0,c_0)
-
-input的形状和RNN的一样,都是(seq_len,betch,input_size)
-
-h_0:(num_layers*numpy_directions,batch,hidden_size),对batch中每一个元素的初始隐层状态
-
-c_0:(num_layers*numpy_directions,batch,hidden_size),对batch中的每一个元素的初始细胞状态
-
-输出:output,(h_n,c_n)
-
-output的形状和RNN一样,都是(seq_len,batch,num_directions*hidden_size),最后一个LSTM层的输出特征(h_t)
-
-h_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的隐层状态
-
-c_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的细胞状态
-
-#### 范例代码
-
-还是使用LSTM通过Sin来预测Cos
-
+<p>训练到460epoch, loss0.000313,可以看到已经完全拟合了</p>
+<p><img src="/images/RNN480.png" alt></p>
+<h3 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h3><h4 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h4><p><img src="/images/LSTM.jpeg" alt></p>
+<h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><p><code>torch.nn.LSTM</code>(<strong>args<em>, </em></strong>kwargs*)</p>
+<p>这个函数对输入的sequence施加一个多层的长短周期记忆RNN.对输入的sequence的每一个元素,每一层都施加如下计算.</p>
+<ul>
+<li>$f<em>t=\sigma(W</em>{fi}\;x<em>t+b</em>{fi}+W<em>{fh}h</em>{t-1}+b_{fh})$</li>
+<li>$i<em>t=\sigma(W</em>{ii}\;x<em>t+b</em>{ii}+W<em>{ih}h</em>{t-1}+b_{if})$</li>
+<li>$g<em>t=\tan h(W</em>{gi}\;x<em>t+b</em>{gi}+W<em>{gh}h</em>{t-1}+b_{gh})$</li>
+<li>$o<em>t=\sigma(W</em>{oi}\;x<em>t+b</em>{oi}+W<em>{oh}h</em>{t-1}+b_{oh})$</li>
+<li>$c<em>t=f_t\ast c</em>{t-1}+i_t\ast g_t$</li>
+<li>$h_t=\tan h(c_t)\ast o_t$</li>
+</ul>
+<p>$h<em>t$是t时刻的隐层状态,$c_t$是t时刻的细胞状态,$x_t$是t时刻的输入,$h</em>{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.$i_t$,$f_t$,$g_t$,$o_t$是输入门,忘记门,细胞门,输出门.$\sigma$是sigmoid函数,*是元素乘积</p>
+<p>LSTM函数的参数和RNN都是一致的,区别在于输入输出不同,从上面的简图可以看出,LSTM多了一个细胞的状态,所以每一个循环层都增加了一个细胞状态的输出.</p>
+<p>输入:input,(h_0,c_0)</p>
+<p>input的形状和RNN的一样,都是(seq_len,betch,input_size)</p>
+<p>h_0:(num_layers*numpy_directions,batch,hidden_size),对batch中每一个元素的初始隐层状态</p>
+<p>c_0:(num_layers*numpy_directions,batch,hidden_size),对batch中的每一个元素的初始细胞状态</p>
+<p>输出:output,(h_n,c_n)</p>
+<p>output的形状和RNN一样,都是(seq_len,batch,num_directions*hidden_size),最后一个LSTM层的输出特征(h_t)</p>
+<p>h_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的隐层状态</p>
+<p>c_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的细胞状态</p>
+<h4 id="范例代码-1"><a href="#范例代码-1" class="headerlink" title="范例代码"></a>范例代码</h4><p>还是使用LSTM通过Sin来预测Cos</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> optim</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">TIME_STEP = <span class="number">30</span> <span class="comment"># rnn 时序步长数</span></span><br><span class="line">INPUT_SIZE = <span class="number">1</span> <span class="comment"># rnn 的输入维度</span></span><br><span class="line">DEVICE = torch.device(<span class="string">"cuda"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br><span class="line">H_SIZE = <span class="number">64</span> <span class="comment"># of rnn 隐藏单元个数</span></span><br><span class="line">EPOCHS=<span class="number">2000</span> <span class="comment"># 总共训练次数</span></span><br><span class="line">h_state = <span class="literal">None</span> <span class="comment"># 隐藏层状态</span></span><br><span class="line">c_state = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RNN</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(RNN, self).__init__()</span><br><span class="line">        self.rnn = nn.LSTM(</span><br><span class="line">        input_size=INPUT_SIZE,</span><br><span class="line">        hidden_size=H_SIZE,</span><br><span class="line">        num_layers=<span class="number">1</span>,</span><br><span class="line">        batch_first=<span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line">        self.out = nn.Linear(H_SIZE, <span class="number">1</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">         <span class="comment"># x (batch, time_step, input_size)</span></span><br><span class="line">         <span class="comment"># h_state (n_layers, batch, hidden_size)</span></span><br><span class="line">         <span class="comment"># r_out (batch, time_step, hidden_size)</span></span><br><span class="line">        r_out, (h_state,c_state) = self.rnn(x)</span><br><span class="line">        outs = [] <span class="comment"># 保存所有的预测值</span></span><br><span class="line">        <span class="keyword">for</span> time_step <span class="keyword">in</span> range(r_out.size(<span class="number">1</span>)): <span class="comment"># 计算每一步长的预测值</span></span><br><span class="line">            outs.append(self.out(r_out[:, time_step, :]))</span><br><span class="line">        <span class="keyword">return</span> torch.stack(outs, dim=<span class="number">1</span>), h_state, c_state</span><br><span class="line">        <span class="comment"># 也可使用以下这样的返回值</span></span><br><span class="line">        <span class="comment"># r_out = r_out.view(-1, 64)</span></span><br><span class="line">        <span class="comment"># outs = self.out(r_out)</span></span><br><span class="line">        <span class="comment"># return outs, h_state, c_state</span></span><br><span class="line"></span><br><span class="line">rnn = RNN().to(DEVICE)</span><br><span class="line">optimizer = torch.optim.Adam(rnn.parameters()) <span class="comment"># Adam优化，几乎不用调参</span></span><br><span class="line">criterion = nn.MSELoss() <span class="comment"># 因为最终的结果是一个数值，所以损失函数用均方误差</span></span><br><span class="line"></span><br><span class="line">rnn.train()</span><br><span class="line">plt.figure(<span class="number">2</span>)</span><br><span class="line"><span class="keyword">for</span> step <span class="keyword">in</span> range(<span class="number">0</span>,EPOCHS,<span class="number">2</span>):</span><br><span class="line">    start, end = step * np.pi, (step+<span class="number">2</span>)*np.pi <span class="comment"># 一个时间周期</span></span><br><span class="line">    steps = np.linspace(start, end, TIME_STEP, dtype=np.float32)</span><br><span class="line">    x_np = np.sin(steps)</span><br><span class="line">    y_np = np.cos(steps)</span><br><span class="line">    x = torch.from_numpy(x_np[np.newaxis, :, np.newaxis]) <span class="comment"># shape (batch, time_step, input_size)</span></span><br><span class="line">    y = torch.from_numpy(y_np[np.newaxis, :, np.newaxis])</span><br><span class="line">    prediction, h_state,c_state = rnn(x) <span class="comment"># rnn output</span></span><br><span class="line">    <span class="comment"># 这一步非常重要</span></span><br><span class="line">    <span class="comment"># h_state = h_state.data # 重置隐藏层的状态, 切断和前一次迭代的链接</span></span><br><span class="line">    <span class="comment"># c_state = c_state.data</span></span><br><span class="line">    loss = criterion(prediction, y)</span><br><span class="line">    <span class="comment"># 这三行写在一起就可以</span></span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    loss.backward()</span><br><span class="line">    optimizer.step()</span><br><span class="line">    <span class="keyword">if</span> (step)%<span class="number">20</span>==<span class="number">0</span>: <span class="comment">#每训练20个批次可视化一下效果，并打印一下loss</span></span><br><span class="line">        print(<span class="string">"EPOCHS: &#123;&#125;,Loss:&#123;:4f&#125;"</span>.format(step,loss))</span><br><span class="line">        plt.plot(steps, y_np.flatten(), <span class="string">'r-'</span>)</span><br><span class="line">        plt.plot(steps, prediction.data.numpy().flatten(), <span class="string">'b-'</span>)</span><br><span class="line">        plt.draw()</span><br><span class="line">        plt.pause(<span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
-
-训练到1980epoch, loss0.000004,可以看到已经完全拟合了.
-
-![](/images/LSTM2000.png)
-
+<p>训练到1980epoch, loss0.000004,可以看到已经完全拟合了.</p>
+<p><img src="/images/LSTM2000.png" alt></p>
 
       
     </div>
@@ -606,8 +560,17 @@ c_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的细胞状�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -650,13 +613,6 @@ c_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的细胞状�
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -723,6 +679,22 @@ c_n:(num_layers*numpy_directions,batch,hidden_size),t=seq_len时刻的细胞状�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一维卷积"><span class="nav-number">1.</span> <span class="nav-text">一维卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RNN"><span class="nav-number">2.</span> <span class="nav-text">RNN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">2.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例代码"><span class="nav-number">2.2.</span> <span class="nav-text">范例代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LSTM"><span class="nav-number">3.</span> <span class="nav-text">LSTM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#结构"><span class="nav-number">3.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-1"><span class="nav-number">3.2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#范例代码-1"><span class="nav-number">3.3.</span> <span class="nav-text">范例代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1046,24 +1018,7 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

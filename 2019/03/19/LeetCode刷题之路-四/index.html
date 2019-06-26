@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -84,8 +84,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hyrule" type="application/atom+xml">
-
 
 
 
@@ -96,18 +94,20 @@
 
 
 
-<meta name="description" content="#### leetcode15三数之和  算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。  这是道好题  正确的解法应该是先将数组排序，遍历数组，固定一个数，**再用双指针从这个数的右边开始遍历**。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别**。所以这里要能想到将双指针从">
+<meta name="description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
 <meta name="keywords" content="LeetCode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LeetCode刷题之路(四)">
 <meta property="og:url" content="http://yoursite.com/2019/03/19/LeetCode刷题之路-四/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="#### leetcode15三数之和  算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。  这是道好题  正确的解法应该是先将数组排序，遍历数组，固定一个数，**再用双指针从这个数的右边开始遍历**。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别**。所以这里要能想到将双指针从">
+<meta property="og:description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/images/leetcode15.jpeg">
 <meta property="og:updated_time" content="2019-06-16T09:28:07.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LeetCode刷题之路(四)">
-<meta name="twitter:description" content="#### leetcode15三数之和  算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。  这是道好题  正确的解法应该是先将数组排序，遍历数组，固定一个数，**再用双指针从这个数的右边开始遍历**。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别**。所以这里要能想到将双指针从">
+<meta name="twitter:description" content="leetcode15三数之和算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。 这是道好题 正确的解法应该是先将数组排序，遍历数组，固定一个数，再用双指针从这个数的右边开始遍历。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考">
+<meta name="twitter:image" content="http://yoursite.com/images/leetcode15.jpeg">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <title>LeetCode刷题之路(四) | Hyrule</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>LeetCode刷题之路(四) | Hyrule</title>
   
 
 
@@ -167,7 +167,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,53 +385,27 @@
       
 
       
-        #### leetcode15三数之和
-
-算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。
-
-这是道好题
-
-正确的解法应该是先将数组排序，遍历数组，固定一个数，**再用双指针从这个数的右边开始遍历**。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别**。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考虑重复的情况而且能够覆盖到所有的情况**，我画了一个简图解释一下。
-
-![](/images/leetcode15.jpeg)
-
-**从最底下的5开始看，我们先遍历5右边的，然后从加入4后，重新遍历4以后的情况。重复这样一直到1，我们发现所有的情况都覆盖到了，并且不会考虑重复的组**。
-
-除此之外 算法还值得注意的地方在于：
-
-- 如果三个指针如果指向的当前元素与前一个元素相当，跳出本轮循环，检索下一个。
-- 固定的指针指向的数如果大于了0，停止，因为三个数之和肯定大于了0
-
+        <h4 id="leetcode15三数之和"><a href="#leetcode15三数之和" class="headerlink" title="leetcode15三数之和"></a>leetcode15三数之和</h4><p>算法思路：这道题我开始想到就是要固定一个数，然后要用双指针来做，但是两个指针的移动覆盖所有的数据，这样如何更新我没有想明白。</p>
+<p>这是道好题</p>
+<p>正确的解法应该是先将数组排序，遍历数组，固定一个数，<strong>再用双指针从这个数的右边开始遍历</strong>。如果将双指针从数组的起点和端点开始遍历，会得到很多重复的满足条件的组，因为考虑了重复的组别<strong>。所以这里要能想到将双指针从这个数的右边开始遍历就会避免考虑重复的情况而且能够覆盖到所有的情况</strong>，我画了一个简图解释一下。</p>
+<p><img src="/images/leetcode15.jpeg" alt></p>
+<p><strong>从最底下的5开始看，我们先遍历5右边的，然后从加入4后，重新遍历4以后的情况。重复这样一直到1，我们发现所有的情况都覆盖到了，并且不会考虑重复的组</strong>。</p>
+<p>除此之外 算法还值得注意的地方在于：</p>
+<ul>
+<li>如果三个指针如果指向的当前元素与前一个元素相当，跳出本轮循环，检索下一个。</li>
+<li>固定的指针指向的数如果大于了0，停止，因为三个数之和肯定大于了0</li>
+</ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums: List[int])</span> -&gt; List[List[int]]:</span></span><br><span class="line">        list = []</span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt;<span class="number">0</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            low = i+<span class="number">1</span></span><br><span class="line">            high = len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="comment">#避免重复的组</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">while</span>(low &lt; high):</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                <span class="keyword">if</span> value == <span class="number">0</span>:</span><br><span class="line">                    list.append([nums[i], nums[low], nums[high]])</span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span>(low &lt; high <span class="keyword">and</span> nums[low] == nums[low<span class="number">-1</span>]): <span class="comment"># 避免重复的组</span></span><br><span class="line">                        low += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span>(high &gt; low <span class="keyword">and</span> nums[high] == nums[high+<span class="number">1</span>]): <span class="comment"># 避免重复的组</span></span><br><span class="line">                        high -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> value &gt; <span class="number">0</span>:</span><br><span class="line">                    high -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> value &lt; <span class="number">0</span>:</span><br><span class="line">                    low += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> list</span><br></pre></td></tr></table></figure>
-
-#### leectcode16最接近三数之和
-
-算法思路：这道题和三数之和思路与很像，唯一的不同点就是要在遍历的过程中要记录和target最接近的三数之和，如何衡量接近，用绝对值就可以。
-
+<h4 id="leectcode16最接近三数之和"><a href="#leectcode16最接近三数之和" class="headerlink" title="leectcode16最接近三数之和"></a>leectcode16最接近三数之和</h4><p>算法思路：这道题和三数之和思路与很像，唯一的不同点就是要在遍历的过程中要记录和target最接近的三数之和，如何衡量接近，用绝对值就可以。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">        length = len(nums)</span><br><span class="line">        <span class="keyword">if</span> length &lt; <span class="number">3</span>:</span><br><span class="line">            <span class="keyword">return</span> nums</span><br><span class="line">        count = <span class="number">9223372036854775807</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-2</span>):</span><br><span class="line">            low = i+<span class="number">1</span></span><br><span class="line">            high = length<span class="number">-1</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">while</span> low &lt; high:</span><br><span class="line">                value = nums[i] + nums[low] + nums[high]</span><br><span class="line">                <span class="keyword">if</span> (abs(value - target) &lt; abs(count - target)):</span><br><span class="line">                    count = value</span><br><span class="line">                <span class="keyword">if</span> value == target:</span><br><span class="line">                    <span class="keyword">return</span> target</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">if</span> value &gt; target:</span><br><span class="line">                        high -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">if</span> value &lt; target:</span><br><span class="line">                        low += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
-
-#### leetcode18四数之和
-
-算法思路：和三数之和基本是一样的，
-
+<h4 id="leetcode18四数之和"><a href="#leetcode18四数之和" class="headerlink" title="leetcode18四数之和"></a>leetcode18四数之和</h4><p>算法思路：和三数之和基本是一样的，</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fourSum</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; List[List[int]]:</span></span><br><span class="line">        length = len(nums)</span><br><span class="line">        list = []</span><br><span class="line">        <span class="keyword">if</span> length &lt; <span class="number">4</span>:</span><br><span class="line">            <span class="keyword">return</span> list</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-3</span>):</span><br><span class="line">            left = i+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="comment">#这里要注意i &gt; 0的条件</span></span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(left, length<span class="number">-2</span>):</span><br><span class="line">                <span class="keyword">if</span> j &gt; left <span class="keyword">and</span> nums[j] == nums[j<span class="number">-1</span>]: <span class="comment"># 同样这里要注意j &gt; left的条件</span></span><br><span class="line">                    j += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                middle = j+<span class="number">1</span></span><br><span class="line">                right = length - <span class="number">1</span></span><br><span class="line">                <span class="keyword">while</span>(middle &lt; right):</span><br><span class="line">                    value = nums[i] + nums[j] +nums[middle] + nums[right]</span><br><span class="line">                    <span class="keyword">if</span> target == value:</span><br><span class="line">                        list.append([nums[i], nums[j], nums[middle], nums[right]])</span><br><span class="line">                        middle += <span class="number">1</span></span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span>(middle &lt; right <span class="keyword">and</span> nums[middle] == nums[middle<span class="number">-1</span>]):</span><br><span class="line">                            middle += <span class="number">1</span></span><br><span class="line">                        <span class="keyword">while</span>(middle &lt; right <span class="keyword">and</span> nums[right] == nums[right +<span class="number">1</span>]):</span><br><span class="line">                            right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">elif</span> target &lt; value:</span><br><span class="line">                        right -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        middle += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> list</span><br></pre></td></tr></table></figure>
-
-#### leetcode11乘最多水的容器
-
-算法思路，如果能想到用双指针法从数组的两边开始检索，当两指针指向的矩形两边，移动较短的两边可能增加矩形的面积，而移动较长的边注定会减少矩形的面积。这道题就解决了
-
+<h4 id="leetcode11乘最多水的容器"><a href="#leetcode11乘最多水的容器" class="headerlink" title="leetcode11乘最多水的容器"></a>leetcode11乘最多水的容器</h4><p>算法思路，如果能想到用双指针法从数组的两边开始检索，当两指针指向的矩形两边，移动较短的两边可能增加矩形的面积，而移动较长的边注定会减少矩形的面积。这道题就解决了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height: List[int])</span> -&gt; int:</span></span><br><span class="line">        low = <span class="number">0</span></span><br><span class="line">        high = len(height) <span class="number">-1</span></span><br><span class="line">        max_Area = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span>(low &lt; high):</span><br><span class="line">            <span class="comment"># reauslt = height[low] if height[low] &lt; height[high] else height[high]</span></span><br><span class="line">            max_Area = max(max_Area, min(height[low],height[high])*(high-low))</span><br><span class="line">            <span class="keyword">if</span> height[low] &lt; height[high]:</span><br><span class="line">                low += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                high -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max_Area</span><br></pre></td></tr></table></figure>
-
-#### leetcode31下一个排列
-
-这道题我真的要爆粗了，用评论中的一句话来说”就是这道题的每个字我都认识，连起来我就不懂了“。
-
-我说下我理解的题意，所谓全排列就是要从从**数组的右边往左**边开始遍历找第一组$nums[i] > nums[i-1]$。找到之后就开始在这个位置往右边遍历，然后直到找到最小的大于$nums[i-1]$的数$nums[j]$(在我的code里面这个数是$nums\lbrack index\_low\rbrack$),交换$nums[i-1]$和$nums[j]$。此时我们还要保证包括$nums[i]$到$nums[lenghth-1]的元素按升序排列。
-
-最后如果没有找到这一对数字说明整个序列已经按降序排列好了，直接反转就行。
-
+<h4 id="leetcode31下一个排列"><a href="#leetcode31下一个排列" class="headerlink" title="leetcode31下一个排列"></a>leetcode31下一个排列</h4><p>这道题我真的要爆粗了，用评论中的一句话来说”就是这道题的每个字我都认识，连起来我就不懂了“。</p>
+<p>我说下我理解的题意，所谓全排列就是要从从<strong>数组的右边往左</strong>边开始遍历找第一组$nums[i] &gt; nums[i-1]$。找到之后就开始在这个位置往右边遍历，然后直到找到最小的大于$nums[i-1]$的数$nums[j]$(在我的code里面这个数是$nums\lbrack index_low\rbrack$),交换$nums[i-1]$和$nums[j]$。此时我们还要保证包括$nums[i]$到$nums[lenghth-1]的元素按升序排列。</p>
+<p>最后如果没有找到这一对数字说明整个序列已经按降序排列好了，直接反转就行。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">nextPermutation</span><span class="params">(self, nums: List[int])</span> -&gt; <span class="keyword">None</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        length = len(nums)</span><br><span class="line">        flag = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(length<span class="number">-1</span>, <span class="number">0</span>, <span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i<span class="number">-1</span>]:</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                index_low = i</span><br><span class="line">                <span class="comment"># 注意下面这个判断条件 中不要写成nums[index_low] &gt;= nums[i-1]!!</span></span><br><span class="line">                <span class="keyword">while</span>(index_low &lt; length <span class="keyword">and</span> nums[index_low] &gt; nums[i<span class="number">-1</span>]):</span><br><span class="line">                    index_low += <span class="number">1</span></span><br><span class="line">                tmp = nums[index_low<span class="number">-1</span>]</span><br><span class="line">                nums[index_low<span class="number">-1</span>] = nums[i<span class="number">-1</span>]</span><br><span class="line">                nums[i<span class="number">-1</span>] = tmp</span><br><span class="line">                i_right = nums[i::]</span><br><span class="line">                i_right.sort()</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> range(len(i_right)):</span><br><span class="line">                    nums[i] = i_right[j]</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">if</span> flag == <span class="number">0</span>:</span><br><span class="line">            nums.reverse()</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -526,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -570,13 +553,6 @@
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -643,6 +619,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode15三数之和"><span class="nav-number">1.</span> <span class="nav-text">leetcode15三数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leectcode16最接近三数之和"><span class="nav-number">2.</span> <span class="nav-text">leectcode16最接近三数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode18四数之和"><span class="nav-number">3.</span> <span class="nav-text">leetcode18四数之和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode11乘最多水的容器"><span class="nav-number">4.</span> <span class="nav-text">leetcode11乘最多水的容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#leetcode31下一个排列"><span class="nav-number">5.</span> <span class="nav-text">leetcode31下一个排列</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -966,24 +958,7 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

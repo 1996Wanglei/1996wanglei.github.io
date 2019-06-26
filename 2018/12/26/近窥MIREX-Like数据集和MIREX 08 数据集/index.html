@@ -7,7 +7,7 @@
 
 <html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
@@ -84,8 +84,6 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Hyrule" type="application/atom+xml">
-
 
 
 
@@ -96,18 +94,20 @@
 
 
 
-<meta name="description" content="本篇文章翻译自[Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)](https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-da">
+<meta name="description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
 <meta name="keywords" content="Music Emotion Rearch,文章翻译">
 <meta property="og:type" content="article">
 <meta property="og:title" content="近窥MIREX-Like数据集和MIREX 08数据集">
 <meta property="og:url" content="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX 08 数据集/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="本篇文章翻译自[Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)](https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-da">
+<meta property="og:description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX%2008%20数据集/images/Mirex-like数据集的插图.jpg">
 <meta property="og:updated_time" content="2019-03-19T02:42:38.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="近窥MIREX-Like数据集和MIREX 08数据集">
-<meta name="twitter:description" content="本篇文章翻译自[Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)](https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-da">
+<meta name="twitter:description" content="本篇文章翻译自Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。  MIREX-Like数据集第一次在10th International Sympo">
+<meta name="twitter:image" content="http://yoursite.com/2018/12/26/近窥MIREX-Like数据集和MIREX%2008%20数据集/images/Mirex-like数据集的插图.jpg">
 
 
 
@@ -142,7 +142,7 @@
 
 
 
-  <title>近窥MIREX-Like数据集和MIREX 08数据集 | Hyrule</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>近窥MIREX-Like数据集和MIREX 08数据集 | Hyrule</title>
   
 
 
@@ -167,7 +167,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-right page-post-detail ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -385,55 +385,35 @@
       
 
       
-        
-本篇文章翻译自[Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)](https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-dataset/)。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。
-
-------
-
-MIREX-Like数据集第一次在10th International Symposium on Computer Music Multidisciplinary Research-CMMR‘2013会议上公布出来[1]，由于一直缺乏标准的，标注质量好的音乐情感数据集，研究者们在绝大部分音乐情感学术研究里都使用自己制作的数据集，这导致他们取得的结果不能够在同一个数据集上进行比较。尽管每年MIREX 情感识别竞赛有mirex mood classification数据集，但是这个数据集不是公开的。新的MIREX-Like数据集 包含了903首音乐样本，同样这也是一个用于音乐情感研究的多模态数据集，它还囊括了歌词和每首歌的MIDI，但是它只有196首歌曲的MIDI。
-
-- **数据集的获取**
-
-MIREX-Like数据集的制作者从ALLMusic收集数据，ALLMusic上的音乐标注都是由专业人员标注，而不是Last.FM的数据都是由音乐社区中的音乐听众标注的。所以ALLMusic的标注可能更加可靠。制作者收集标注时使用的情感标签和MIREX 08数据集是一致的。如果某首音乐的标签属于多个类别，那么他们会偏向选择标签数量更多的情感类别。比如：一首歌有’passionate‘(Cluster1)，‘confident’(Cluster1),’humorous‘(Cluster4)，那么这首歌会被分类到Cluster1。MIREX-Like数据集总共903首音乐歌曲，在五个类别上的数量分布是很平衡的，其中18.8%cluster 1, 18.2% cluster 2, 23.8% cluster 3, 21.2% cluster 4 and 18.1% cluster 5。
-
-- **数据特征**
-
-即便标签都是由专业人员标注，这些标签在五个类别的的划分仍然不是很合理。尽管我们不能直接比较两个数据集，因为我们没有办法听到MIREX 08数据集的音乐文件。通过一个简单的验证步骤，我们能够得到结论：MIREX-Like数据集的歧义性(原文用的是ambiguity)比MIREX 08高。
-
-的确，拿我们论文[2]当中用过的特征，使用SVM在MIREX-Like数据集分类，accuracy只有区区的40%，相比MIREX 08上的大多数结果在60%左右，这是一个很低的结果。MIREX-Like数据集的作者也在该文章[1]中使用了他们的分类方法，用SVM分类也只有44.9%的分类准确率。然而，他们使用一些旋律相关特征时，准确率可以提高到52.8%。他们基于旋律自动提取系统提取的98个旋律相关特征，尽管这些特征的用途并不相同。
-
-- **类别分析**
-
-就在语义空间表示而言，用来讨论分析情感分类方法使用的不同情感分类类别是非常重要的，因为它或许能够解释这些分类算法的混乱。文献[4]分析了不同情感空间表示的intra-cluster similarity(类内相似性)和inter-cluster similarity(类间相似性)。intra-cluster similarity衡量的是**community-based表征和expert-based表征(如Russell情感表示[5])之间的一致性**
-
-就MIREX使用的五类情感类别而言，具有最低intra-cluster similarity的是cluster2(sweet, good natured,cheerful, rollicking, amiable, fun)，也许这么普通大众和专家意见如此一致的原因是这一类都是一些使人快乐的音乐。然而如果使用的形容词如果不是如此普通寻常的词语的话，这样做也许会降低这个值。总之MIREX 的情感表示的intra-cluster similarity相当高。
-
-inter-cluster similarity，它在音乐情感分类方法中非常重要，衡量的是不同的情感类别之间的独立性(原文用的how separable the cluster are)，它的计算方法是取一个类别质心(类别内所有点的平均值)到其他所有类别质心之间的余弦距离，文献[4]给出了MIREX clusters类别的inter-cluster similarity混淆矩阵(confusion matrix)。这个矩阵告诉我们，cluster1和cluster5的值最低，表示这两个情感类别相当相似。
-
-这些发现和MIREX竞赛上的结果是一致的，这两类的混淆性也很显著(见文献[6]），文献6也给出了cluster2和cluster4的混淆性(confusion)。
-
-此外观察到的最独立的cluster5和cluster2，在MIREX 分类结果上也具有比较小的混淆性(confusion)[4]。
-
-![](images/Mirex-like数据集的插图.jpg)
-
-Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感表示既有优点但是也有局限性，观察到的不同MIREX cluster之间的混淆性和相似性验证了先前分析的结果。
-
-从Lauriers分析中的计算结果来看，他认为MIREX的情感表示目前不是一个最优的表示方法。
-
-### References
-
-[1] R. Panda, R. Malheiro, B. Rocha, A. Oliveira, and R. P. Paiva, “Multi-Modal Music Emotion Recognition: A New Dataset, Methodology and Comparative Analysis” 10th International Symposium on Computer Music Multidisciplinary Research – CMMR’2013.
-
-[2] Laurier, Cyril, et al. “Audio music mood classification using support vector machine.” *MIREX task on Audio Mood Classification* (2007): 2-4.
-
-[3] Salamon, Justin, Bruno Rocha, and Emilia Gómez. “Musical genre classification using melody features extracted from polyphonic music signals.” *Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on*. IEEE, 2012.
-
-[4] Laurier, Cyril. *Automatic classification of musical mood by content based analysis*. Universitat Pompeu Fabra, 2011.
-
-[5] Ressel, J. A. “A circumplex model of affect.” *J. Personality and Social Psychology* 39 (1980): 1161-78.
-
-[6] Downie, X. H. J. S., Cyril Laurier, and M. B. A. F. Ehmann. “The 2007 MIREX audio mood classification task: Lessons learned.” *Proc. 9th Int. Conf. Music Inf. Retrieval*. 2008.
-
+        <p>本篇文章翻译自<a href="https://musicinformationretrieval.wordpress.com/2017/03/16/take-a-closure-look-at-the-dataset/" target="_blank" rel="noopener">Student blog for the MIR course, Master in Sound and Music Computing, Universitat Pompeu Fabra (2017)</a>。我觉得还挺有意思的就翻译了一下，有些我拿不准的地方我就引用了原文的词语。这两个数据集还挺有意思。</p>
+<hr>
+<p>MIREX-Like数据集第一次在10th International Symposium on Computer Music Multidisciplinary Research-CMMR‘2013会议上公布出来[1]，由于一直缺乏标准的，标注质量好的音乐情感数据集，研究者们在绝大部分音乐情感学术研究里都使用自己制作的数据集，这导致他们取得的结果不能够在同一个数据集上进行比较。尽管每年MIREX 情感识别竞赛有mirex mood classification数据集，但是这个数据集不是公开的。新的MIREX-Like数据集 包含了903首音乐样本，同样这也是一个用于音乐情感研究的多模态数据集，它还囊括了歌词和每首歌的MIDI，但是它只有196首歌曲的MIDI。</p>
+<ul>
+<li><strong>数据集的获取</strong></li>
+</ul>
+<p>MIREX-Like数据集的制作者从ALLMusic收集数据，ALLMusic上的音乐标注都是由专业人员标注，而不是Last.FM的数据都是由音乐社区中的音乐听众标注的。所以ALLMusic的标注可能更加可靠。制作者收集标注时使用的情感标签和MIREX 08数据集是一致的。如果某首音乐的标签属于多个类别，那么他们会偏向选择标签数量更多的情感类别。比如：一首歌有’passionate‘(Cluster1)，‘confident’(Cluster1),’humorous‘(Cluster4)，那么这首歌会被分类到Cluster1。MIREX-Like数据集总共903首音乐歌曲，在五个类别上的数量分布是很平衡的，其中18.8%cluster 1, 18.2% cluster 2, 23.8% cluster 3, 21.2% cluster 4 and 18.1% cluster 5。</p>
+<ul>
+<li><strong>数据特征</strong></li>
+</ul>
+<p>即便标签都是由专业人员标注，这些标签在五个类别的的划分仍然不是很合理。尽管我们不能直接比较两个数据集，因为我们没有办法听到MIREX 08数据集的音乐文件。通过一个简单的验证步骤，我们能够得到结论：MIREX-Like数据集的歧义性(原文用的是ambiguity)比MIREX 08高。</p>
+<p>的确，拿我们论文[2]当中用过的特征，使用SVM在MIREX-Like数据集分类，accuracy只有区区的40%，相比MIREX 08上的大多数结果在60%左右，这是一个很低的结果。MIREX-Like数据集的作者也在该文章[1]中使用了他们的分类方法，用SVM分类也只有44.9%的分类准确率。然而，他们使用一些旋律相关特征时，准确率可以提高到52.8%。他们基于旋律自动提取系统提取的98个旋律相关特征，尽管这些特征的用途并不相同。</p>
+<ul>
+<li><strong>类别分析</strong></li>
+</ul>
+<p>就在语义空间表示而言，用来讨论分析情感分类方法使用的不同情感分类类别是非常重要的，因为它或许能够解释这些分类算法的混乱。文献[4]分析了不同情感空间表示的intra-cluster similarity(类内相似性)和inter-cluster similarity(类间相似性)。intra-cluster similarity衡量的是<strong>community-based表征和expert-based表征(如Russell情感表示[5])之间的一致性</strong></p>
+<p>就MIREX使用的五类情感类别而言，具有最低intra-cluster similarity的是cluster2(sweet, good natured,cheerful, rollicking, amiable, fun)，也许这么普通大众和专家意见如此一致的原因是这一类都是一些使人快乐的音乐。然而如果使用的形容词如果不是如此普通寻常的词语的话，这样做也许会降低这个值。总之MIREX 的情感表示的intra-cluster similarity相当高。</p>
+<p>inter-cluster similarity，它在音乐情感分类方法中非常重要，衡量的是不同的情感类别之间的独立性(原文用的how separable the cluster are)，它的计算方法是取一个类别质心(类别内所有点的平均值)到其他所有类别质心之间的余弦距离，文献[4]给出了MIREX clusters类别的inter-cluster similarity混淆矩阵(confusion matrix)。这个矩阵告诉我们，cluster1和cluster5的值最低，表示这两个情感类别相当相似。</p>
+<p>这些发现和MIREX竞赛上的结果是一致的，这两类的混淆性也很显著(见文献[6]），文献6也给出了cluster2和cluster4的混淆性(confusion)。</p>
+<p>此外观察到的最独立的cluster5和cluster2，在MIREX 分类结果上也具有比较小的混淆性(confusion)[4]。</p>
+<p><img src="images/Mirex-like数据集的插图.jpg" alt></p>
+<p>Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感表示既有优点但是也有局限性，观察到的不同MIREX cluster之间的混淆性和相似性验证了先前分析的结果。</p>
+<p>从Lauriers分析中的计算结果来看，他认为MIREX的情感表示目前不是一个最优的表示方法。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p>[1] R. Panda, R. Malheiro, B. Rocha, A. Oliveira, and R. P. Paiva, “Multi-Modal Music Emotion Recognition: A New Dataset, Methodology and Comparative Analysis” 10th International Symposium on Computer Music Multidisciplinary Research – CMMR’2013.</p>
+<p>[2] Laurier, Cyril, et al. “Audio music mood classification using support vector machine.” <em>MIREX task on Audio Mood Classification</em> (2007): 2-4.</p>
+<p>[3] Salamon, Justin, Bruno Rocha, and Emilia Gómez. “Musical genre classification using melody features extracted from polyphonic music signals.” <em>Acoustics, Speech and Signal Processing (ICASSP), 2012 IEEE International Conference on</em>. IEEE, 2012.</p>
+<p>[4] Laurier, Cyril. <em>Automatic classification of musical mood by content based analysis</em>. Universitat Pompeu Fabra, 2011.</p>
+<p>[5] Ressel, J. A. “A circumplex model of affect.” <em>J. Personality and Social Psychology</em> 39 (1980): 1161-78.</p>
+<p>[6] Downie, X. H. J. S., Cyril Laurier, and M. B. A. F. Ehmann. “The 2007 MIREX audio mood classification task: Lessons learned.” <em>Proc. 9th Int. Conf. Music Inf. Retrieval</em>. 2008.</p>
 
       
     </div>
@@ -526,8 +506,17 @@ Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感�
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -570,13 +559,6 @@ Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感�
 
         </nav>
 
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
         
 
         <div class="links-of-author motion-element">
@@ -643,6 +625,22 @@ Laurier表示MIREX的情感类别表示，还有在他研究里的其他情感�
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#References"><span class="nav-number">1.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -966,24 +964,7 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
