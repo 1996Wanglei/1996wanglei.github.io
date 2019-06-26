@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-26T08:02:51.199Z</updated>
+  <updated>2019-06-26T08:30:20.309Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/06/26/Onsets/"/>
     <id>http://yoursite.com/2019/06/26/Onsets/</id>
     <published>2019-06-26T07:51:12.000Z</published>
-    <updated>2019-06-26T08:02:51.199Z</updated>
+    <updated>2019-06-26T08:30:20.309Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-文章出处"><a href="#1-文章出处" class="headerlink" title="1.文章出处"></a>1.文章出处</h4><p>发在2018ISMIR,来自Google Brain团队,<a href="https://arxiv.org/pdf/1710.11153.pdf" target="_blank" rel="noopener">paper链接</a></p><h4 id="2-文章简介"><a href="#2-文章简介" class="headerlink" title="2.文章简介"></a>2.文章简介</h4><blockquote><p>“这篇文章已经把钢琴自动转录未来五年甚至十年的工作都做完了”. 我们用程序Demo转换了一首比较复杂的钢琴曲,听到转录的结果, 于是发出了这样的感叹.</p></blockquote><p>本篇论文主要解决的问题是复音钢琴自动转录,也就是将原始的钢琴演奏音频转换为MIDI表示. </p><p>这篇论文的主要方法使用了一个onset检测器和一个framewise检测器,framewise检测器的预测值收到onset检测器值的限制:<strong>只有onset检测器同意在帧中有onset的存在,framewise检测器才会预测一个新的音符</strong>.作者认为只有同时改善音符的onset和offset才符合人类对音乐的感知.作者还拓展了模型预测velocity值,使得转录的结果听起来更加自然.</p><p>在MAPS数据集的转录结果在Note,Frame,以及Note(带offset)的F1 score相较于之前的state-of-the-art都有足足一倍的提升!!</p><p>本文还提出了一个新的评价指标:note with offset</p><h4 id="3-文章主要方法"><a href="#3-文章主要方法" class="headerlink" title="3.文章主要方法"></a>3.文章主要方法</h4><h5 id="3-1-mel-spectrograms参数"><a href="#3-1-mel-spectrograms参数" class="headerlink" title="3.1 mel-spectrograms参数"></a>3.1 mel-spectrograms参数</h5><p>229 mel-bins, 2048 FFT Window size, 16000Hz采样率.将该频谱结果作为CNN的输入.</p><p><img src="/images/onsets.jpg" alt></p><h5 id="3-2-onset-detector"><a href="#3-2-onset-detector" class="headerlink" title="3.2 onset detector"></a>3.2 onset detector</h5><p>卷积层的输出作为128 units双向LSTM的输入,LSTM后接一个88 维输出的全连接层,88维的输出表示88个钢琴key的onset概率.</p><h5 id="3-3-framewise-detector"><a href="#3-3-framewise-detector" class="headerlink" title="3.3 framewise detector"></a>3.3 framewise detector</h5><p>这个检测器的构成略有不同,首先是卷积层,接一个88维输出的全连接层,这个88维的输出向量会和onset detection端的对88个钢琴key的onset预测向量concatenate成一个176维向量,再过一个88维输出的全连接层.</p><h5 id="3-4-Loss"><a href="#3-4-Loss" class="headerlink" title="3.4 Loss"></a>3.4 Loss</h5><p>总的loss是由onset端和note端两个cross-entrophy组成.</p><p><img src="/images/loss1.png" alt></p><p>$p<em>{min}$和$p</em>{max}$表示MIDI的音高范围,T代表样本中有帧的数目,$I<em>{onset}(p,t)$ 是一个标志值,当在帧t和音高p处有一个真实的onset时,它的值为1.$P</em>{onset}(p,t)$表示模型在帧t和音高p处预测概率表示,CE代表交叉熵.</p><p><img src="/images/130.png" alt></p><p>作者在这里定义了note端frame loss: 当在帧t如果音高p有真实标注值时,$I<em>{frame}(p,t)$是1,$P</em>{frame}(p,t)$则是代表模型预测的帧t处音高p被激活的概率.</p><p><img src="/images/132.png" alt></p><p>值得注意的是,作者为了激励模型对音符起始端的预测准确率,对上面的frame loss加了一个额外的权值.我们记上面的frame loss为$L’<em>{frame}(l,p)$,假设一个音符的onset在帧$t</em>{1}$处,在帧$t<em>{2}$处完成onset,在$t</em>{3}$处结束音符,如果我们给权值向量在音符的初始帧处赋予更高的权值,那么激励模型更加准确的预测音符的起始端.也就能够保留piece中最重要的musical events.</p><p><img src="/images/133.png" alt></p><p>这里c=5.0,作者做了coarse hyperparameter得到的.</p><p>作者将模型继续拓展,增加了一个模型预测每一个onset的velocities,这个模型和其他两个模型相同且包含了同样的卷积层,但是这个模型和其他两个没有联系. </p><p><img src="/images/131.png" alt></p><p>在上述实验中velocity的标签被归一化到了[0,1]间,是一个piece中所有的vecolity都被除以了这个piece中最大的velocity,将归一化后的velocity转换回来使用以下映射.</p><p><img src="/images/134.png" alt></p><p>作者发现在帧上和pitch上做对velocity的评价指标在之前的研究是一片空白,为此作者提出了新的note-level上的precision,recall,F1 scores.</p><p>直接对velocity评价不易,因为不像pitch和帧,velocity没有绝对的意义.比如说两个转录都包含了同一个确定的velocity,如果这两个velocity由某个常数因子偏移或者缩放了,导致每个音符的velocity完全不同,但是这两个转录系统仍然是非常等价的.</p><p>为此作者做了以下处理:先将转录中的真实velocity全部归一化到[0,1],将所有音符根据音高,onset和offset匹配好,为这些匹配好的音符加上真实的velocity和模型估计的velocity,然后做一个线性回归</p><p><img src="/images/135.png" alt></p><p>其中M是匹配的个数,估计出m和b之后,使用这两个参数估计新的$v_{e}$</p><p><img src="/images/136.png" alt></p><p>最后定一个阈值$\tau$=0.1,选取$\begin{array}{l}\left|\widehat{v_e}(i)-v_r(i)\right|&lt;\tau\\end{array}$,这样就消除了偏移或者缩放的问题.</p><p>选取符合条件的匹配,重新计算precision,recall,F1 score.</p><h4 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4.实验结果"></a>4.实验结果</h4><p><img src="/images/137.png" alt></p><p>可以看到Onsets and Frames算法在四类评价指标上在之前的state-of-the-art相比都取得了巨大的提升,甚至在某些指标上取得了100%的提升.</p><p>值得一提的是,这篇文章发在2018年ISMIR上,大约四月截稿,在2018年10月截稿的2019年一篇ICASSP论文”<a href="https://ieeexplore.ieee.org/abstract/document/8683582" target="_blank" rel="noopener">Deep Polyphonic ADSR Piano Note Transcription</a>“,来自奥地利的研究者又在MAPS数据集上刷新了state-of-the-art谷歌brain的人并不服输,还是这篇论文的作者们在2019年ICLR上的一篇论文<a href="https://arxiv.org/abs/1810.12247" target="_blank" rel="noopener">“Enabling Factorized Piano Music Modeling and Generation with the MAESTRO Dataset”</a>又在ICASSP这篇文章上大幅刷新state-of-the-art.有趣的是.这篇文章是2018.10.29提交到arxiv上的,而2019icassp正好是10.29截止.好险,要是再晚一两个月.说不定那篇文章就中不了了.由此也可以看出这个钢琴转录的课题普通课题组绝对不需要做了,浪费时间.</p>]]></content>
     
@@ -33,6 +33,8 @@
       
     
     </summary>
+    
+      <category term="音乐信息检索" scheme="http://yoursite.com/categories/%E9%9F%B3%E4%B9%90%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2/"/>
     
     
       <category term="piano transcrption" scheme="http://yoursite.com/tags/piano-transcrption/"/>
