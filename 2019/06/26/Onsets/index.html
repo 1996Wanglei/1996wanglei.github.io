@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://yoursite.com/images/135.png">
 <meta property="og:image" content="http://yoursite.com/images/136.png">
 <meta property="og:image" content="http://yoursite.com/images/137.png">
-<meta property="og:updated_time" content="2019-06-26T08:43:46.814Z">
+<meta property="og:updated_time" content="2019-06-26T11:24:55.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Onsets and Frames Dual-objecive piano transcription">
 <meta name="twitter:description" content="1.文章出处发在2018ISMIR,来自Google Brain团队,paper链接 2.文章简介 “这篇文章已经把钢琴自动转录未来五年甚至十年的工作都做完了”. 我们用程序Demo转换了一首比较复杂的钢琴曲,听到转录的结果, 于是发出了这样的感叹.  本篇论文主要解决的问题是复音钢琴自动转录,也就是将原始的钢琴演奏音频转换为MIDI表示.  这篇论文的主要方法使用了一个onset检测器和一个fr">
@@ -425,7 +425,7 @@
 <p><img src="/images/135.png" alt></p>
 <p>其中M是匹配的个数,估计出m和b之后,使用这两个参数估计新的$v_{e}$</p>
 <p><img src="/images/136.png" alt></p>
-<p>最后定一个阈值$\tau$=0.1,选取$\begin{array}{l}\left|\widehat{v_e}(i)-v_r(i)\right|&lt;\tau\\end{array}$,这样就消除了偏移或者缩放的问题.</p>
+<p>最后定一个阈值$\tau$=0.1,选取$\left|{\widehat v}_e(i)-v_r(i)\right|&lt;\tau$,这样就消除了偏移或者缩放的问题.</p>
 <p>选取符合条件的匹配,重新计算precision,recall,F1 score.</p>
 <h4 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4.实验结果"></a>4.实验结果</h4><p><img src="/images/137.png" alt></p>
 <p>可以看到Onsets and Frames算法在四类评价指标上在之前的state-of-the-art相比都取得了巨大的提升,甚至在某些指标上取得了100%的提升.</p>
