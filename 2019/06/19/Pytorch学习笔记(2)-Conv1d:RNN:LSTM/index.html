@@ -405,22 +405,22 @@
 <li>Input(batch_size, Channel_input, length_input)</li>
 <li>Output(batch_size, Channel_output, length_output)</li>
 </ul>
-<p>$L_{out}=\lfloor\frac{L_{in}+2\times padding-dilation\times(kernel_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$</p>
+<p>$L<em>{out}=\lfloor\frac{L</em>{in}+2\times padding-dilation\times(kernel_size-1)-1}{stride}+1\rfloor=\frac{129+2\times2-1\times(4-1)-1}1+1=130$</p>
 <h3 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h3><p>结构</p>
 <p><img src="/images/RNN.jpeg" alt></p>
 <h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><p><code>torch.nn.RNN</code>(<strong>args<em>, </em></strong>kwargs*)</p>
 <p>这个函数对输入的的sequence施加一个带tanh或者Relu的RNN.对输入的sequence每一个元素,每一层都施加如下计算:</p>
 <ul>
-<li>$h_t=tanh(W_{hi}xt+b_{hi}+W_{hh}h_{t-1}+b_{hh})$</li>
+<li>$h<em>t=tanh(W</em>{hi}xt+b<em>{hi}+W</em>{hh}h<em>{t-1}+b</em>{hh})$</li>
 </ul>
-<p>$h_t$是t时刻的隐层状态,$x_t$是t时刻的输入,$h_{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.</p>
+<p>$h<em>t$是t时刻的隐层状态,$x_t$是t时刻的输入,$h</em>{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.</p>
 <p>参数:</p>
 <ul>
 <li>input_size:输入x的维度</li>
 <li>hidden_size:隐层状态h的维度</li>
 <li>numpy_layers:循环层的数目</li>
 <li>nonlinearity: 非线性变换,可以使tanh或者relu, 默认是tanh</li>
-<li>bias:如果是False,不使用$b_{hi}$和$b_{hh}$,默认为True</li>
+<li>bias:如果是False,不使用$b<em>{hi}$和$b</em>{hh}$,默认为True</li>
 <li>batch_first: 如果是True,输入和输出张量的形状是{batch,seq,feature}</li>
 <li>bidirectional: 如果是True,那么是一个双向RNN</li>
 </ul>
@@ -443,14 +443,14 @@
 <h4 id="函数-1"><a href="#函数-1" class="headerlink" title="函数"></a>函数</h4><p><code>torch.nn.LSTM</code>(<strong>args<em>, </em></strong>kwargs*)</p>
 <p>这个函数对输入的sequence施加一个多层的长短周期记忆RNN.对输入的sequence的每一个元素,每一层都施加如下计算.</p>
 <ul>
-<li>$f_t=\sigma(W_{fi}\;x_t+b_{fi}+W_{fh}h_{t-1}+b_{fh})$</li>
-<li>$i_t=\sigma(W_{ii}\;x_t+b_{ii}+W_{ih}h_{t-1}+b_{if})$</li>
-<li>$g_t=\tan h(W_{gi}\;x_t+b_{gi}+W_{gh}h_{t-1}+b_{gh})$</li>
-<li>$o_t=\sigma(W_{oi}\;x_t+b_{oi}+W_{oh}h_{t-1}+b_{oh})$</li>
-<li>$c_t=f_t\ast c_{t-1}+i_t\ast g_t$</li>
+<li>$f<em>t=\sigma(W</em>{fi}\;x<em>t+b</em>{fi}+W<em>{fh}h</em>{t-1}+b_{fh})$</li>
+<li>$i<em>t=\sigma(W</em>{ii}\;x<em>t+b</em>{ii}+W<em>{ih}h</em>{t-1}+b_{if})$</li>
+<li>$g<em>t=\tan h(W</em>{gi}\;x<em>t+b</em>{gi}+W<em>{gh}h</em>{t-1}+b_{gh})$</li>
+<li>$o<em>t=\sigma(W</em>{oi}\;x<em>t+b</em>{oi}+W<em>{oh}h</em>{t-1}+b_{oh})$</li>
+<li>$c<em>t=f_t\ast c</em>{t-1}+i_t\ast g_t$</li>
 <li>$h_t=\tan h(c_t)\ast o_t$</li>
 </ul>
-<p>$h_t$是t时刻的隐层状态,$c_t$是t时刻的细胞状态,$x_t$是t时刻的输入,$h_{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.$i_t$,$f_t$,$g_t$,$o_t$是输入门,忘记门,细胞门,输出门.$\sigma$是sigmoid函数,*是元素乘积</p>
+<p>$h<em>t$是t时刻的隐层状态,$c_t$是t时刻的细胞状态,$x_t$是t时刻的输入,$h</em>{t-1}$是t-1时刻的隐层状态或者是0时刻的隐层状态.$i_t$,$f_t$,$g_t$,$o_t$是输入门,忘记门,细胞门,输出门.$\sigma$是sigmoid函数,*是元素乘积</p>
 <p>LSTM函数的参数和RNN都是一致的,区别在于输入输出不同,从上面的简图可以看出,LSTM多了一个细胞的状态,所以每一个循环层都增加了一个细胞状态的输出.</p>
 <p>输入:input,(h_0,c_0)</p>
 <p>input的形状和RNN的一样,都是(seq_len,betch,input_size)</p>
@@ -1027,7 +1027,24 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 

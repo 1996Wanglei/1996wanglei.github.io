@@ -396,7 +396,7 @@
 </blockquote>
 <p>然后… 就变成了这个报错</p>
 <blockquote>
-<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model <a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>:/home/wanglei/PycharmProjects/fma_dataset<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied (publickey,password).<br>lost connection</p>
+<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model mer@10.141.247.205:/home/wanglei/PycharmProjects/fma_dataset<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied (publickey,password).<br>lost connection</p>
 </blockquote>
 <p>查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config</p>
 <blockquote>
@@ -983,7 +983,24 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 

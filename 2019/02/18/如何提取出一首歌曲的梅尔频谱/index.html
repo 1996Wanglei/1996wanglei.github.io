@@ -391,7 +391,9 @@
 <p>如下图1一段声音信号直观地看起来是时间和能量的关系，在语音识别，音乐信息检索中常常关注的是声音中频率和能量的关系，即声谱图描述的就是频率和能量的关系。所以我们拿到一段音频需要先进行初步的处理，获得它的声谱图。具体的做法则是将声音信号分帧，然后对每一帧都用短时傅里叶变换处理，当然进行傅里叶变换之前还预先需要对声音信号进行预加重，加窗。</p>
 <p><img src="/images/声波图.jpg" alt></p>
 <p>2.梅尔频谱</p>
-<p>由于人耳对声音的感知不是线性的，人耳对声音的低频比对声音的高频更加敏感。所以常常需要将线性频谱转换到非线性的梅尔频谱。普通频率转换到梅尔频率的公式是<br>$$<br>m=2595log_{10}(1+\frac f{700})<br>$$<br>我们将一组频域信号通过梅尔滤波器组就可以获得梅尔频谱。</p>
+<p>由于人耳对声音的感知不是线性的，人耳对声音的低频比对声音的高频更加敏感。所以常常需要将线性频谱转换到非线性的梅尔频谱。普通频率转换到梅尔频率的公式是</p>
+<script type="math/tex; mode=display">
+m=2595log_{10}(1+\frac f{700})</script><p>我们将一组频域信号通过梅尔滤波器组就可以获得梅尔频谱。</p>
 <p>总结一下获得梅尔频谱的大概流程：首先对时域信号进行傅里叶变换转换到频域，然后再利用梅尔频率刻度的滤波器组对应频域信号进行处理，就可以得到梅尔频谱。这个流程可以使用<a href="https://librosa.github.io/librosa/index.html" target="_blank" rel="noopener">librosa库</a>来完成，下面就是相应的代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> librosa</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_melcepstrum</span><span class="params">(audio_path,mel_save_path)</span>:</span></span><br><span class="line">	y, sr = librosa.load(aduio_path,sr=<span class="number">22050</span>) <span class="comment">#返回这首歌的time series序列和采样率</span></span><br><span class="line">	S = librosa.core.stft(y,n_fft=<span class="number">1024</span>,hop_length=<span class="number">512</span>,win_length=<span class="number">1024</span>)</span><br><span class="line">	<span class="comment"># S.shape = (1+n_fft/2,帧数)</span></span><br><span class="line">	X = np.abs(S)</span><br><span class="line">	mel_basis = librosa.filters.mel(r,n_fft=<span class="number">1024</span>,n_mels=<span class="number">128</span>) <span class="comment">#梅尔滤波器矩阵</span></span><br><span class="line">	<span class="comment"># mel_basis.shape=(n_mels,1+n_fft/2)</span></span><br><span class="line">	mel_s = np.dot(mel_basis,X)</span><br><span class="line">	np.save(mel_save_path,mel_s)</span><br></pre></td></tr></table></figure>
 <p>reference</p>
@@ -935,7 +937,24 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 

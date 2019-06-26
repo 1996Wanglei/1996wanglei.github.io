@@ -395,7 +395,7 @@
 <h4 id="2-Dataset类"><a href="#2-Dataset类" class="headerlink" title="2.Dataset类"></a>2.Dataset类</h4><blockquote>
 <p>class torch.utils.data.Dataset</p>
 </blockquote>
-<p>这个抽象类代表了数据集，任何我们自己设计的数据集类都应该是这个类的子类，继承这个类，重写 __len__() 方法，这个方法是用来获得数据集的大小，和__getitem__()方法，这个方法用来返回数据集中索引值为0到len(dataset)的元素。</p>
+<p>这个抽象类代表了数据集，任何我们自己设计的数据集类都应该是这个类的子类，继承这个类，重写 <em>_len__() 方法，这个方法是用来获得数据集的大小，和\</em>_getitem__()方法，这个方法用来返回数据集中索引值为0到len(dataset)的元素。</p>
 <ul>
 <li>def __getitem__(self, index): 实现这个函数，就可以通过索引值来返回训练样本数据</li>
 <li>def __len__(self): 实现这个函数，返回数据集的大小</li>
@@ -973,7 +973,24 @@ setInterval("createtime()",250);
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 
