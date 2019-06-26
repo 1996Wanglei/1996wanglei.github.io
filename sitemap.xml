@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/06/26/Onsets/</loc>
+    
+    <lastmod>2019-06-26T08:02:51.199Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/05/24/recommending-music-on-Spotify-with-deep-learning/</loc>
+    
+    <lastmod>2019-06-26T07:53:58.569Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/06/19/Pytorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(2)-Conv1d:RNN:LSTM/</loc>
     
     <lastmod>2019-06-19T08:14:18.615Z</lastmod>
@@ -110,13 +124,6 @@
     <loc>http://yoursite.com/2019/03/19/%E5%A5%B9/</loc>
     
     <lastmod>2019-05-30T02:22:43.031Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/05/24/recommending-music-on-Spotify-with-deep-learning/</loc>
-    
-    <lastmod>2019-05-27T11:10:16.961Z</lastmod>
     
   </url>
   
