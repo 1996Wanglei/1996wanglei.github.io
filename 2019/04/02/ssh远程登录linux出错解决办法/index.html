@@ -394,7 +394,7 @@
 </blockquote>
 <p>然后… 就变成了这个报错</p>
 <blockquote>
-<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model mer@10.141.247.205:/home/wanglei/PycharmProjects/fma_dataset<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied (publickey,password).<br>lost connection</p>
+<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model <a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>:/home/wanglei/PycharmProjects/fma_dataset<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied, please try again.<br><a href="mailto:mer@10.141.247.205" target="_blank" rel="noopener">mer@10.141.247.205</a>‘s password:<br>Permission denied (publickey,password).<br>lost connection</p>
 </blockquote>
 <p>查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config</p>
 <blockquote>

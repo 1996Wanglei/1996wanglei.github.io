@@ -408,11 +408,11 @@
 <h5 id="3-3-framewise-detector"><a href="#3-3-framewise-detector" class="headerlink" title="3.3 framewise detector"></a>3.3 framewise detector</h5><p>这个检测器的构成略有不同,首先是卷积层,接一个88维输出的全连接层,这个88维的输出向量会和onset detection端的对88个钢琴key的onset预测向量concatenate成一个176维向量,再过一个88维输出的全连接层.</p>
 <h5 id="3-4-Loss"><a href="#3-4-Loss" class="headerlink" title="3.4 Loss"></a>3.4 Loss</h5><p>总的loss是由onset端和note端两个cross-entrophy组成.</p>
 <p><img src="/images/loss1.png" alt></p>
-<p>$p<em>{min}$和$p</em>{max}$表示MIDI的音高范围,T代表样本中有帧的数目,$I<em>{onset}(p,t)$ 是一个标志值,当在帧t和音高p处有一个真实的onset时,它的值为1.$P</em>{onset}(p,t)$表示模型在帧t和音高p处预测概率表示,CE代表交叉熵.</p>
+<p>$p_{min}$和$p_{max}$表示MIDI的音高范围,T代表样本中有帧的数目,$I_{onset}(p,t)$ 是一个标志值,当在帧t和音高p处有一个真实的onset时,它的值为1.$P_{onset}(p,t)$表示模型在帧t和音高p处预测概率表示,CE代表交叉熵.</p>
 <p><img src="/images/130.png" alt></p>
-<p>作者在这里定义了note端frame loss: 当在帧t如果音高p有真实标注值时,$I<em>{frame}(p,t)$是1,$P</em>{frame}(p,t)$则是代表模型预测的帧t处音高p被激活的概率.</p>
+<p>作者在这里定义了note端frame loss: 当在帧t如果音高p有真实标注值时,$I_{frame}(p,t)$是1,$P_{frame}(p,t)$则是代表模型预测的帧t处音高p被激活的概率.</p>
 <p><img src="/images/132.png" alt></p>
-<p>值得注意的是,作者为了激励模型对音符起始端的预测准确率,对上面的frame loss加了一个额外的权值.我们记上面的frame loss为$L’<em>{frame}(l,p)$,假设一个音符的onset在帧$t</em>{1}$处,在帧$t<em>{2}$处完成onset,在$t</em>{3}$处结束音符,如果我们给权值向量在音符的初始帧处赋予更高的权值,那么激励模型更加准确的预测音符的起始端.也就能够保留piece中最重要的musical events.</p>
+<p>值得注意的是,作者为了激励模型对音符起始端的预测准确率,对上面的frame loss加了一个额外的权值.我们记上面的frame loss为$L’<em>{frame}(l,p)$,假设一个音符的onset在帧$t</em>{1}$处,在帧$t_{2}$处完成onset,在$t_{3}$处结束音符,如果我们给权值向量在音符的初始帧处赋予更高的权值,那么激励模型更加准确的预测音符的起始端.也就能够保留piece中最重要的musical events.</p>
 <p><img src="/images/133.png" alt></p>
 <p>这里c=5.0,作者做了coarse hyperparameter得到的.</p>
 <p>作者将模型继续拓展,增加了一个模型预测每一个onset的velocities,这个模型和其他两个模型相同且包含了同样的卷积层,但是这个模型和其他两个没有联系. </p>
