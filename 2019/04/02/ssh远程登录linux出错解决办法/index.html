@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
+<meta name="description" content="#### 用ssh远程登录linux出错解决办法  #### 1.报错情况  &amp;gt; ssh：connect to &quot;my host&quot; port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题，  最开始尝试的解决办法是我没有装openssh-server  于是我用了以下两条命令  &amp;gt; 123&amp;gt; sudo apt-get purge opens">
 <meta name="keywords" content="Linux系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh远程登录linux出错解决办法">
 <meta property="og:url" content="http://yoursite.com/2019/04/02/ssh远程登录linux出错解决办法/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
+<meta property="og:description" content="#### 用ssh远程登录linux出错解决办法  #### 1.报错情况  &amp;gt; ssh：connect to &quot;my host&quot; port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题，  最开始尝试的解决办法是我没有装openssh-server  于是我用了以下两条命令  &amp;gt; 123&amp;gt; sudo apt-get purge opens">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-04-02T03:39:45.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh远程登录linux出错解决办法">
-<meta name="twitter:description" content="用ssh远程登录linux出错解决办法1.报错情况 ssh：connect to “my host” port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题， 最开始尝试的解决办法是我没有装openssh-server 于是我用了以下两条命令  123&amp;gt; sudo apt-get purge openssh-server &amp;gt; sudo">
+<meta name="twitter:description" content="#### 用ssh远程登录linux出错解决办法  #### 1.报错情况  &amp;gt; ssh：connect to &quot;my host&quot; port22:Connection refused  从服务器端想要传输文件回本地端时，首先出现这个问题，  最开始尝试的解决办法是我没有装openssh-server  于是我用了以下两条命令  &amp;gt; 123&amp;gt; sudo apt-get purge opens">
 
 
 
@@ -385,45 +385,62 @@
       
 
       
-        <h4 id="用ssh远程登录linux出错解决办法"><a href="#用ssh远程登录linux出错解决办法" class="headerlink" title="用ssh远程登录linux出错解决办法"></a>用ssh远程登录linux出错解决办法</h4><h4 id="1-报错情况"><a href="#1-报错情况" class="headerlink" title="1.报错情况"></a>1.报错情况</h4><blockquote>
-<p>ssh：connect to “my host” port22:Connection refused</p>
-</blockquote>
-<p>从服务器端想要传输文件回本地端时，首先出现这个问题，</p>
-<p>最开始尝试的解决办法是我没有装openssh-server</p>
-<p>于是我用了以下两条命令</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get purge openssh-server </span><br><span class="line">&gt; sudo apt-get install openssh-server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>然后… 就变成了这个报错</p>
-<blockquote>
-<p>mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model mer@10.141.247.205:/home/wanglei/PycharmProjects/fma_dataset<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied, please try again.<br>mer@10.141.247.205’s password:<br>Permission denied (publickey,password).<br>lost connection</p>
-</blockquote>
-<p>查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config</p>
-<blockquote>
-<p>sudo vi /etc/ssh/sshd_config</p>
-</blockquote>
-<p>将其中的PermitRootLogin设置成了yes</p>
-<blockquote>
-<p>PermitRootLogin yes</p>
-</blockquote>
-<p>还是出现了一样的问题，然后我又继续找，找到一个办法就是在/etc/ssh/sshd_config中加一个设置</p>
-<blockquote>
-<p>AllowUsers  yourusername</p>
-</blockquote>
-<p>这一行命令允许你的服务器连接到username为你上面设置的yourusername，其他的用户会被拒绝。</p>
-<p>别忘了重启ssh服务</p>
-<blockquote>
-<p>service sshd restart</p>
-</blockquote>
-<p>最后在终端打上这行命令即可发现你可以使用ssh连接远程的服务器端了,大功告成了!</p>
-<blockquote>
-<p>ssh yourusername@yourhostname </p>
-</blockquote>
-<h4 id="2-总结"><a href="#2-总结" class="headerlink" title="2.总结"></a>2.总结</h4><p>总的来说，我们需要在本地sshd_config中把你想要用的username 加入到AllowUsers中。</p>
-<p>具体流程</p>
-<blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo vi /etc/ssh/sshd_config</span><br><span class="line">&gt; PermitRootLogin yes</span><br><span class="line">&gt; AllowUsers otheruser</span><br><span class="line">&gt; service sshd restart</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
+        
+#### 用ssh远程登录linux出错解决办法
+
+#### 1.报错情况
+
+> ssh：connect to "my host" port22:Connection refused
+
+从服务器端想要传输文件回本地端时，首先出现这个问题，
+
+最开始尝试的解决办法是我没有装openssh-server
+
+于是我用了以下两条命令
+
+> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo apt-get purge openssh-server </span><br><span class="line">&gt; sudo apt-get install openssh-server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
+然后... 就变成了这个报错
+
+> mirlab@mirlab-fdu:~/wanglei/fma_dataset$ scp -r /home/mirlab/wanglei/fma_dataset/saved_model mer@10.141.247.205:/home/wanglei/PycharmProjects/fma_dataset
+> mer@10.141.247.205's password: 
+> Permission denied, please try again.
+> mer@10.141.247.205's password: 
+> Permission denied, please try again.
+> mer@10.141.247.205's password: 
+> Permission denied (publickey,password).
+> lost connection
+
+查到原因说是我的sshd-config中没有允许root 用户登录。于是我又打开了/etc/ssh/sshd_config
+
+> sudo vi /etc/ssh/sshd_config
+
+将其中的PermitRootLogin设置成了yes
+
+> PermitRootLogin yes
+
+还是出现了一样的问题，然后我又继续找，找到一个办法就是在/etc/ssh/sshd_config中加一个设置
+
+> AllowUsers  yourusername
+
+这一行命令允许你的服务器连接到username为你上面设置的yourusername，其他的用户会被拒绝。
+
+别忘了重启ssh服务
+
+> service sshd restart
+
+最后在终端打上这行命令即可发现你可以使用ssh连接远程的服务器端了,大功告成了!
+
+> ssh yourusername@yourhostname 
+
+#### 2.总结
+
+总的来说，我们需要在本地sshd_config中把你想要用的username 加入到AllowUsers中。
+
+具体流程
+
+> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo vi /etc/ssh/sshd_config</span><br><span class="line">&gt; PermitRootLogin yes</span><br><span class="line">&gt; AllowUsers otheruser</span><br><span class="line">&gt; service sshd restart</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -518,17 +535,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -644,22 +652,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#用ssh远程登录linux出错解决办法"><span class="nav-number">1.</span> <span class="nav-text">用ssh远程登录linux出错解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-报错情况"><span class="nav-number">2.</span> <span class="nav-text">1.报错情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-总结"><span class="nav-number">3.</span> <span class="nav-text">2.总结</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

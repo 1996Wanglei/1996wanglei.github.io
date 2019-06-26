@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
+<meta name="description" content="#### 1.为什么不需要自己写加载方法  pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  - 每次读取代码不能够重">
 <meta name="keywords" content="Pytorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pytorch中如何加载训练数据">
 <meta property="og:url" content="http://yoursite.com/2019/03/29/pytorch中如何加载训练数据/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
+<meta property="og:description" content="#### 1.为什么不需要自己写加载方法  pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  - 每次读取代码不能够重">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-06-16T09:25:26.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pytorch中如何加载训练数据">
-<meta name="twitter:description" content="1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  每次读取代码不能够重用，不同的数据读取代">
+<meta name="twitter:description" content="#### 1.为什么不需要自己写加载方法  pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，  - 每次读取代码不能够重">
 
 
 
@@ -385,36 +385,47 @@
       
 
       
-        <h4 id="1-为什么不需要自己写加载方法"><a href="#1-为什么不需要自己写加载方法" class="headerlink" title="1.为什么不需要自己写加载方法"></a>1.为什么不需要自己写加载方法</h4><p>pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，</p>
-<ul>
-<li>每次读取代码不能够重用，不同的数据读取代码不同</li>
-<li>自己写的加载函数也会有各种问题，比如说限制数据读取速度，或者当数据集太大，直接加载到字典或者列表中会很占用内存，数据读取阶段也会占用大量时间</li>
-<li>只能单线程读取数据</li>
-</ul>
-<p>这次我做的实验需要加载歌曲的梅尔频谱，每个歌曲的片段为30秒，大约是一个1290*128大小的矩阵。所以这次我决定使用pytorch的Dataset类来加载数据。</p>
-<h4 id="2-Dataset类"><a href="#2-Dataset类" class="headerlink" title="2.Dataset类"></a>2.Dataset类</h4><blockquote>
-<p>class torch.utils.data.Dataset</p>
-</blockquote>
-<p>这个抽象类代表了数据集，任何我们自己设计的数据集类都应该是这个类的子类，继承这个类，重写 <em>_len__() 方法，这个方法是用来获得数据集的大小，和\</em>_getitem__()方法，这个方法用来返回数据集中索引值为0到len(dataset)的元素。</p>
-<ul>
-<li>def __getitem__(self, index): 实现这个函数，就可以通过索引值来返回训练样本数据</li>
-<li>def __len__(self): 实现这个函数，返回数据集的大小</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dataset</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""An abstract class representing a Dataset.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    All other datasets should subclass it. All subclasses should override</span></span><br><span class="line"><span class="string">    ``__len__``, that provides the size of the dataset, and ``__getitem__``,</span></span><br><span class="line"><span class="string">    supporting integer indexing in range from 0 to len(self) exclusive.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> ConcatDataset([self, other])</span><br></pre></td></tr></table></figure>
-<p>如果不重写这两个私有函数，就会触发错误。</p>
-<h4 id="3-定义自己的数据集类"><a href="#3-定义自己的数据集类" class="headerlink" title="3.定义自己的数据集类"></a>3.定义自己的数据集类</h4><p>于是我就针对自己的需求实现了以下的类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fma_dataset</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    <span class="comment"># root 是训练集的根目录， mode可选的参数是train，test，validation，分别读取相应的文件夹</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root, mode)</span>:</span> </span><br><span class="line">        self.mode = mode</span><br><span class="line">        self.root = root + <span class="string">"/fma_"</span> + self.mode</span><br><span class="line">        self.mel_cepstrum_path = self.get_sample(self.root)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        sample = np.load(self.mel_cepstrum_path[index])</span><br><span class="line">        data = torch.from_numpy(sample[<span class="number">0</span>])</span><br><span class="line">        target = torch.from_numpy(sample[<span class="number">1</span>].astype(np.float32))</span><br><span class="line">        <span class="keyword">return</span> data, target</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.mode == <span class="string">"train"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">23733</span>  <span class="comment"># 训练集大小</span></span><br><span class="line">        <span class="keyword">elif</span> self.mode == <span class="string">"validation"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">6780</span>  <span class="comment"># 验证集大小</span></span><br><span class="line">        <span class="keyword">elif</span> self.mode == <span class="string">"test"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3390</span>  <span class="comment"># 测试集大小</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_sample</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        cepstrum = []</span><br><span class="line">        <span class="keyword">for</span> entry <span class="keyword">in</span> os.scandir(root):</span><br><span class="line">            <span class="keyword">if</span> entry.is_file():</span><br><span class="line">                cepstrum.append(entry.path)</span><br><span class="line">        <span class="keyword">return</span> cepstrum</span><br></pre></td></tr></table></figure>
-<h4 id="4-DataLoader类"><a href="#4-DataLoader类" class="headerlink" title="4.DataLoader类"></a>4.DataLoader类</h4><blockquote>
-<p><em>class</em><code>torch.utils.data.DataLoader</code><strong>(</strong>dataset<strong>,</strong> <em>batch_size=1**</em>,<strong> <em>shuffle=False</em></strong>,<strong> <em>sampler=None</em></strong>,<strong> <em>batch_sampler=None</em></strong>,<strong> <em>num_workers=0</em></strong>,<strong> <em>collate_fn=<function default_collate></function></em></strong>,<strong> <em>pin_memory=False</em></strong>,<strong> <em>drop_last=False</em></strong>,<strong> <em>timeout=0</em></strong>,<strong> <em>worker_init_fn=None</em></strong>)**</p>
-</blockquote>
-<p>仅仅有通过索引返回训练数据数不够的，我们还需要DataLoad类提供拓展功能。</p>
-<ul>
-<li>可以分批次读取：batch-size</li>
-<li>可以对数据进行shuffle操作</li>
-<li>可以用多个线程来读取数据</li>
-</ul>
-<p>这个类我们不需要实现代码，直接调用，设置好参数就行了。</p>
+        
+#### 1.为什么不需要自己写加载方法
 
+pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自己设计加载方法。如果每次不同的数据集都要自己写函数加载，
+
+- 每次读取代码不能够重用，不同的数据读取代码不同
+- 自己写的加载函数也会有各种问题，比如说限制数据读取速度，或者当数据集太大，直接加载到字典或者列表中会很占用内存，数据读取阶段也会占用大量时间
+- 只能单线程读取数据
+
+这次我做的实验需要加载歌曲的梅尔频谱，每个歌曲的片段为30秒，大约是一个1290*128大小的矩阵。所以这次我决定使用pytorch的Dataset类来加载数据。
+
+#### 2.Dataset类
+
+> class torch.utils.data.Dataset
+
+这个抽象类代表了数据集，任何我们自己设计的数据集类都应该是这个类的子类，继承这个类，重写 _\_len__() 方法，这个方法是用来获得数据集的大小，和\_\_getitem\_\_()方法，这个方法用来返回数据集中索引值为0到len(dataset)的元素。
+
+- def \_\_getitem\_\_(self, index): 实现这个函数，就可以通过索引值来返回训练样本数据
+- def \_\_len__(self): 实现这个函数，返回数据集的大小
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dataset</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""An abstract class representing a Dataset.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    All other datasets should subclass it. All subclasses should override</span></span><br><span class="line"><span class="string">    ``__len__``, that provides the size of the dataset, and ``__getitem__``,</span></span><br><span class="line"><span class="string">    supporting integer indexing in range from 0 to len(self) exclusive.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__add__</span><span class="params">(self, other)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> ConcatDataset([self, other])</span><br></pre></td></tr></table></figure>
+
+如果不重写这两个私有函数，就会触发错误。
+
+#### 3.定义自己的数据集类
+
+于是我就针对自己的需求实现了以下的类。
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Fma_dataset</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    <span class="comment"># root 是训练集的根目录， mode可选的参数是train，test，validation，分别读取相应的文件夹</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root, mode)</span>:</span> </span><br><span class="line">        self.mode = mode</span><br><span class="line">        self.root = root + <span class="string">"/fma_"</span> + self.mode</span><br><span class="line">        self.mel_cepstrum_path = self.get_sample(self.root)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        sample = np.load(self.mel_cepstrum_path[index])</span><br><span class="line">        data = torch.from_numpy(sample[<span class="number">0</span>])</span><br><span class="line">        target = torch.from_numpy(sample[<span class="number">1</span>].astype(np.float32))</span><br><span class="line">        <span class="keyword">return</span> data, target</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self.mode == <span class="string">"train"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">23733</span>  <span class="comment"># 训练集大小</span></span><br><span class="line">        <span class="keyword">elif</span> self.mode == <span class="string">"validation"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">6780</span>  <span class="comment"># 验证集大小</span></span><br><span class="line">        <span class="keyword">elif</span> self.mode == <span class="string">"test"</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">3390</span>  <span class="comment"># 测试集大小</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_sample</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        cepstrum = []</span><br><span class="line">        <span class="keyword">for</span> entry <span class="keyword">in</span> os.scandir(root):</span><br><span class="line">            <span class="keyword">if</span> entry.is_file():</span><br><span class="line">                cepstrum.append(entry.path)</span><br><span class="line">        <span class="keyword">return</span> cepstrum</span><br></pre></td></tr></table></figure>
+
+#### 4.DataLoader类
+
+> *class*`torch.utils.data.DataLoader`**(**dataset**,** *batch_size=1***,** *shuffle=False***,** *sampler=None***,** *batch_sampler=None***,** *num_workers=0***,** *collate_fn=<function default_collate>***,** *pin_memory=False***,** *drop_last=False***,** *timeout=0***,** *worker_init_fn=None***)**
+
+仅仅有通过索引返回训练数据数不够的，我们还需要DataLoad类提供拓展功能。
+
+- 可以分批次读取：batch-size
+- 可以对数据进行shuffle操作
+- 可以用多个线程来读取数据
+
+这个类我们不需要实现代码，直接调用，设置好参数就行了。</function>
       
     </div>
     
@@ -508,17 +519,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -634,22 +636,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-为什么不需要自己写加载方法"><span class="nav-number">1.</span> <span class="nav-text">1.为什么不需要自己写加载方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Dataset类"><span class="nav-number">2.</span> <span class="nav-text">2.Dataset类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-定义自己的数据集类"><span class="nav-number">3.</span> <span class="nav-text">3.定义自己的数据集类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-DataLoader类"><span class="nav-number">4.</span> <span class="nav-text">4.DataLoader类</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

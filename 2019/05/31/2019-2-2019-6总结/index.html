@@ -96,18 +96,18 @@
 
 
 
-<meta name="description" content="前言今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。 二月从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找不到，同时我在ISMIR谷歌网上论">
+<meta name="description" content="##### 前言  今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。  #### 二月  从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找">
 <meta name="keywords" content="Research">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019.2-2019.6科研总结">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/2019-2-2019-6总结/index.html">
 <meta property="og:site_name" content="Hyrule">
-<meta property="og:description" content="前言今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。 二月从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找不到，同时我在ISMIR谷歌网上论">
+<meta property="og:description" content="##### 前言  今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。  #### 二月  从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2019-05-31T04:33:43.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2019.2-2019.6科研总结">
-<meta name="twitter:description" content="前言今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。 二月从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找不到，同时我在ISMIR谷歌网上论">
+<meta name="twitter:description" content="##### 前言  今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。  #### 二月  从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找">
 
 
 
@@ -385,19 +385,42 @@
       
 
       
-        <h5 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h5><p>今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。</p>
-<h4 id="二月"><a href="#二月" class="headerlink" title="二月"></a>二月</h4><p>从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找不到，同时我在ISMIR谷歌网上论坛上也发现几年前就有人遇到这个难题了，遂放弃。</p>
-<h4 id="三月"><a href="#三月" class="headerlink" title="三月"></a>三月</h4><p>从三月开始我苦于没有数据集训练网络。幸运的是博士师兄花了半个月的时间爬了FMA 数据集，爬到了750个歌手大约14500首歌曲。我一直想收集一些情感标签来预训练一个网络，然后迁移到情感计算领域。于是我就去last.fm上收集每首歌曲听众打上的标签。收集last.fm上的标签可以调用<a href="https://www.last.fm/api" target="_blank" rel="noopener">last.fm的API</a>，但是这里还要学习一些python中网络编程的知识，还要将last.fm返回的标签转换格式保存在文件里面。正准备自己造轮子的时候，我发现了一个三方的python接口<a href="https://github.com/pylast/pylast" target="_blank" rel="noopener">pylast</a>，借助这个接口可以简单访问last.fm网站上的数据。</p>
-<p>把这个库设置好，我使用<a href="https://eyed3.readthedocs.io/en/latest/" target="_blank" rel="noopener">eyeD3</a>提取这些歌曲MP3里面的metadata中的<strong>歌曲名字</strong>和<strong>歌手名字</strong>，这两个是提供给last.fm API的两个索引参数，开始跑收集标签的程序时我发现很多歌曲返回的标签都是空的数组，非常奇怪，这出乎了我的意料。然后我就自己手动的去验证这些收集不到听众标签的歌曲，结果首先发现这些歌曲的歌手要么不知名或者音乐风格小众，导致只有很少的播放记录，其次就是很多歌手虽然有10首歌，但是每首歌受听众欢迎的程度不同。这两个原因导致很多歌曲没有听众标签。这样的歌曲在FMA里面有很多，这会导致我最后根本收集不到多少有对应标签的歌曲。为什么FMA里面有很多这样的歌曲，那这就要考虑音乐版权的问题了，比如说Taylor Swift很火，她的歌肯定是不可能收录到FMA数据集中的。可能只是一些不知名的歌手，自由创作歌手愿意授权给FMA</p>
-<p>于是我转换了一种思路，收集歌手的标签，可能一个歌手的一首歌收集对应的标签太少，那么我转而收集这个歌手的标签，如果这个歌手的歌曲标签收集不到，那么这个歌手对应的标签能够有更大可能搜集到。最终我收集到了大概350个艺术家的标签，使用<a href="https://github.com/keunwoochoi/MSD_split_for_tagging/blob/master/README.md" target="_blank" rel="noopener">Choi</a>筛选的标签进行过滤得到一个50维的稀疏向量作为标签。每个艺术家有一个100个30秒clips。总共35000首歌，足够用来训练了。</p>
-<p>我先训练了一个五层的卷积神经网络来做音乐自动标注，使用的评价指标是AUC，非常奇怪的是，我轻松的就将AUC在训练集上训到90%，然后将这个网络作为特征提取器转移到情感分类任务上时发现，分类效果和随机分类没有什么差别。这个idea宣告失败。</p>
-<p>后来我四月在做另一个思路时我突然发现失败的原因可能是这个：由于我选用的网络是使用三秒的音频的梅尔频谱作为输入，这里我犯了一个错误，我事先将这个三十秒的clips直接按顺序划分成了十段三秒的音频，这样其实是不妥的，我应该随机的在这个三十秒的音频里选择一个帧作为起点，往后截取出三秒作为神经网络的输入，通过这样处理，那么可以增加很多样本。之前很轻松的能够训到90%的AUC，可能是这个原因导致的。</p>
-<h4 id="四月"><a href="#四月" class="headerlink" title="四月"></a>四月</h4><p>可以说三月的实验进展非常不顺利，但是我在总结实验失败的时候又有一个新的idea冒出来，实验进展非常顺利，我和一位本科学妹一起合作，一个月就把实验全部做好。</p>
-<p>这一部分日后论文发表了再赘述。</p>
-<h4 id="五月"><a href="#五月" class="headerlink" title="五月"></a>五月</h4><p>五月的前十天我在看了很多文献，这里主要是想motivation，总结实验，做好在组会上要讲的PPT。组会开完之后，我们又找了一个新的数据集补了一组实验，汇报过老师之后就开始写论文，这个时候非常尴尬，因为ISMIR会议在四月截止了，而ICASSP要等到10月才截止，所以论文投稿还要很长一段时间。整个五月后面的时间我都在写论文，整理代码。到今天，终于把论文的初稿写出来了，不得不说，写论文真的是一件非常困难的事情。</p>
-<h4 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work"></a>Future work</h4><p>忙了这三个月以后，终于能歇息一会了。</p>
-<p>接下来我也得想想下一步做什么课题，同时在未来的三个月想学一点自己想学的东西。C++？Java？Leetcode？补深度学习知识？读几本自己喜欢的课外书？ 都可以啊哈哈哈。</p>
+        
+##### 前言
 
+今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。
+
+#### 二月
+
+从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的时候发现7digital早就不提供这个API了。花了几天功夫还是找不到，同时我在ISMIR谷歌网上论坛上也发现几年前就有人遇到这个难题了，遂放弃。
+
+#### 三月
+
+从三月开始我苦于没有数据集训练网络。幸运的是博士师兄花了半个月的时间爬了FMA 数据集，爬到了750个歌手大约14500首歌曲。我一直想收集一些情感标签来预训练一个网络，然后迁移到情感计算领域。于是我就去last.fm上收集每首歌曲听众打上的标签。收集last.fm上的标签可以调用[last.fm的API](https://www.last.fm/api)，但是这里还要学习一些python中网络编程的知识，还要将last.fm返回的标签转换格式保存在文件里面。正准备自己造轮子的时候，我发现了一个三方的python接口[pylast](https://github.com/pylast/pylast)，借助这个接口可以简单访问last.fm网站上的数据。
+
+把这个库设置好，我使用[eyeD3](https://eyed3.readthedocs.io/en/latest/)提取这些歌曲MP3里面的metadata中的**歌曲名字**和**歌手名字**，这两个是提供给last.fm API的两个索引参数，开始跑收集标签的程序时我发现很多歌曲返回的标签都是空的数组，非常奇怪，这出乎了我的意料。然后我就自己手动的去验证这些收集不到听众标签的歌曲，结果首先发现这些歌曲的歌手要么不知名或者音乐风格小众，导致只有很少的播放记录，其次就是很多歌手虽然有10首歌，但是每首歌受听众欢迎的程度不同。这两个原因导致很多歌曲没有听众标签。这样的歌曲在FMA里面有很多，这会导致我最后根本收集不到多少有对应标签的歌曲。为什么FMA里面有很多这样的歌曲，那这就要考虑音乐版权的问题了，比如说Taylor Swift很火，她的歌肯定是不可能收录到FMA数据集中的。可能只是一些不知名的歌手，自由创作歌手愿意授权给FMA
+
+于是我转换了一种思路，收集歌手的标签，可能一个歌手的一首歌收集对应的标签太少，那么我转而收集这个歌手的标签，如果这个歌手的歌曲标签收集不到，那么这个歌手对应的标签能够有更大可能搜集到。最终我收集到了大概350个艺术家的标签，使用[Choi](https://github.com/keunwoochoi/MSD_split_for_tagging/blob/master/README.md)筛选的标签进行过滤得到一个50维的稀疏向量作为标签。每个艺术家有一个100个30秒clips。总共35000首歌，足够用来训练了。
+
+我先训练了一个五层的卷积神经网络来做音乐自动标注，使用的评价指标是AUC，非常奇怪的是，我轻松的就将AUC在训练集上训到90%，然后将这个网络作为特征提取器转移到情感分类任务上时发现，分类效果和随机分类没有什么差别。这个idea宣告失败。
+
+后来我四月在做另一个思路时我突然发现失败的原因可能是这个：由于我选用的网络是使用三秒的音频的梅尔频谱作为输入，这里我犯了一个错误，我事先将这个三十秒的clips直接按顺序划分成了十段三秒的音频，这样其实是不妥的，我应该随机的在这个三十秒的音频里选择一个帧作为起点，往后截取出三秒作为神经网络的输入，通过这样处理，那么可以增加很多样本。之前很轻松的能够训到90%的AUC，可能是这个原因导致的。
+
+#### 四月
+
+可以说三月的实验进展非常不顺利，但是我在总结实验失败的时候又有一个新的idea冒出来，实验进展非常顺利，我和一位本科学妹一起合作，一个月就把实验全部做好。
+
+这一部分日后论文发表了再赘述。
+
+#### 五月
+
+五月的前十天我在看了很多文献，这里主要是想motivation，总结实验，做好在组会上要讲的PPT。组会开完之后，我们又找了一个新的数据集补了一组实验，汇报过老师之后就开始写论文，这个时候非常尴尬，因为ISMIR会议在四月截止了，而ICASSP要等到10月才截止，所以论文投稿还要很长一段时间。整个五月后面的时间我都在写论文，整理代码。到今天，终于把论文的初稿写出来了，不得不说，写论文真的是一件非常困难的事情。
+
+#### Future work
+
+忙了这三个月以后，终于能歇息一会了。
+
+接下来我也得想想下一步做什么课题，同时在未来的三个月想学一点自己想学的东西。C++？Java？Leetcode？补深度学习知识？读几本自己喜欢的课外书？ 都可以啊哈哈哈。
       
     </div>
     
@@ -491,17 +514,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
           <p class="site-author-name" itemprop="name">wanglei</p>
@@ -617,22 +631,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#二月"><span class="nav-number"></span> <span class="nav-text">二月</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三月"><span class="nav-number"></span> <span class="nav-text">三月</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四月"><span class="nav-number"></span> <span class="nav-text">四月</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五月"><span class="nav-number"></span> <span class="nav-text">五月</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Future-work"><span class="nav-number"></span> <span class="nav-text">Future work</span></a></li></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

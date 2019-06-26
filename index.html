@@ -389,11 +389,14 @@
       
         
           
-          1.文章出处发在2018ISMIR,来自Google Brain团队,paper链接
-2.文章简介
-“这篇文章已经把钢琴自动转录未来五年甚至十年的工作都做完了”. 我们用程序Demo转换了一首比较复杂的钢琴曲,听到转录的结果, 于是发出了这样的感叹.
+          
+#### 1.文章出处
 
-本篇论文主要解决的问题是复音钢琴自动转录,也就
+发在2018ISMIR,来自Google Brain团队,[paper链接](https://arxiv.org/pdf/1710.11153.pdf)
+
+#### 2.文章简介
+
+> "这篇文章已经把钢琴自动转录未来五年甚至十年的工作都做完了". 我们用程序Demo转换
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -552,8 +555,10 @@
       
         
           
-          一维卷积torch.nn.Conv1d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, bias=True, padding_mode=’zeros’)
-这个函数用来对输入张量做一维
+          
+### 一维卷积
+
+`torch.nn.Conv1d`(*in_channels*, *out_channels*, *kernel_size*, *stride=1*, *padding=0*, *dilation=1*, *groups=1*, *bias=True*, *padding_mo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -712,8 +717,14 @@
       
         
           
-          前言今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。
-二月从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些歌曲的前三十秒预览的，然后我在找的
+          
+##### 前言
+
+今天是五月三十一日，还有四十天来到复旦就快一年了，研一下学期到今天也有三个多月了，总结一下这个学期做了什么。
+
+#### 二月
+
+从2.14日回来学校之后，总结了一下上学期看了论文。然后想收集million songs dataset的audio，以前7digital是提供这些
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -872,9 +883,10 @@
       
         
           
-          August 05, 2014
-这篇博客做的工作非常impressive，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music information retrieval的工作，现在他是Deepmind的一名研究科学家。
-前言今年夏天，我在纽约Spotify
+          
+August 05, 2014
+
+[这篇博客做的工作非常impressive](http://benanne.github.io/2014/08/05/spotify-cnns.html)，我花了陆陆续续大概一周之间将它翻译成中文。作者是比利时根特大学毕业，博士期间一直在做music inform
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1033,14 +1045,16 @@
       
         
           
-          用ssh远程登录linux出错解决办法1.报错情况
-ssh：connect to “my host” port22:Connection refused
+          
+#### 用ssh远程登录linux出错解决办法
+
+#### 1.报错情况
+
+> ssh：connect to "my host" port22:Connection refused
 
 从服务器端想要传输文件回本地端时，首先出现这个问题，
-最开始尝试的解决办法是我没有装openssh-server
-于是我用了以下两条命令
 
-12
+最开始尝试的解决办法是我没有装openssh-serve
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1199,15 +1213,24 @@ ssh：connect to “my host” port22:Connection refused
       
         
           
-          人生短暂，看电影也要慎重啊。
+          
+人生短暂，看电影也要慎重啊。
+
 1.流浪地球
+
 非常好的国产科幻电影，好就好在脑洞的设定，还有就是剧情，演员都基本在线。
+
 2.飞驰人生
+
 爆米花电影
+
 3.阿丽塔战斗天使
+
 这个是世界的设定很有意思，废铁城和撒冷，在注定废铁城的人们要登上撒冷，毁掉撒冷，就像饥饿游戏的设定一样。
+
 4.绿皮书
-这部电影处处彰显温
+
+
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1366,7 +1389,10 @@ ssh：connect to “my host” port22:Connection refused
       
         
           
-          1.为什么不需要自己写加载方法pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这方面，数据集要自
+          
+#### 1.为什么不需要自己写加载方法
+
+pytorch中提供了两个类用于训练数据的加载，分别是 torch.utils.data.Dataset和 torch.utils.data.DataLoader 。不像torchvision中集合了很多常用的计算机视觉的常用数据集，作为在音乐信息检索这
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1525,8 +1551,12 @@ ssh：connect to “my host” port22:Connection refused
       
         
           
-          这五道题全部都是和树的遍历有关系，也是非递归的二叉树遍历写法，有前中后序三种遍历，按层遍历。总结如下。
-LeetCode94二叉树的中序遍历算法思路：二叉树的前序遍历和中序遍历代码基本一致，不同的地方在于什么时候该访问父节点。非递归的写法主要是使用一个栈来保存已经访问过的结点，其实树的前中后序三种遍
+          
+这五道题全部都是和树的遍历有关系，也是非递归的二叉树遍历写法，有前中后序三种遍历，按层遍历。总结如下。
+
+##### LeetCode94二叉树的中序遍历
+
+算法思路：二叉树的前序遍历和中序遍历代码基本一致，不同的地方在于什么时候该访问父节点。非递归的写法主要是使用一个栈来保存已经访问过的结点，其
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1685,7 +1715,9 @@ LeetCode94二叉树的中序遍历算法思路：二叉树的前序遍历和中�
       
         
           
-          我认识了一个女孩子，她和我一样爱笑。她对我很好，虽然我们之前从来没有见过，我们是在不同的地方长大，上不同的学校，成长经历也不同，但是我们却能够在台湾认识。我很笃定对于我来说她是对的人，但是现在我们还没有真正成为恋人，我决定不会再逼她一点点，两个人有两个人自己的判断，我相信很快就会有结果吧。
+          
+我认识了一个女孩子，她和我一样爱笑。她对我很好，虽然我们之前从来没有见过，我们是在不同的地方长大，上不同的学校，成长经历也不同，但是我们却能够在台湾认识。我很笃定对于我来说她是对的人，但是现在我们还没有真正成为恋人，我决定不会再逼她一点点，两个人有两个人自己的判断，我相信很快就会有结果吧。
+
 
           
           <!--noindex-->
@@ -1845,8 +1877,11 @@ LeetCode94二叉树的中序遍历算法思路：二叉树的前序遍历和中�
       
         
           
-          LeetCode33搜索旋转排序数组算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用二分查找了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。那么我们应该怎么找到有序的子序列呢？
-我们只需要判断序列的第一个值和序列中
+          #### LeetCode33搜索旋转排序数组
+
+算法思路：这是一道好题。题目要求算法时间复杂度是O(logn)级别，那显然只能用**二分查找**了，关键在于二分查找算法只能用于有序的排列，而这道题给出的数组并不是有序的序列，在某个点上进行了旋转。**那么我们应该怎么找到有序的子序列呢？**
+
+**
           ...
           <!--noindex-->
           <div class="post-button text-center">
