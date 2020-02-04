@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="年度总结,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="前言伴随着实习结束期限的到达，我回顾了一下在平安科技AI音乐技术组(以下简称AI-Music)这三个月的实习，总结一些得与失。  我是今年七月被同学推荐到AI-Music组的，简历直接递交到了J老师，面试的时候也是J老师,也是我后来的mentor，工作主要是和他汇报。J老师面试时粗略地问了我在学校做的和音乐信息检索方向有关的科研，我会的编程语言。我那个时候刚刚结束一个用CNN做音乐表征学习的论文,">
+<meta name="keywords" content="年度总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“The-Summary-of-Intern-Experience”">
+<meta property="og:url" content="http://yoursite.com/2020/02/05/“The-Summary-of-Intern-Experience”/index.html">
+<meta property="og:site_name" content="Hyrule">
+<meta property="og:description" content="前言伴随着实习结束期限的到达，我回顾了一下在平安科技AI音乐技术组(以下简称AI-Music)这三个月的实习，总结一些得与失。  我是今年七月被同学推荐到AI-Music组的，简历直接递交到了J老师，面试的时候也是J老师,也是我后来的mentor，工作主要是和他汇报。J老师面试时粗略地问了我在学校做的和音乐信息检索方向有关的科研，我会的编程语言。我那个时候刚刚结束一个用CNN做音乐表征学习的论文,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-04T17:03:07.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“The-Summary-of-Intern-Experience”">
+<meta name="twitter:description" content="前言伴随着实习结束期限的到达，我回顾了一下在平安科技AI音乐技术组(以下简称AI-Music)这三个月的实习，总结一些得与失。  我是今年七月被同学推荐到AI-Music组的，简历直接递交到了J老师，面试的时候也是J老师,也是我后来的mentor，工作主要是和他汇报。J老师面试时粗略地问了我在学校做的和音乐信息检索方向有关的科研，我会的编程语言。我那个时候刚刚结束一个用CNN做音乐表征学习的论文,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/02/05/“The-Summary-of-Intern-Experience”/">
+
+
+
+
+
+  <title>“The-Summary-of-Intern-Experience” | Hyrule</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hyrule</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Life Is Short</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/05/“The-Summary-of-Intern-Experience”/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanglei">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hyrule">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“The-Summary-of-Intern-Experience”</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-05T01:01:01+08:00">
+                2020-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/人生之旅/" itemprop="url" rel="index">
+                    <span itemprop="name">人生之旅</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/02/05/“The-Summary-of-Intern-Experience”/" class="leancloud_visitors" data-flag-title="“The-Summary-of-Intern-Experience”">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>伴随着实习结束期限的到达，我回顾了一下在平安科技AI音乐技术组(以下简称AI-Music)这三个月的实习，总结一些得与失。</p>
+<p> 我是今年七月被同学推荐到AI-Music组的，简历直接递交到了J老师，面试的时候也是J老师,也是我后来的mentor，工作主要是和他汇报。J老师面试时粗略地问了我在学校做的和音乐信息检索方向有关的科研，我会的编程语言。我那个时候刚刚结束一个用CNN做音乐表征学习的论文,后来这篇文章投到2020ICASSP去了，来复旦这边后我一直主要用Python和Keras，这些是我的基本情况。J老师在面试的时候也介绍了一下他们AI-Music组的两个方向：Music generation和一个Score following项目，前者是基于MIDI的，后者是基于音频的。并且询问了我想做哪个项目，由于我在学校做的都是基于音频的，我想这个熟悉一点就选择做Score following。</p>
+<p>Score following其实就是音符跟踪，理想的Score following算法是：<strong>在用户弹奏乐器时(比如钢琴)，算法将APP检测到音频中的音符检测出来，然后在和APP前端展示的乐谱上给出反馈</strong>：用户弹奏了C4，算法检测到弹的C4音准对了则应该在乐谱上过渡到下一个音符。这种算法主要用在主打音乐教育的APP上，这一类APP想用算法来评价用户在乐器学习时的演奏乐器情况，从音准，节奏等方面给出评价，用户借助算法评价能够改进自己的乐器练习。乐器学习伴随着大量的重复练习，且需要在正确的专业老师指导下。这类APP的终极就是通过算法来取代专业的老师，让用户能够借助这一类App自己练习乐器。</p>
+<p>我是7.29日正式开始实习，实习主要跨越7.29-8.31，10.20-11.18，11-18-12.25日总计三个月。接下来我将按照这三个阶段来总结。</p>
+<h4 id="7-29-8-31日"><a href="#7-29-8-31日" class="headerlink" title="7.29-8.31日"></a>7.29-8.31日</h4><p>我入职的时候，D同学已经开始这个Score following的项目了，他已经提前做了一些算法调研，然后已经选定了要实现的这个算法。是一篇2016年台湾清华大学的icassp论文，但是我们主要参考作者的博士论文，里面的算法细节描述得更加详细。来之前我也做了一些Score following算法的调研。说实话，这是一个我从来没有接触过的项目，仓促之间，我们决定开始复现这篇论文里面的算法。我们一开始选用python来实现这个算法，原因有几个：</p>
+<ul>
+<li>是这篇论文使用了一个预训练的CNN来判断乐符的Onset</li>
+<li>Python能够最快复现这个算法, 它有丰富的第三方库，Madmom(一个针对MIR任务的音频处理库，我们需要用到Onset判断)，Librosa(提供基本的信号处理的音频处理库，我们需要CQT转换), MIDO(处理midi的库，我们要用midi来提供真实的Onset时间，pitch信息)。</li>
+</ul>
+<p>复现算法的本身并没有给我和D同学带来什么挑战，<a href="https://docs.google.com/document/d/1TXf5B4xBH7aGOICv_hs7As4XlHIzYslmeGR_kLFTz3s/edit?usp=sharing" target="_blank" rel="noopener">算法的细节我放在这里，感兴趣可以连接</a>。只是在复现的过程随着我对这个算法的理解程度加深，我逐渐的发现这个算法的前提条件太多了，它可能无法解决我们想要解决的问题。简单的说，它假设弹奏者①弹奏的速度是基本稳定的，不会忽快忽慢；②弹奏是连续的，演奏的绝大部分的音符之间的位置关系和乐谱里面的音符位置关系是一致的。实际上这两种情况是很理想的，针对①实际情况弹奏者的速度是会忽快忽慢的，熟悉的就弹奏的快，不熟悉的就会弹奏的很慢；针对②，漏弹一个音且将后一个的音符都提前弹奏到当前的时间点，这就会使得演奏的音符之间的位置关系和乐谱里面的位置关系就不一致。这两个会导致这个算法根本不可能满足要求。这在算法调研的时候就应该要能够想到</p>
+<p>从我现在写这篇总结的时间点来看，其实这个算法无非就是将音频里面的音符和乐谱里面的音符都表示出来，然后用皮尔逊相关系数构造一个相似性矩阵，然后用DTW算法在这个矩阵里找一条匹配路径。offline算法基本上都是这个模式，基于全局的信息(一般是什么矩阵，如距离矩阵，相似性矩阵)，在矩阵里找到一条匹配路径，可是我们的需求是一个online的score following算法，没有全局信息，只有当前音符信息和之前的音符信息，这个算法主要是基于一个局部速度估计构造一个线性函数，使用这个线性函数来匹配当前音频的音符对应乐谱中的拿一个音符。到8月底，我们这个复现的算法只能跟踪正确的弹奏，如果弹奏错误，漏弹中间的某一个音符，停顿都会使算法crash. 问题来了，如果都是正确的弹奏，那完全不需要评价了。这一个月的投入，得到这么一个用Python写的只能在IDE里面跑的玩具demo，没有实际应用价值，我其实是不能够接受的。导致这样的局面，我反思了以下几个原因：</p>
+<ul>
+<li>首先我没有将需求转换为一个很好的算法问题，即我们到底是要做一个offline的算法，还是一个online的算法。导致我花了一些时间在offline模型上(比如谷歌的onset&amp;frames模型，虽然这是最近两年一个很好的转录模型)。<strong>2-8定律告诉我们，一个优秀的算法工程师，应该花费80%的时间在①问题定义阶段将一个需求转化为一个定义清楚的算法问题，有时可能还要分解成好几个小问题。②算法调研阶段，一定要全面的调研当前已有的算法，认真的评估每一个算法是否能够解决当前的问题，一旦盲目地开始复现，投入的时间不仅很多，而且还不一定能得到理想的算法。现在很多论文的算法仅仅在论文里面是有用的，和现实情况是严重脱节的。只将20%的时间花费在实现上。</strong></li>
+<li><strong>不要迷恋fancy的模型，一定要考虑实际的需求。</strong>比如说Onset&amp;frames模型，哇，deep learning！很fancy！很cool！放出来的demo效果也非常不错！但是它能够部署到手机端吗？不能！它首先是一个offline模型，其次这个模型太庞大了，部署在移动端不现实。在这一个月中，我们没有考虑过这个算法能否应用到IOS，Android端，它依赖多个python的三方库。python实现的算法，该如何和前段后端对接呢？这一方面欠考虑，毕竟我不是有很多经验的工程师，不太了解这些问题，这些该由公司更加资深的工程师来评估。</li>
+</ul>
+<h4 id="10-21-11-18"><a href="#10-21-11-18" class="headerlink" title="10.21-11.18"></a>10.21-11.18</h4><p>9月1号-10.20日我就返回学校继续完善那篇投2020ICASSP的论文。到10.21日重新回到AI-Music组。这段时间我不知道怎么了，脑子一热开始研究Music generation了，这是组里最重要的项目。在回来之前我也看了一点音乐生成的论文，看了一下Google Magenta的几篇博客以及Music transformer那篇论文。Music transformer的衍生自<a href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">transformer</a>，后者是最开始用在机器翻译任务上，然后又被用于文本生成任务上。</p>
+<p>我先花了一周时间阅读了transformer和music transformer两篇文章。并且根据<a href="https://www.tensorflow.org/tutorials/text/transformer" target="_blank" rel="noopener">tensorflow的transformer教程</a>实现了一遍transformer的基本代码。music transformer的笔记我放在<a href="https://github.com/1996Wanglei/Papernotes/blob/master/2018_Notes/Music%20Transformer.md" target="_blank" rel="noopener">这里</a>。music transformer是一个端到端的音乐生成模型，在我开始实现和训练music transformer之前，我吸取了8月的教训，花了两天的时间测试google magenta提供的music transformer demo。我想先测试一下这个模型的生成能力是怎样的，于是我找了不同primer分别输入这个demo，最终得到了一份<a href="https://www.dropbox.com/sh/xnoakn0uir3yuut/AACLke2reVtXGr_jQ3CERm5ta?dl=0" target="_blank" rel="noopener">测试报告</a>。</p>
+<p>我没有花费太多时间在将MIDI预处理成sequence模型需要的输入向量，我也没有花费太多时间在music transformer模型的实现上（我觉得我也复现不出来，模型对于我来说有点复杂）。我在github上找到了一个<a href="https://github.com/jason9693/MusicTransformer-pytorch" target="_blank" rel="noopener">repo</a>满足我的要求，修改了一个bug，为repo提了一个issure。MIDI文件我则是使用和Maestro数据集一样的midi文件，repo里提供下载脚本。我训练了几次，保存了几个预训练模型，并且使用巴赫的一些钢琴奏鸣曲尝试进行生成，然而我并没有得到和原repo的开源者一样的生成效果，但是模型最终的收敛loss和原repo给出的结果是差不多的。后续我没有花费更多时间去寻找原因，因为此时我已经对音乐生成的这项工作的意义产生了怀疑，我也对这种端到端的生成模型感到失望。</p>
+<p>我个人认为音乐生成在现在仍然是一个challenge，对于平安科技AI-music去做这方面的研究一直是持怀疑态度的：①音乐本身就是一个非常complex，emotional的载体，对于目前的生成模型来说，显然音乐是一种它hold不住的研究对象。②平安科技如果真的想做，应该招募更多非常聪明的人才才可能。就我个人而言，我在这将近一个月的投入是0产出的，很大的原因来源于我自身，不应该去碰这种题的。这提醒着我，应该更加谨慎的选择项目，能够对项目的难度进行事前评估。</p>
+<h4 id="11-18-至今"><a href="#11-18-至今" class="headerlink" title="11.18-至今"></a>11.18-至今</h4><p>最后一个月，我的收获是颇多的。Z同学的加入，在这之前，我们在复旦已经合作过半年多的时间。J老师交给我们一个小提琴陪练App算法开发任务。我们需要根据业务需求，实现一个完整的算法SDK，并且考虑到跨平台（IOS，Android），需要使用C++开发。此时我并没有使用过C++开发，C语言基础也早就荒废了，但是我还是乐意接受这个任务，和Z同学一起合作完成整个SDK开发，开发语言不是问题，我大约花了10-12天的时间翻了C++ primer 第五版300页左右，熟悉了C++的基本语法以及一些OOP特性，即上手开发。</p>
+<p>J老师给了我们一些可以参考的代码，其中就有Yin算法这个音高检测算法，除此以外没有封装成接口，我们的任务基本上要从0️⃣开始需要开发完整的算法，并且还要针对小提琴的特性，可能要对单音双音进行音高检测。一开始我们其实并不了解所要开发算法系统的所有功能，我们从最基本的功能开始实现，一步一步迭代加入新的功能，也就是敏捷开发。但是我们大致知道，我们首先应该解决两个问题：①单音音高检测，也就是要能根据音频检测出用户演奏的音符；②相应的评价算法：检测用户的演奏音符是否准确，演奏节奏是否正确。</p>
+<p><strong>单音音高检测：</strong>Yin算法能够解决，并且计算速度非常快，这是一个经典的音高检测算法。————。我们主要需要实现一个缓存区来存储前端监听到的音频流，为了增加Yin算法鲁棒性，我们需要在缓冲区上设置一个重叠的窗口，每次只用Yin算法计算这个窗口里的音频的频率，这个频率当做窗口起点时间戳的频率值。这个频率值可能需要保存在一个数据结构里，以便评价算法评价整个音符的音高准确与否时需要用到；也可能需要马上返回给前端（调音模式即需要，判断当前弦是否调音准确），这里我实践了C++函数指针，学习函数指针时觉得这个很抽象，显然前端后端联系就是函数指针应用场景。</p>
+<p><strong>音高，节奏评价算法：</strong>音高评价就是评价每一个音符是否演奏准确，比如说如果中央C4被演奏成了C 4#的话就是错误的；节奏评价就是一个音符的被演奏的时间是不是和乐谱当中的时间一致。如果要设计音高评价，应该将每一个音符的音高检测值和参考的音高值进行对比。设计节奏评价，应该检测出音符的Onset时间，去比较这个Onset和真实的乐谱时间是否一致。所以在音高检测时，音高检测值被保存下来就尤为的重要，有音高检测值，可以轻而易举的找到Onset的时间。</p>
+<p>很快我们就实现了一个完整的单音音高检测，音高评价，节奏评价算法。除此以外，我们将这几个算法都分装成简洁的接口，用C语言编写的API可以供OC，Swift项目调用。</p>
+<p><strong>双音音高检测算法：</strong>由于小提琴不仅仅能够演奏出单音，还能有双音演奏。这意味着Yin算法不能再用作音高检测算法。兼顾实时和准确的算法，需要将音频信号转换到频域。常数Q变换能够将音频从时域转换到基于十二平均律的CQT谱，我和Z同学对CQT的了解只限于librosa里面的CQT变换，于是我们使用Garage band制作了几个双音音频，借助librosa里面的cqt变换(一个八度设置12个bin, 一个bin代表一个半音)以及librosa.display里面的可视化函数。我们发现一个双音在频谱上的显示会有六个明显的半音有能量(幅度)，比如说如果演奏了A4(midi pitch为42)和C4(midi pitch为49)，CQT谱上一般会有两条比较亮，分别是(41,42,43)和(48,49,50)。如果我们能从CQT谱上检测到最亮的两个半音和前端给的真实pitch能对应上，就可以判断音高的是否准确。一个小插曲是，我们误将garage band上的C4 当成了我们理解的中央C4，实际上garage band的C4是比中央C4高一个八度C5。库乐队之所以使用这种向下偏移一个八度的是为了尽可能兼容多的乐器的音域。确定这种方法可行之后，我们需要使用C++实现一个CQT变换算法即可。还需要考虑的一个问题是，由于我们有真实的音高可以利用，所以我们在CQT谱上只关注存在真实音高的八度范围，那么如何在这个八度范围(若干个音高排列，可以是12个或者14个)中尽可能<em>合理的</em>地挑选出可能的两个目标音高值，一旦挑错了，那么会直接影响这个音符。</p>
+<p><strong>双音音高，节奏检测算法：</strong>双音音高评价算法基本上可以沿用单音的逻辑，可能更加简便，检测出来的音高是半音为单位，如果和真实的音高对不上就可以认为是错误的。</p>
+<p>除此以外，我们努力确保我们提供的接口不包含C++特性，只包含C的特性，因为swift不能和包含C++特性的头文件一起编译。我和Z同学一起设计了算法的系统架构，调用逻辑，检测，评价算法；音频缓冲区，音高检测模式（实时的反馈用户每一个演奏音符的得分），跟音模式（用户弹奏正确一个音符才会过掉），调音模式（用于调音）调用逻辑的设计则由Z同学担纲。到我离开的前几天，我们一共提交了15000行代码，包括我们自己写的1600行最终在项目中使用的代码，Yin算法和CQT算法（来自<a href="https://www.vamp-plugins.org/download.html" target="_blank" rel="noopener">vamp插件</a>，QMUL开发的）10000行左右，其余的就是我们的测试代码和开发时所产生的过程代码。整个项目的代码难点在于①音高检测，评价算法，节奏检测，评价算法。②音频存储缓冲区设计，音高检测模式，跟音模式逻辑设计。③CQT算法实现（这个项目中使用开源代码）</p>
+<p><strong>说一些其它事</strong>：在AI-Music组的实习的四个月，我有三个月花在score following上，一个月花在music generation上，这个项目在我走之前基本上完成了我们预先设定的目标，并且我们也下载了demo在自己手机上玩玩；在这里我有时间调研算法，设计算法，编程，协同编程，交叉code review，组里的氛围也很好（自由宽松，基本上没有kpi压力），同时这里有很多擅长不同领域（作曲，NLP，统计系等）同学；我很高兴和Z同学一起合作完成这个项目，她很聪明，经常讨论的时候我跟不上她的思路，我经常自嘲：“脑子像生锈了一样”，同时她良好的音乐背景是我们能够顺利推进这个项目的一个重要条件，MIR是一个计算机和音乐的交叉学科。最后，我叮嘱Z同学，一定要让我们的这个App上线啊！！</p>
+<p>我在这里学到了非常多在学校永远学不到知识！至此，我的第一份实习就画上了句号。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/年度总结/" rel="tag"># 年度总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/12/Beside-Bill-Brain/" rel="next" title="Beside Bill Brain">
+                <i class="fa fa-chevron-left"></i> Beside Bill Brain
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="wanglei">
+          <p class="site-author-name" itemprop="name">wanglei</p>
+           
+              <p class="site-description motion-element" itemprop="description">曾梦想仗剑走天涯，后来作业太多就没去了</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/1996Wanglei" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="leiwang199608@gmail.com" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/wang-lei-35-77/activities" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                    
+                      知乎
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-link"></i>
+              有趣的链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://blog.csdn.net/Alen_1996" title="我的CSDN" target="_blank">我的CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-29-8-31日"><span class="nav-number">2.</span> <span class="nav-text">7.29-8.31日</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-21-11-18"><span class="nav-number">3.</span> <span class="nav-text">10.21-11.18</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-18-至今"><span class="nav-number">4.</span> <span class="nav-text">11.18-至今</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanglei</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+<script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+setInterval("createtime()",250);
+</script>
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("swn8n9ytr3hd56yqXv7IgG48-gzGzoHsz", "xCyOxUvsRayM12NveNMNOHHj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
